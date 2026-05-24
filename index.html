@@ -1,0 +1,848 @@
+# STK Push Protection Simulator — Single HTML File
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STK Shield Kenya — M-Pesa Security Simulation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#07120c;
+  --card:#0d1d14;
+  --soft:#11271c;
+  --green:#00d26a;
+  --green2:#15ff95;
+  --red:#ff4d67;
+  --orange:#ff9f43;
+  --text:#f4fff8;
+  --muted:#9cb6a5;
+  --border:rgba(255,255,255,.08);
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#031009,#08150f,#091812);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top left, rgba(0,210,106,.15), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(21,255,149,.09), transparent 30%);
+  pointer-events:none;
+}
+
+.container{
+  width:min(1400px,95%);
+  margin:auto;
+}
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 500px;
+  gap:40px;
+  align-items:center;
+  padding:70px 0;
+}
+
+.hero h1{
+  font-size:4rem;
+  line-height:1.05;
+  margin-bottom:24px;
+}
+
+.hero h1 span{
+  color:var(--green2);
+}
+
+.hero p{
+  color:var(--muted);
+  line-height:1.9;
+  margin-bottom:20px;
+  font-size:1.05rem;
+}
+
+.badges{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.badge{
+  padding:12px 18px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+  border-radius:999px;
+  font-size:.9rem;
+}
+
+.phone{
+  width:100%;
+  height:900px;
+  border-radius:45px;
+  background:#111;
+  border:10px solid #202020;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+
+.phone-header{
+  background:linear-gradient(135deg,#00a650,#00d26a);
+  padding:18px;
+  text-align:center;
+  font-weight:700;
+  font-size:1.2rem;
+}
+
+.screen{
+  height:calc(100% - 65px);
+  overflow:auto;
+  background:#08120d;
+  padding:20px;
+}
+
+.notification{
+  background:linear-gradient(135deg,#1b2f22,#102119);
+  border:1px solid rgba(255,255,255,.07);
+  border-left:5px solid var(--green);
+  padding:18px;
+  border-radius:20px;
+  margin-bottom:20px;
+  animation:slideIn .5s ease;
+}
+
+.notification.fraud{
+  border-left-color:var(--red);
+}
+
+.notification.warning{
+  border-left-color:var(--orange);
+}
+
+@keyframes slideIn{
+  from{
+    transform:translateY(20px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.amount{
+  font-size:1.2rem;
+  font-weight:700;
+}
+
+.meta{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.7;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+}
+
+button{
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.btn{
+  padding:12px 16px;
+  border-radius:12px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.primary{
+  background:var(--green);
+  color:#021108;
+}
+
+.danger{
+  background:var(--red);
+  color:white;
+}
+
+.dark{
+  background:#16241c;
+  color:white;
+}
+
+.section{
+  padding:100px 0;
+}
+
+.section-title{
+  font-size:3rem;
+  margin-bottom:20px;
+}
+
+.section-sub{
+  color:var(--muted);
+  max-width:900px;
+  line-height:1.9;
+  margin-bottom:50px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:linear-gradient(145deg,#102118,#0b1711);
+  border:1px solid var(--border);
+  padding:30px;
+  border-radius:28px;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  width:180px;
+  height:180px;
+  background:rgba(0,210,106,.08);
+  border-radius:50%;
+  top:-80px;
+  right:-80px;
+}
+
+.card h3{
+  margin:20px 0 14px;
+  font-size:1.3rem;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.icon{
+  width:70px;
+  height:70px;
+  border-radius:20px;
+  display:grid;
+  place-items:center;
+  font-size:2rem;
+  background:rgba(0,210,106,.12);
+}
+
+.simulator{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.panel{
+  background:linear-gradient(145deg,#0f1d16,#08120d);
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:30px;
+}
+
+.panel h2{
+  margin-bottom:25px;
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  color:#dff7e7;
+}
+
+input,select{
+  width:100%;
+  padding:15px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.08);
+  background:#112019;
+  color:white;
+  font-family:inherit;
+}
+
+.toggle{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#112019;
+  padding:15px;
+  border-radius:16px;
+  margin-bottom:15px;
+}
+
+.switch{
+  width:60px;
+  height:30px;
+  background:#222;
+  border-radius:999px;
+  position:relative;
+  cursor:pointer;
+}
+
+.switch::after{
+  content:'';
+  position:absolute;
+  width:24px;
+  height:24px;
+  background:white;
+  border-radius:50%;
+  top:3px;
+  left:3px;
+  transition:.3s;
+}
+
+.switch.active{
+  background:var(--green);
+}
+
+.switch.active::after{
+  left:33px;
+}
+
+.logs{
+  max-height:500px;
+  overflow:auto;
+}
+
+.log{
+  padding:16px;
+  background:#0e1a14;
+  border-radius:16px;
+  margin-bottom:14px;
+  border-left:4px solid var(--green);
+}
+
+.log.blocked{
+  border-left-color:var(--red);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.stat{
+  padding:30px;
+  border-radius:24px;
+  background:linear-gradient(145deg,#102118,#0b1711);
+  border:1px solid var(--border);
+  text-align:center;
+}
+
+.stat h2{
+  font-size:3rem;
+  color:var(--green2);
+}
+
+.footer{
+  text-align:center;
+  padding:60px 20px;
+  color:var(--muted);
+}
+
+@media(max-width:1100px){
+  .hero,
+  .simulator{
+    grid-template-columns:1fr;
+  }
+
+  .phone{
+    max-width:450px;
+    margin:auto;
+  }
+
+  .hero h1{
+    font-size:3rem;
+  }
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:2.4rem;
+  }
+
+  .section-title{
+    font-size:2.2rem;
+  }
+
+  .phone{
+    height:760px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<section class="hero">
+  <div>
+    <h1>
+      STK Push <span>Protection</span><br>
+      System Simulation
+    </h1>
+
+    <p>
+      A futuristic concept simulation showing how Safaricom M-Pesa could reduce fraudulent and accidental STK push prompts in Kenya through trusted merchants, identity verification, merchant blocking, and intelligent transaction confirmation.
+    </p>
+
+    <p>
+      This prototype demonstrates how millions of Kenyans could gain better control over unexpected payment requests and notification fatigue.
+    </p>
+
+    <div class="badges">
+      <div class="badge">Trusted Merchants</div>
+      <div class="badge">Fraud Prevention</div>
+      <div class="badge">Merchant Blocking</div>
+      <div class="badge">Identity Verification</div>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="phone-header">
+      M-Pesa Secure Shield
+    </div>
+
+    <div class="screen" id="notificationArea">
+
+      <div class="notification fraud">
+        <div class="row">
+          <strong>Unknown Merchant</strong>
+          <span class="amount">KES 4,500</span>
+        </div>
+
+        <div class="meta">
+          ABC Supermarket is requesting payment.<br>
+          First time transaction detected.<br>
+          Location mismatch: User currently in Nairobi West.
+        </div>
+
+        <div class="actions">
+          <button class="btn danger">Block Merchant</button>
+          <button class="btn dark">Dismiss</button>
+        </div>
+      </div>
+
+      <div class="notification warning">
+        <div class="row">
+          <strong>Identity Verification</strong>
+          <span class="amount">Verification Needed</span>
+        </div>
+
+        <div class="meta">
+          Customer name at till does not match registered M-Pesa account owner.
+          Additional confirmation required.
+        </div>
+
+        <div class="actions">
+          <button class="btn primary">Verify</button>
+          <button class="btn dark">Reject</button>
+        </div>
+      </div>
+
+      <div class="notification">
+        <div class="row">
+          <strong>Trusted Merchant</strong>
+          <span class="amount">KES 850</span>
+        </div>
+
+        <div class="meta">
+          Java House Karen has been verified and added to your trusted merchants list.
+        </div>
+
+        <div class="actions">
+          <button class="btn primary">Confirm</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">The Problem Facing Kenya</h2>
+
+  <p class="section-sub">
+    M-Pesa transformed Africa's financial ecosystem. But the current Buy Goods and STK push flow allows any merchant or customer to enter any phone number without identity verification. This creates fraud opportunities, accidental payment requests, and daily notification fatigue for millions of users.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">⚠️</div>
+      <h3>Fraud Attempts</h3>
+      <p>
+        Fraudsters intentionally input random numbers hoping users accidentally approve payments while distracted or tired.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">📱</div>
+      <h3>Wrong Number Entries</h3>
+      <p>
+        Genuine customers mistype phone numbers, causing innocent users to receive unexpected STK push prompts.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🔔</div>
+      <h3>Notification Fatigue</h3>
+      <p>
+        Constant unrelated prompts create mental clutter, anxiety, distraction, and reduce trust in payment systems.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Proposed Solution Features</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">✅</div>
+      <h3>Trusted Merchants</h3>
+      <p>
+        Merchants you regularly transact with are automatically approved while new merchants require additional verification.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛡️</div>
+      <h3>Smart Verification</h3>
+      <p>
+        First-time merchants trigger enhanced security prompts and location-based fraud analysis.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚫</div>
+      <h3>Merchant Blocking</h3>
+      <p>
+        Users permanently block problematic tills, paybills, or merchants from future STK push attempts.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🧠</div>
+      <h3>AI Fraud Detection</h3>
+      <p>
+        Detect suspicious patterns such as repeated failed pushes, unusual locations, or high-risk merchant activity.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+
+  <h2 class="section-title">Interactive Security Simulator</h2>
+
+  <p class="section-sub">
+    Simulate how the proposed system would intelligently process STK push requests before they reach the customer.
+  </p>
+
+  <div class="simulator">
+
+    <div class="panel">
+      <h2>Create STK Push Request</h2>
+
+      <div class="form-group">
+        <label>Merchant Name</label>
+        <input type="text" id="merchant" value="ABC Supermarket">
+      </div>
+
+      <div class="form-group">
+        <label>Amount (KES)</label>
+        <input type="number" id="amount" value="4500">
+      </div>
+
+      <div class="form-group">
+        <label>Merchant Status</label>
+        <select id="status">
+          <option value="unknown">Unknown Merchant</option>
+          <option value="trusted">Trusted Merchant</option>
+          <option value="blocked">Blocked Merchant</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Customer Identity Match</label>
+        <select id="identity">
+          <option value="no">No Match Detected</option>
+          <option value="yes">Verified Match</option>
+        </select>
+      </div>
+
+      <div class="toggle">
+        <div>
+          <strong>Enable AI Fraud Detection</strong><br>
+          <small style="color:var(--muted)">Analyze suspicious patterns automatically</small>
+        </div>
+
+        <div class="switch active" id="switchBtn"></div>
+      </div>
+
+      <button class="btn primary" style="width:100%;padding:18px" onclick="simulateTransaction()">
+        Simulate STK Push
+      </button>
+    </div>
+
+    <div class="panel">
+      <h2>Security Engine Logs</h2>
+
+      <div class="logs" id="logs">
+        <div class="log">
+          System initialized successfully.<br>
+          STK Shield AI monitoring enabled.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <h2 id="blockedCount">0</h2>
+      <p>Fraudulent Prompts Blocked</p>
+    </div>
+
+    <div class="stat">
+      <h2 id="trustedCount">0</h2>
+      <p>Trusted Transactions Approved</p>
+    </div>
+
+    <div class="stat">
+      <h2 id="reviewCount">0</h2>
+      <p>Transactions Sent For Review</p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="footer">
+  Designed as a conceptual fintech UX/security prototype for Kenya's mobile money ecosystem.<br><br>
+  Built to demonstrate how modern fraud prevention and identity verification could improve STK Push experiences nationwide.
+</footer>
+
+</div>
+
+<script>
+const logs = document.getElementById('logs');
+const notificationArea = document.getElementById('notificationArea');
+const switchBtn = document.getElementById('switchBtn');
+
+let aiEnabled = true;
+let blocked = 0;
+let trusted = 0;
+let review = 0;
+
+switchBtn.addEventListener('click',()=>{
+  aiEnabled = !aiEnabled;
+  switchBtn.classList.toggle('active');
+
+  addLog(
+    aiEnabled
+    ? 'AI fraud detection enabled.'
+    : 'AI fraud detection disabled.'
+  );
+});
+
+function updateStats(){
+  document.getElementById('blockedCount').innerText = blocked;
+  document.getElementById('trustedCount').innerText = trusted;
+  document.getElementById('reviewCount').innerText = review;
+}
+
+function addLog(text,type='normal'){
+  const div = document.createElement('div');
+  div.className = type === 'blocked' ? 'log blocked' : 'log';
+
+  const time = new Date().toLocaleTimeString();
+
+  div.innerHTML = `
+    <strong>${time}</strong><br>
+    ${text}
+  `;
+
+  logs.prepend(div);
+}
+
+function createNotification(title,amount,message,type){
+
+  const card = document.createElement('div');
+  card.className = `notification ${type}`;
+
+  card.innerHTML = `
+    <div class="row">
+      <strong>${title}</strong>
+      <span class="amount">KES ${amount}</span>
+    </div>
+
+    <div class="meta">
+      ${message}
+    </div>
+
+    <div class="actions">
+      <button class="btn primary">Review</button>
+      <button class="btn dark">Dismiss</button>
+    </div>
+  `;
+
+  notificationArea.prepend(card);
+}
+
+function simulateTransaction(){
+
+  const merchant = document.getElementById('merchant').value;
+  const amount = document.getElementById('amount').value;
+  const status = document.getElementById('status').value;
+  const identity = document.getElementById('identity').value;
+
+  if(status === 'blocked'){
+
+    blocked++;
+    updateStats();
+
+    addLog(
+      `Blocked STK push attempt from ${merchant}. Merchant exists in user blacklist.`,
+      'blocked'
+    );
+
+    createNotification(
+      'Blocked Merchant Attempt',
+      amount,
+      `${merchant} attempted to send a transaction request but was automatically blocked by STK Shield.`,
+      'fraud'
+    );
+
+    return;
+  }
+
+  if(status === 'trusted' && identity === 'yes'){
+
+    trusted++;
+    updateStats();
+
+    addLog(
+      `Trusted transaction approved automatically for ${merchant}.`
+    );
+
+    createNotification(
+      'Trusted Merchant',
+      amount,
+      `${merchant} is verified and recognized. Transaction processed with low risk score.`,
+      ''
+    );
+
+    return;
+  }
+
+  if(status === 'unknown' || identity === 'no'){
+
+    review++;
+    updateStats();
+
+    let riskMessage = `Unknown merchant detected for ${merchant}.`;
+
+    if(aiEnabled){
+      riskMessage += ' AI system flagged this request as suspicious and requested secondary verification.';
+    }
+
+    addLog(riskMessage);
+
+    createNotification(
+      'Security Verification Needed',
+      amount,
+      `${merchant} requires additional confirmation because this transaction does not match trusted behavior patterns.`,
+      'warning'
+    );
+  }
+}
+</script>
+
+</body>
+</html>
+```
+
+## Features Included
+
+* Fully responsive single HTML file
+* Modern fintech inspired UI/UX
+* Simulated smartphone STK notification system
+* Fraud detection simulation
+* Trusted merchants system
+* Merchant blocking system
+* Identity verification simulation
+* Interactive transaction simulator
+* Dynamic analytics counters
+* Animated notifications and logs
+* Mobile, tablet, desktop compatible
+
+## Usage
+
+1. Copy the code into a file named:
+
+```bash
+index.html
+```
+
+2. Open it in:
+
+* Chrome
+* Edge
+* Firefox
+* Safari
+
+3. No backend required.
+4. Works offline.
+5. Fully self-contained.
