@@ -1,0 +1,636 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Clone MVP</title>
+  <style>
+    :root{
+      --bg:#121212;
+      --card:#181818;
+      --hover:#282828;
+      --green:#1DB954;
+      --text:#ffffff;
+      --muted:#b3b3b3;
+    }
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      height:100vh;
+      overflow:hidden;
+    }
+
+    .sidebar{
+      width:240px;
+      background:#000;
+      padding:20px;
+      overflow-y:auto;
+    }
+
+    .logo{
+      font-size:22px;
+      font-weight:bold;
+      margin-bottom:20px;
+      color:#1DB954;
+    }
+
+    .nav-item{
+      padding:10px;
+      margin:5px 0;
+      cursor:pointer;
+      border-radius:6px;
+    }
+
+    .nav-item:hover{
+      background:#282828;
+    }
+
+    .main{
+      flex:1;
+      padding:20px;
+      overflow-y:auto;
+      padding-bottom:140px;
+    }
+
+    .search{
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:20px;
+      margin-bottom:20px;
+      outline:none;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(180px,1fr));
+      gap:15px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:15px;
+      border-radius:16px;
+      cursor:pointer;
+      transition:0.3s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:hover{ background:var(--hover); transform:translateY(-4px); }
+
+    .title{ font-size:14px; margin-top:10px; }
+
+    .queue-btn{
+      margin-top:8px;
+      font-size:12px;
+      padding:5px 10px;
+      border-radius:20px;
+      border:none;
+      cursor:pointer;
+      background:#333;
+      color:#fff;
+    }
+
+    .queue-btn:hover{ background:#444; }
+
+    .player{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:#101010;
+      padding:10px 15px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-top:1px solid #222;
+      z-index:999;
+    }
+
+    button{
+      background:var(--green);
+      border:none;
+      padding:10px 15px;
+      border-radius:30px;
+      cursor:pointer;
+      color:#000;
+      font-weight:bold;
+    }
+
+    .hero{
+      background:linear-gradient(180deg,#3b1f70,#121212);
+      border-radius:20px;
+      padding:30px 20px;
+      margin-bottom:20px;
+    }
+
+    .hero h1{
+      font-size:32px;
+      margin-bottom:10px;
+    }
+
+    .hero p{
+      color:var(--muted);
+    }
+
+    .mobile-nav{
+      display:none;
+      position:fixed;
+      bottom:72px;
+      left:0;
+      right:0;
+      background:#000;
+      padding:10px;
+      justify-content:space-around;
+      border-top:1px solid #222;
+      z-index:998;
+    }
+
+    .mobile-item{
+      color:#fff;
+      font-size:12px;
+      text-align:center;
+      cursor:pointer;
+    }
+
+    .top-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
+      gap:10px;
+    }
+
+    .chip-row{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      margin-bottom:20px;
+    }
+
+    .chip{
+      background:#2a2a2a;
+      padding:10px 15px;
+      border-radius:20px;
+      white-space:nowrap;
+      font-size:13px;
+    }
+
+    .album-cover{
+      width:100%;
+      height:140px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#1DB954,#1e90ff);
+      margin-bottom:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:40px;
+    }
+
+    .mini-player{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .mini-cover{
+      width:45px;
+      height:45px;
+      border-radius:8px;
+      background:linear-gradient(135deg,#1DB954,#1e90ff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    @media(max-width:768px){
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        display:none;
+      }
+
+      .queue{
+        display:none;
+      }
+
+      .main{
+        width:100%;
+        padding:15px;
+        padding-bottom:160px;
+      }
+
+      .grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .hero h1{
+        font-size:26px;
+      }
+
+      .mobile-nav{
+        display:flex;
+      }
+
+      .player{
+        padding:12px;
+      }
+
+      .player button{
+        padding:8px 12px;
+        font-size:12px;
+      }
+    }
+
+    .queue{
+      width:220px;
+      background:#000;
+      padding:15px;
+      border-left:1px solid #222;
+      overflow-y:auto;
+    }
+
+    .queue h3{ color:#1DB954; margin-bottom:10px; }
+
+    .queue-item{
+      padding:8px;
+      margin-bottom:6px;
+      background:#181818;
+      border-radius:6px;
+      font-size:13px;
+      cursor:pointer;
+    }
+
+    .queue-item:hover{ background:#282828; }
+
+    .playlist-box{
+      margin-top:20px;
+      padding:10px;
+      background:#181818;
+      border-radius:10px;
+    }
+
+    .playlist-title{
+      color:#1DB954;
+      margin-bottom:8px;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="logo">Spotify MVP</div>
+    <div class="nav-item">Home</div>
+    <div class="nav-item">Search</div>
+    <div class="nav-item" onclick="generatePlaylists()">Auto Playlists</div>
+    <div class="nav-item" onclick="openWrapped()">Wrapped</div>
+<div class="nav-item" onclick="openTimeline()">Timeline</div>
+  </div>
+
+  <div class="main">
+    <div class="hero">
+      <h1>Good Evening</h1>
+      <p>Your music, playlists and AI recommendations in one place.</p>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip">🎧 Music</div>
+      <div class="chip">🔥 Trending</div>
+      <div class="chip">😌 Chill</div>
+      <div class="chip">🏋️ Workout</div>
+      <div class="chip">🎯 Focus</div>
+    </div>
+
+    <div class="top-row">
+      <h2>Made For You</h2>
+    </div>
+    <input class="search" id="search" placeholder="Search songs..." oninput="searchSongs()">
+
+    <div class="grid" id="songGrid"></div>
+
+    <div id="playlistArea"></div>
+  </div>
+
+  <div class="queue">
+    <h3>Up Next</h3>
+    <div id="queueList"></div>
+  </div>
+
+  <div class="mobile-nav">
+    <div class="mobile-item">🏠<br>Home</div>
+    <div class="mobile-item">🔍<br>Search</div>
+    <div class="mobile-item">📚<br>Library</div>
+    <div class="mobile-item">🎤<br>Wrapped</div>
+  </div>
+
+  <div class="player">
+    <div class="mini-player">
+      <div class="mini-cover">🎵</div>
+      <div id="nowPlaying">Not playing</div>
+    </div>
+    <div>
+      <button onclick="togglePlay()">Play / Pause</button>
+      <button onclick="playNext()">Next</button>
+    </div>
+  </div>
+
+<script>
+
+const songs = [
+  { title: "Chill Vibes A", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+  { title: "Workout Energy B", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+  { title: "Focus Study C", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
+  { title: "Relax Night D", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" }
+];
+
+let currentAudio = new Audio();
+let isPlaying = false;
+let queue = JSON.parse(localStorage.getItem("queue")) || [];
+let plays = JSON.parse(localStorage.getItem("plays")) || {};
+
+function saveQueue(){ localStorage.setItem("queue", JSON.stringify(queue)); renderQueue(); }
+function savePlays(){ localStorage.setItem("plays", JSON.stringify(plays)); }
+
+function trackPlay(song){ plays[song.title]=(plays[song.title]||0)+1; savePlays(); }
+
+function renderSongs(list){
+  const grid = document.getElementById("songGrid");
+  grid.innerHTML="";
+
+  list.forEach(song=>{
+    const div=document.createElement("div");
+    div.className="card";
+    div.innerHTML=`
+      <div class='album-cover'>🎵</div>
+      <div class='title'>${song.title}</div>
+      <button class='queue-btn'>Add</button>
+    `;
+
+    div.onclick=()=>playSong(song);
+    div.querySelector(".queue-btn").onclick=(e)=>{e.stopPropagation(); addToQueue(song);};
+
+    grid.appendChild(div);
+  });
+}
+
+function renderQueue(){
+  const q=document.getElementById("queueList");
+  q.innerHTML="";
+  queue.forEach((s,i)=>{
+    const d=document.createElement("div");
+    d.className="queue-item";
+    d.textContent=s.title;
+    d.onclick=()=>playSongFromQueue(i);
+    q.appendChild(d);
+  });
+}
+
+function addToQueue(song){ queue.push(song); saveQueue(); }
+
+function playSong(song){
+  currentAudio.src=song.url;
+  currentAudio.play();
+  isPlaying=true;
+  document.getElementById("nowPlaying").textContent="Playing: "+song.title;
+  trackPlay(song);
+  currentAudio.onended=playNext;
+}
+
+function playSongFromQueue(i){
+  const s=queue.splice(i,1)[0];
+  saveQueue();
+  playSong(s);
+}
+
+function playNext(){
+  if(queue.length===0){
+    document.getElementById("nowPlaying").textContent="Queue empty";
+    return;
+  }
+  playSong(queue.shift());
+  saveQueue();
+}
+
+function togglePlay(){
+  if(!currentAudio.src) return;
+  isPlaying?currentAudio.pause():currentAudio.play();
+  isPlaying=!isPlaying;
+}
+
+function searchSongs(){
+  const v=document.getElementById("search").value.toLowerCase();
+  renderSongs(songs.filter(s=>s.title.toLowerCase().includes(v)));
+}
+
+/* 🎯 AUTO PLAYLIST GENERATOR */
+function generatePlaylists(){
+  const area=document.getElementById("playlistArea");
+  area.innerHTML="";
+
+  const moods={chill:[], workout:[], focus:[], relax:[]};
+
+  songs.forEach(s=>{
+    const t=s.title.toLowerCase();
+    if(t.includes("chill")) moods.chill.push(s);
+    else if(t.includes("workout")) moods.workout.push(s);
+    else if(t.includes("focus")) moods.focus.push(s);
+    else moods.relax.push(s);
+  });
+
+  Object.entries(moods).forEach(([name,list])=>{
+    if(list.length===0) return;
+
+    const box=document.createElement("div");
+    box.className="playlist-box";
+
+    box.innerHTML=`<div class='playlist-title'>${name.toUpperCase()} Playlist</div>`+
+      list.map(s=>`<div class='queue-item' onclick='playSong(${JSON.stringify(s)})'>${s.title}</div>`).join("");
+
+    area.appendChild(box);
+  });
+}
+
+renderSongs(songs);
+renderQueue();
+</script>
+<script>
+
+const songs = [
+  { title: "Chill Vibes A", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+  { title: "Workout Energy B", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+  { title: "Focus Study C", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
+  { title: "Relax Night D", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" }
+];
+
+let currentAudio = new Audio();
+let isPlaying = false;
+let queue = JSON.parse(localStorage.getItem("queue")) || [];
+let plays = JSON.parse(localStorage.getItem("plays")) || {};
+
+function saveQueue(){ localStorage.setItem("queue", JSON.stringify(queue)); renderQueue(); }
+function savePlays(){ localStorage.setItem("plays", JSON.stringify(plays)); }
+
+function trackPlay(song){ plays[song.title]=(plays[song.title]||0)+1; savePlays(); }
+
+function renderSongs(list){
+  const grid = document.getElementById("songGrid");
+  grid.innerHTML="";
+
+  list.forEach(song=>{
+    const div=document.createElement("div");
+    div.className="card";
+    div.innerHTML=`<div>🎵</div><div class='title'>${song.title}</div><button class='queue-btn'>Add</button>`;
+
+    div.onclick=()=>playSong(song);
+    div.querySelector(".queue-btn").onclick=(e)=>{e.stopPropagation(); addToQueue(song);};
+
+    grid.appendChild(div);
+  });
+}
+
+function renderQueue(){
+  const q=document.getElementById("queueList");
+  q.innerHTML="";
+  queue.forEach((s,i)=>{
+    const d=document.createElement("div");
+    d.className="queue-item";
+    d.textContent=s.title;
+    d.onclick=()=>playSongFromQueue(i);
+    q.appendChild(d);
+  });
+}
+
+function addToQueue(song){ queue.push(song); saveQueue(); }
+
+function playSong(song){
+  currentAudio.src=song.url;
+  currentAudio.play();
+  isPlaying=true;
+  document.getElementById("nowPlaying").textContent="Playing: "+song.title;
+  trackPlay(song);
+  currentAudio.onended=playNext;
+    logListen(song);
+}
+
+function playSongFromQueue(i){
+  const s=queue.splice(i,1)[0];
+  saveQueue();
+  playSong(s);
+}
+
+function playNext(){
+  if(queue.length===0){
+    document.getElementById("nowPlaying").textContent="Queue empty";
+    return;
+  }
+  playSong(queue.shift());
+  saveQueue();
+}
+
+function togglePlay(){
+  if(!currentAudio.src) return;
+  isPlaying?currentAudio.pause():currentAudio.play();
+  isPlaying=!isPlaying;
+}
+
+function searchSongs(){
+  const v=document.getElementById("search").value.toLowerCase();
+  renderSongs(songs.filter(s=>s.title.toLowerCase().includes(v)));
+}
+
+/* 🎯 AUTO PLAYLIST GENERATOR */
+function generatePlaylists(){
+  const area=document.getElementById("playlistArea");
+  area.innerHTML="";
+
+  const moods={chill:[], workout:[], focus:[], relax:[]};
+
+  songs.forEach(s=>{
+    const t=s.title.toLowerCase();
+    if(t.includes("chill")) moods.chill.push(s);
+    else if(t.includes("workout")) moods.workout.push(s);
+    else if(t.includes("focus")) moods.focus.push(s);
+    else moods.relax.push(s);
+  });
+
+  Object.entries(moods).forEach(([name,list])=>{
+    if(list.length===0) return;
+
+    const box=document.createElement("div");
+    box.className="playlist-box";
+
+    box.innerHTML=`<div class='playlist-title'>${name.toUpperCase()} Playlist</div>`+
+      list.map(s=>`<div class='queue-item' onclick='playSong(${JSON.stringify(s)})'>${s.title}</div>`).join("");
+
+    area.appendChild(box);
+  });
+}
+
+renderSongs(songs);
+renderQueue();
+let timeline = JSON.parse(localStorage.getItem("timeline")) || [];
+
+function logListen(song){
+  const event = {
+    song: song.title,
+    time: Date.now(),
+    date: new Date().toDateString()
+  };
+
+  timeline.push(event);
+  localStorage.setItem("timeline", JSON.stringify(timeline));
+}
+function openTimeline(){
+  const panel = document.getElementById("timelinePanel");
+  const list = document.getElementById("timelineList");
+
+  list.innerHTML = "";
+
+  // sort newest first
+  const sorted = [...timeline].sort((a,b)=>b.time - a.time);
+
+  if(sorted.length === 0){
+    list.innerHTML = "<p>No listening history yet.</p>";
+  }
+
+  sorted.forEach(item=>{
+    const div = document.createElement("div");
+    div.style.padding = "10px";
+    div.style.margin = "5px";
+    div.style.background = "#181818";
+    div.style.borderRadius = "8px";
+
+    const time = new Date(item.time).toLocaleString();
+
+    div.innerHTML = `
+      🎵 <b>${item.song}</b><br/>
+      <small style="color:#aaa">${time}</small>
+    `;
+
+    list.appendChild(div);
+  });
+
+  panel.style.display = "block";
+}
+
+function closeTimeline(){
+  document.getElementById("timelinePanel").style.display = "none";
+}
+    
+</script>
+
+
+
+
+</body></html>
