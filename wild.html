@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenya Wildlife Conservation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#04140f;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::-webkit-scrollbar{
+    width:10px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background:linear-gradient(to bottom,#00ff88,#00d4ff);
+    border-radius:10px;
+}
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.7)),
+url('https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1400&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at top right,rgba(0,255,170,0.15),transparent 40%);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:950px;
+}
+
+.hero h1{
+    font-size:5rem;
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:20px;
+    background:linear-gradient(to right,#ffffff,#7effc5,#00d9ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    font-size:1.2rem;
+    line-height:1.8;
+    color:#e8fdf6;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.hero-buttons button{
+    border:none;
+    padding:16px 30px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:600;
+    transition:0.4s;
+}
+
+.primary-btn{
+    background:linear-gradient(135deg,#00ff95,#00b3ff);
+    color:black;
+    box-shadow:0 0 25px rgba(0,255,170,0.4);
+}
+
+.secondary-btn{
+    background:transparent;
+    border:2px solid #00ffb3 !important;
+    color:white;
+}
+
+.hero-buttons button:hover{
+    transform:translateY(-5px) scale(1.04);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    padding:70px 8%;
+    background:#071d16;
+}
+
+.stat-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    transition:0.4s;
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+    background:rgba(0,255,170,0.08);
+}
+
+.stat-card h2{
+    font-size:3rem;
+    color:#00ffae;
+}
+
+.stat-card p{
+    margin-top:10px;
+    color:#d9f5ea;
+}
+
+.section-title{
+    text-align:center;
+    padding-top:90px;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    margin-bottom:15px;
+    background:linear-gradient(to right,#00ffa2,#00c3ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.section-title p{
+    color:#d4fff2;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.gallery{
+    padding:0 7% 80px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.animal-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:30px;
+    min-height:420px;
+    background:#0a241b;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    transition:0.5s;
+}
+
+.animal-card:hover{
+    transform:translateY(-12px) scale(1.02);
+}
+
+.animal-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.animal-card:hover img{
+    transform:scale(1.08);
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,0.95),transparent 60%);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:25px;
+}
+
+.overlay h3{
+    font-size:1.8rem;
+    margin-bottom:10px;
+}
+
+.overlay p{
+    color:#ddfff3;
+    line-height:1.6;
+    margin-bottom:18px;
+}
+
+.price-tag{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price-tag span{
+    color:#00ffbf;
+    font-weight:700;
+    font-size:1.1rem;
+}
+
+.buy-btn{
+    background:linear-gradient(135deg,#00ff95,#00cfff);
+    border:none;
+    padding:12px 20px;
+    border-radius:30px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.marine-section{
+    position:relative;
+    padding:100px 7%;
+    background:linear-gradient(to bottom,#04140f,#031d2c);
+}
+
+.marine-layout{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.marine-text h2{
+    font-size:3.2rem;
+    margin-bottom:20px;
+    color:#7ceeff;
+}
+
+.marine-text p{
+    color:#d7f7ff;
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+.stacked-cards{
+    position:relative;
+    min-height:520px;
+}
+
+.stack-card{
+    position:absolute;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.45);
+    border:4px solid rgba(255,255,255,0.1);
+    transition:0.5s;
+}
+
+.stack-card:hover{
+    transform:scale(1.05) rotate(0deg) !important;
+    z-index:10;
+}
+
+.stack-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.card1{
+    width:320px;
+    height:400px;
+    top:0;
+    left:0;
+    transform:rotate(-7deg);
+}
+
+.card2{
+    width:260px;
+    height:300px;
+    right:20px;
+    top:70px;
+    transform:rotate(8deg);
+}
+
+.card3{
+    width:240px;
+    height:260px;
+    bottom:0;
+    left:90px;
+    transform:rotate(-5deg);
+}
+
+.donate-section{
+    padding:100px 7%;
+    background:#04110d;
+}
+
+.donate-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    background:linear-gradient(145deg,rgba(0,255,166,0.08),rgba(0,170,255,0.08));
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:35px;
+    overflow:hidden;
+    backdrop-filter:blur(15px);
+}
+
+.donate-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.donate-content{
+    padding:50px;
+}
+
+.donate-content h2{
+    font-size:3rem;
+    margin-bottom:20px;
+    color:#8effc7;
+}
+
+.donate-content p{
+    line-height:1.9;
+    color:#e5fff8;
+    margin-bottom:25px;
+}
+
+.donate-amounts{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.amount-btn{
+    padding:14px 22px;
+    border-radius:50px;
+    border:none;
+    background:#0d2f24;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.amount-btn:hover,
+.amount-btn.active{
+    background:linear-gradient(135deg,#00ff95,#00c3ff);
+    color:black;
+}
+
+.custom-donation{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:18px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    font-size:1rem;
+    margin-bottom:20px;
+}
+
+.donate-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#00ff95,#00c3ff);
+    color:black;
+    font-weight:800;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.donate-btn:hover{
+    transform:translateY(-5px);
+}
+
+.message-box{
+    margin-top:25px;
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:20px;
+    color:#c8fff0;
+    display:none;
+}
+
+.footer{
+    text-align:center;
+    padding:40px 20px;
+    background:#020c09;
+    color:#94d7c0;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.floating-leaf{
+    position:fixed;
+    font-size:2rem;
+    animation:float 8s linear infinite;
+    opacity:0.15;
+    pointer-events:none;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(110vh) rotate(0deg);
+    }
+    100%{
+        transform:translateY(-120px) rotate(360deg);
+    }
+}
+
+@media(max-width:1000px){
+
+.hero h1{
+    font-size:3.7rem;
+}
+
+.marine-layout,
+.donate-box{
+    grid-template-columns:1fr;
+}
+
+.stacked-cards{
+    min-height:650px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+    padding:20px;
+}
+
+.hero h1{
+    font-size:2.8rem;
+}
+
+.hero p{
+    font-size:1rem;
+}
+
+.section-title h2,
+.marine-text h2,
+.donate-content h2{
+    font-size:2.2rem;
+}
+
+.gallery{
+    padding:0 5% 70px;
+}
+
+.card1{
+    width:240px;
+    height:300px;
+}
+
+.card2{
+    width:190px;
+    height:230px;
+}
+
+.card3{
+    width:180px;
+    height:200px;
+    left:30px;
+}
+
+.stacked-cards{
+    min-height:500px;
+}
+
+.donate-content{
+    padding:35px 25px;
+}
+
+}
+</style>
+
+
+
+
+</head><body><div class="floating-leaf" style="left:5%; animation-delay:0s;">🍃</div>
+<div class="floating-leaf" style="left:25%; animation-delay:2s;">🌿</div>
+<div class="floating-leaf" style="left:50%; animation-delay:4s;">🍃</div>
+<div class="floating-leaf" style="left:75%; animation-delay:1s;">🌱</div>
+<div class="floating-leaf" style="left:90%; animation-delay:5s;">🍃</div>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Protecting Kenya's Wild Beauty</h1>
+<p>
+Experience breathtaking wildlife photography from the savannahs of Maasai Mara to the deep blue marine ecosystems along the Kenyan coast. This conservation platform helps photographers monetize their work while supporting anti-poaching missions protecting endangered wildlife.
+</p>
+
+<div class="hero-buttons">
+<button class="primary-btn">Explore Wildlife</button>
+<button class="secondary-btn">Support Conservation</button>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="stat-card">
+<h2>1.5M+</h2>
+<p>Wildlife Lovers Reached Globally</p>
+</div>
+
+<div class="stat-card">
+<h2>340+</h2>
+<p>Professional Nature Photographers</p>
+</div>
+
+<div class="stat-card">
+<h2>98%</h2>
+<p>Funds Directed To Conservation Efforts</p>
+</div>
+
+<div class="stat-card">
+<h2>24/7</h2>
+<p>Wildlife Protection &amp; Awareness Campaigns</p>
+</div>
+</section>
+
+<div class="section-title">
+<h2>Wildlife Photography Marketplace</h2>
+<p>
+Each photograph below represents the beauty of Kenya’s wildlife ecosystem. Support photographers and conservation efforts by purchasing exclusive digital collections and wildlife experiences.
+</p>
+</div>
+
+<section class="gallery" id="gallery">
+
+        <div class="animal-card">
+
+            <img src="https://i.pinimg.com/736x/39/41/f8/3941f8a955733070db98ae79a1d216e3.jpg" alt="Majestic Lion">
+
+            <div class="overlay">
+
+                <h3>Majestic Lion</h3>
+
+                <p>Golden sunrise capture from Maasai Mara.</p>
+
+                <div class="price-tag">
+
+                    <span>KES 2,500</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="animal-card">
+
+            <img src="https://i.pinimg.com/736x/88/eb/7c/88eb7ce0125d1620801446a7141df2d7.jpg" alt="Elephant Migration">
+
+            <div class="overlay">
+
+                <h3>Elephant Migration</h3>
+
+                <p>Massive elephant herd crossing the plains.</p>
+
+                <div class="price-tag">
+
+                    <span>KES 3,200</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="animal-card">
+
+            <img src="https://i.pinimg.com/736x/22/32/66/223266da9b6f7e21bd0beac91177e4d3.jpg" alt="Cheetah Velocity">
+
+            <div class="overlay">
+
+                <h3>Cheetah Velocity</h3>
+
+                <p>Fast wildlife action photography.</p>
+
+                <div class="price-tag">
+
+                    <span>KES 2,950</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="animal-card">
+
+            <img src="https://i.pinimg.com/736x/8a/e5/04/8ae5048074985aae3559a3e459fbc403.jpg" alt="Graceful Giraffe">
+
+            <div class="overlay">
+
+                <h3>Graceful Giraffe</h3>
+
+                <p>Elegant giraffe portrait in the savannah.</p>
+
+                <div class="price-tag">
+
+                    <span>KES 1,950</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="animal-card">
+
+            <img src="https://i.pinimg.com/736x/2e/ef/82/2eef82f864f99016626524600a4dd077.jpg" alt="Zebra Harmony">
+
+            <div class="overlay">
+
+                <h3>Zebra Harmony</h3>
+
+                <p>Beautiful zebra patterns at sunset.</p>
+
+                <div class="price-tag">
+
+                    <span>KES 2,200</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="animal-card">
+
+            <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Rhino Guardian">
+
+            <div class="overlay">
+
+                <h3>Rhino Guardian</h3>
+
+                <p>Rare rhino conservation photography.</p>
+
+                <div class="price-tag">
+
+                    <span>KES 4,000</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="animal-card">
+
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Savannah Leopard">
+
+            <div class="overlay">
+
+                <h3>Savannah Leopard</h3>
+
+                <p>Hidden predator resting in golden grass.</p>
+
+                <div class="price-tag">
+
+                    <span>KES 3,500</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="animal-card">
+
+            <img src="https://i.pinimg.com/736x/ea/55/bc/ea55bc1288389c19706c2297f8c3bcce.jpg" alt="Buffalo Storm">
+
+            <div class="overlay">
+
+                <h3>Buffalo Storm</h3>
+
+                <p>Powerful African buffalo under dramatic skies.</p>
+
+                <div class="price-tag">
+
+                    <span>KES 2,700</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        </section>
+
+<section class="marine-section">
+
+<div class="marine-layout">
+
+<div class="marine-text">
+<h2>Kenya's Vibrant Marine Life</h2>
+<p>
+Beyond the savannah lies a hidden underwater paradise. Kenya’s marine ecosystems are home to coral reefs, dolphins, sea turtles, manta rays and vibrant tropical fish species that contribute to the country's ecological richness.
+</p>
+
+<p>
+This immersive visual gallery uses layered card interactions to create excitement and showcase marine conservation storytelling. Every interaction supports awareness campaigns against ocean pollution and illegal fishing.
+</p>
+
+<button class="primary-btn">Explore Marine Stories</button>
+</div>
+
+<div class="stack-card card1">
+<img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<div class="stack-card card2">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<div class="stack-card card3">
+<img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+</div>
+
+</section>
+
+<section class="donate-section">
+
+<div class="donate-box">
+
+<div class="donate-image">
+<img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<div class="donate-content">
+<h2>Donate Against Poaching</h2>
+<p>
+Illegal poaching threatens Kenya’s wildlife heritage every year. Your support helps fund ranger patrols, wildlife rescue missions, community education programs and advanced animal tracking systems protecting endangered species.
+</p>
+
+<div class="donate-amounts">
+<button class="amount-btn">KES 500</button>
+<button class="amount-btn">KES 1,000</button>
+<button class="amount-btn active">KES 2,500</button>
+<button class="amount-btn">KES 5,000</button>
+</div>
+
+<input type="number" class="custom-donation" placeholder="Enter custom donation amount...">
+
+<button class="donate-btn" onclick="showDonationMessage()">Support Wildlife Conservation</button>
+
+<div class="message-box" id="messageBox">
+🌍 Thank you for supporting Kenya's wildlife conservation mission. Together we protect endangered species for future generations.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+<p>
+© 2026 Kenya Wildlife Conservation Initiative • Protect Nature • Empower Photographers • Preserve Marine Life
+</p>
+</footer>
+
+<script>
+
+// ===============================
+// WILDLIFE IMAGE DATABASE
+// ===============================
+
+const wildlifePhotos = [
+
+{
+    title: "Majestic Lion",
+    description: "Golden sunrise capture from Maasai Mara.",
+    price: "KES 2,500",
+    image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+    title: "Elephant Migration",
+    description: "Massive elephant herd crossing the plains.",
+    price: "KES 3,200",
+    image: "https://images.unsplash.com/photo-1501706362039-c6e08b2a0d1d?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+    title: "Cheetah Velocity",
+    description: "Fast wildlife action photography.",
+    price: "KES 2,950",
+    image: "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+    title: "Graceful Giraffe",
+    description: "Elegant giraffe portrait in the savannah.",
+    price: "KES 1,950",
+    image: "https://images.unsplash.com/photo-1484406566174-9da000fda645?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+    title: "Zebra Harmony",
+    description: "Beautiful zebra patterns at sunset.",
+    price: "KES 2,200",
+    image: "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+    title: "Rhino Guardian",
+    description: "Rare rhino conservation photography.",
+    price: "KES 4,000",
+    image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+    title: "Savannah Leopard",
+    description: "Hidden predator resting in golden grass.",
+    price: "KES 3,500",
+    image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+    title: "Buffalo Storm",
+    description: "Powerful African buffalo under dramatic skies.",
+    price: "KES 2,700",
+    image: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?q=80&w=1200&auto=format&fit=crop"
+}
+
+];
+
+// ===============================
+// DISPLAY FUNCTION
+// ===============================
+
+function loadWildlifeGallery(){
+
+    const gallery = document.getElementById("gallery");
+
+    gallery.innerHTML = "";
+
+    wildlifePhotos.forEach(photo => {
+
+        gallery.innerHTML += `
+
+        <div class="animal-card">
+
+            <img src="${photo.image}" alt="${photo.title}">
+
+            <div class="overlay">
+
+                <h3>${photo.title}</h3>
+
+                <p>${photo.description}</p>
+
+                <div class="price-tag">
+
+                    <span>${photo.price}</span>
+
+                    <button class="buy-btn">Purchase</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+// ===============================
+// ADD NEW PHOTO FUNCTION
+// ===============================
+
+function addWildlifePhoto(title, description, price, imageURL){
+
+    wildlifePhotos.push({
+
+        title: title,
+        description: description,
+        price: price,
+        image: imageURL
+
+    });
+
+    loadWildlifeGallery();
+
+}
+
+// ===============================
+// INITIAL LOAD
+// ===============================
+
+loadWildlifeGallery();
+
+</script>
+</body></html>
