@@ -1,0 +1,927 @@
+<html lang="en"><head></head><body>```html
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pulse Music — AI Wrapped Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#090909;
+color:white;
+overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#1DB954;
+border-radius:10px;
+}
+
+/* BACKGROUND GLOW */
+
+.bg-glow{
+position:fixed;
+width:700px;
+height:700px;
+border-radius:50%;
+background:radial-gradient(circle,#1db95425,transparent 70%);
+top:-250px;
+right:-200px;
+z-index:-1;
+filter:blur(50px);
+animation:floatGlow 10s infinite alternate;
+}
+
+.bg-glow2{
+position:fixed;
+width:600px;
+height:600px;
+border-radius:50%;
+background:radial-gradient(circle,#8b5cf625,transparent 70%);
+bottom:-200px;
+left:-200px;
+z-index:-1;
+filter:blur(50px);
+animation:floatGlow 8s infinite alternate;
+}
+
+@keyframes floatGlow{
+0%{
+transform:translateY(0px);
+}
+100%{
+transform:translateY(40px);
+}
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:22px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+font-size:2rem;
+font-weight:700;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+display:flex;
+gap:35px;
+}
+
+.nav-links a{
+color:#d1d1d1;
+text-decoration:none;
+font-size:15px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#1DB954;
+}
+
+.nav-actions{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.search-btn{
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(255,255,255,0.05);
+cursor:pointer;
+transition:0.3s;
+}
+
+.search-btn:hover{
+background:#1DB954;
+transform:scale(1.08);
+}
+
+.premium-btn{
+padding:12px 25px;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.premium-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 25px rgba(29,185,84,0.5);
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 7%;
+position:relative;
+}
+
+.hero-left{
+width:50%;
+}
+
+.hero-sub{
+display:inline-block;
+padding:10px 20px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:50px;
+margin-bottom:25px;
+font-size:14px;
+color:#d1d1d1;
+backdrop-filter:blur(20px);
+}
+
+.hero h1{
+font-size:5rem;
+line-height:1;
+margin-bottom:25px;
+}
+
+.gradient-text{
+background:linear-gradient(90deg,#1DB954,#8B5CF6,#00D9FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+color:#b1b1b1;
+font-size:18px;
+line-height:1.8;
+max-width:600px;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+margin-bottom:40px;
+}
+
+.btn-primary{
+padding:18px 35px;
+border:none;
+border-radius:60px;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+font-weight:600;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-primary:hover{
+transform:translateY(-4px);
+box-shadow:0 0 30px rgba(29,185,84,0.5);
+}
+
+.btn-secondary{
+padding:18px 35px;
+border:none;
+border-radius:60px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+color:white;
+font-weight:600;
+cursor:pointer;
+backdrop-filter:blur(20px);
+transition:0.3s;
+}
+
+.btn-secondary:hover{
+background:rgba(255,255,255,0.08);
+}
+
+/* STATS */
+
+.hero-stats{
+display:flex;
+gap:45px;
+margin-top:20px;
+}
+
+.stat h2{
+font-size:2rem;
+color:#1DB954;
+}
+
+.stat p{
+font-size:14px;
+margin-top:5px;
+color:#999;
+}
+
+/* HERO RIGHT */
+
+.hero-right{
+width:45%;
+position:relative;
+height:700px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* VINYL */
+
+.vinyl{
+width:360px;
+height:360px;
+border-radius:50%;
+background:
+radial-gradient(circle,#222 25%,#000 26%,#111 60%,#000 100%);
+position:absolute;
+animation:spin 10s linear infinite;
+box-shadow:0 0 60px rgba(0,0,0,0.8);
+}
+
+.vinyl::before{
+content:'';
+position:absolute;
+width:70px;
+height:70px;
+background:#1DB954;
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* FLOATING CARDS */
+
+.album-card{
+position:absolute;
+width:180px;
+height:220px;
+border-radius:28px;
+overflow:hidden;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+transition:0.4s;
+animation:floatCard 5s ease-in-out infinite;
+}
+
+.album-card:hover{
+transform:translateY(-10px) scale(1.05);
+}
+
+.album-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.album1{
+top:40px;
+left:20px;
+}
+
+.album2{
+bottom:80px;
+left:50px;
+animation-delay:1s;
+}
+
+.album3{
+top:120px;
+right:0;
+animation-delay:2s;
+}
+
+@keyframes floatCard{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-20px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+/* MINI PLAYER */
+
+.mini-player{
+position:absolute;
+bottom:10px;
+right:20px;
+width:380px;
+padding:20px;
+border-radius:30px;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(30px);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+.player-top{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.player-top img{
+width:60px;
+height:60px;
+border-radius:16px;
+object-fit:cover;
+}
+
+.song-info h4{
+font-size:16px;
+}
+
+.song-info p{
+font-size:13px;
+color:#aaa;
+margin-top:5px;
+}
+
+.progress{
+height:5px;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:20px;
+}
+
+.progress span{
+display:block;
+height:100%;
+width:65%;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+}
+
+.player-controls{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.control-buttons{
+display:flex;
+gap:20px;
+font-size:20px;
+}
+
+/* SECTION */
+
+.section{
+padding:120px 7%;
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:50px;
+}
+
+.section-title h2{
+font-size:3rem;
+}
+
+.section-title p{
+color:#999;
+}
+
+/* MUSIC GRID */
+
+.music-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.music-card{
+position:relative;
+overflow:hidden;
+border-radius:30px;
+background:#111;
+height:360px;
+cursor:pointer;
+transition:0.4s;
+}
+
+.music-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px rgba(29,185,84,0.2);
+}
+
+.music-card video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.music-overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+padding:30px;
+background:linear-gradient(transparent,rgba(0,0,0,0.9));
+}
+
+.music-overlay h3{
+font-size:1.5rem;
+margin-bottom:10px;
+}
+
+.music-overlay p{
+color:#aaa;
+font-size:14px;
+}
+
+/* WRAPPED */
+
+.wrapped{
+padding:140px 7%;
+position:relative;
+overflow:hidden;
+}
+
+.wrapped-box{
+padding:80px;
+border-radius:50px;
+background:linear-gradient(
+135deg,
+rgba(29,185,84,0.2),
+rgba(139,92,246,0.2),
+rgba(0,217,255,0.2)
+);
+
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(40px);
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.wrapped-box::before{
+content:'';
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#1DB95455,transparent);
+top:-200px;
+right:-100px;
+}
+
+.wrapped h2{
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.wrapped p{
+color:#ddd;
+max-width:700px;
+margin:auto;
+line-height:1.8;
+margin-bottom:50px;
+}
+
+.wrapped-stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+}
+
+.wrap-card{
+padding:40px 20px;
+border-radius:30px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.wrap-card h1{
+font-size:3rem;
+margin-bottom:10px;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.wrap-card p{
+margin:0;
+font-size:15px;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 7%;
+text-align:center;
+color:#888;
+border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+.hero{
+flex-direction:column;
+padding-top:180px;
+text-align:center;
+}
+
+.hero-left,
+.hero-right{
+width:100%;
+}
+
+.hero-right{
+margin-top:80px;
+height:600px;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-stats{
+justify-content:center;
+}
+
+.hero h1{
+font-size:4rem;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.hero-stats{
+flex-direction:column;
+gap:20px;
+}
+
+.vinyl{
+width:250px;
+height:250px;
+}
+
+.album-card{
+width:140px;
+height:180px;
+}
+
+.mini-player{
+width:95%;
+left:50%;
+transform:translateX(-50%);
+}
+
+.section-title{
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
+}
+
+.section-title h2{
+font-size:2rem;
+}
+
+.wrapped h2{
+font-size:2.5rem;
+}
+
+.wrapped-box{
+padding:50px 25px;
+}
+
+}
+
+</style>
+
+
+
+
+<div class="bg-glow"></div>
+<div class="bg-glow2"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">Pulse</div>
+
+<div class="nav-links">
+<a href="Discovering.html">Discover</a>
+<a href="Trending.html">Trending</a>
+<a href="Library.html">Library</a>
+<a href="Wrapped.html">Wrapped</a>
+</div>
+
+<div class="nav-actions">
+<div class="search-btn">⌕</div>
+<button class="premium-btn">Premium</button>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<div class="hero-sub">
+AI-Powered Music Experience
+</div>
+
+<h1>
+Feel Every
+<span class="gradient-text">Beat.</span>
+</h1>
+
+<p>
+Upload tracks, generate playlists, discover recommendations,
+and auto-create your personalized Wrapped in under 2 minutes.
+</p>
+
+<div class="hero-buttons">
+
+           <div class="btn-primary"><button onclick="openMediaPage()">Start Listening</button></div>
+    
+
+
+<div class="btn-secondary"><button onclick="openExplorePage()">Explore Trending</button>
+</div>
+</div>
+
+<div class="hero-stats">
+
+<div class="stat">
+<h2>50M+</h2>
+<p>Tracks</p>
+</div>
+
+<div class="stat">
+<h2>120K+</h2>
+<p>Artists</p>
+</div>
+
+<div class="stat">
+<h2>1M+</h2>
+<p>Playlists</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="hero-right">
+
+<div class="vinyl"></div>
+
+<div class="album-card album1">
+<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<div class="album-card album2">
+<img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<div class="album-card album3">
+<img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<!-- PLAYER -->
+
+<div class="mini-player">
+
+<div class="player-top">
+
+<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+
+<div class="song-info">
+<h4>Night Drive</h4>
+<p>Pulse Originals</p>
+</div>
+
+</div>
+
+<div class="progress">
+<span></span>
+</div>
+
+<div class="player-controls">
+
+<div class="control-buttons">
+<span>⏮</span>
+<span>▶</span>
+<span>⏭</span>
+</div>
+
+<div>🔊</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TRENDING -->
+
+<section class="section">
+
+<div class="section-title">
+<h2>Trending Now</h2>
+<p>Most streamed tracks this week</p>
+</div>
+
+<div class="music-grid">
+
+<div class="music-card">
+<video src="assets/img/travel/video-61.mp4" class="img-fluid" autoplay="" muted="" loop=""> </video>
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<video src="assets/img/travel/video-62.mp4" class="img-fluid" autoplay="" muted="" loop=""> </video>
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<video src="assets/img/travel/video-63.mp4" class="img-fluid" autoplay="" muted="" loop=""> </video>
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- WRAPPED -->
+
+<section class="wrapped">
+
+<div class="wrapped-box">
+
+<h2>Your 2026 Wrapped</h2>
+
+<p>
+We automatically analyze your listening habits,
+favorite artists, genres and top tracks to generate
+a beautiful shareable Wrapped experience instantly.
+</p>
+
+<div class="wrapped-stats">
+
+<div class="wrap-card">
+<h1>14K</h1>
+<p>Minutes Played</p>
+</div>
+
+<div class="wrap-card">
+<h1>Afrobeat</h1>
+<p>Favorite Genre</p>
+</div>
+
+<div class="wrap-card">
+<h1>120</h1>
+<p>Artists Discovered</p>
+</div>
+
+<div class="wrap-card">
+<h1>#1</h1>
+<p>Top Mood: Night Energy</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<script>
+function openMediaPage() {
+       window.location.href = "Media.html";
+}
+  function openExplorePage() {
+       window.location.href="Explore.html";
+}
+
+
+
+
+
+
+
+
+
+
+    
+</script>
+
+
+
+
+<footer>
+
+<p>
+© 2026 Pulse Music — AI Powered Streaming Experience
+</p>
+
+</footer>
+
+
+
+```
+</body></html>
