@@ -1,0 +1,2058 @@
+<html lang="en"><head></head><body>```html
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pulse Music — AI Wrapped Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#090909;
+color:white;
+overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#1DB954;
+border-radius:10px;
+}
+
+/* BACKGROUND GLOW */
+
+.bg-glow{
+position:fixed;
+width:700px;
+height:700px;
+border-radius:50%;
+background:radial-gradient(circle,#1db95425,transparent 70%);
+top:-250px;
+right:-200px;
+z-index:-1;
+filter:blur(50px);
+animation:floatGlow 10s infinite alternate;
+}
+
+.bg-glow2{
+position:fixed;
+width:600px;
+height:600px;
+border-radius:50%;
+background:radial-gradient(circle,#8b5cf625,transparent 70%);
+bottom:-200px;
+left:-200px;
+z-index:-1;
+filter:blur(50px);
+animation:floatGlow 8s infinite alternate;
+}
+
+@keyframes floatGlow{
+0%{
+transform:translateY(0px);
+}
+100%{
+transform:translateY(40px);
+}
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:22px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+font-size:2rem;
+font-weight:700;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+display:flex;
+gap:35px;
+}
+
+.nav-links a{
+color:#d1d1d1;
+text-decoration:none;
+font-size:15px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#1DB954;
+}
+
+.nav-actions{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.search-btn{
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(255,255,255,0.05);
+cursor:pointer;
+transition:0.3s;
+}
+
+.search-btn:hover{
+background:#1DB954;
+transform:scale(1.08);
+}
+
+.premium-btn{
+padding:12px 25px;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.premium-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 25px rgba(29,185,84,0.5);
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 7%;
+position:relative;
+}
+
+.hero-left{
+width:50%;
+}
+
+.hero-sub{
+display:inline-block;
+padding:10px 20px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:50px;
+margin-bottom:25px;
+font-size:14px;
+color:#d1d1d1;
+backdrop-filter:blur(20px);
+}
+
+.hero h1{
+font-size:5rem;
+line-height:1;
+margin-bottom:25px;
+}
+
+.gradient-text{
+background:linear-gradient(90deg,#1DB954,#8B5CF6,#00D9FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+color:#b1b1b1;
+font-size:18px;
+line-height:1.8;
+max-width:600px;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+margin-bottom:40px;
+}
+
+.btn-primary{
+padding:18px 35px;
+border:none;
+border-radius:60px;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+font-weight:600;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-primary:hover{
+transform:translateY(-4px);
+box-shadow:0 0 30px rgba(29,185,84,0.5);
+}
+
+.btn-secondary{
+padding:18px 35px;
+border:none;
+border-radius:60px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+color:white;
+font-weight:600;
+cursor:pointer;
+backdrop-filter:blur(20px);
+transition:0.3s;
+}
+
+.btn-secondary:hover{
+background:rgba(255,255,255,0.08);
+}
+
+/* STATS */
+
+.hero-stats{
+display:flex;
+gap:45px;
+margin-top:20px;
+}
+
+.stat h2{
+font-size:2rem;
+color:#1DB954;
+}
+
+.stat p{
+font-size:14px;
+margin-top:5px;
+color:#999;
+}
+
+/* HERO RIGHT */
+
+.hero-right{
+width:45%;
+position:relative;
+height:700px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* VINYL */
+
+.vinyl{
+width:360px;
+height:360px;
+border-radius:50%;
+background:
+radial-gradient(circle,#222 25%,#000 26%,#111 60%,#000 100%);
+position:absolute;
+animation:spin 10s linear infinite;
+box-shadow:0 0 60px rgba(0,0,0,0.8);
+}
+
+.vinyl::before{
+content:'';
+position:absolute;
+width:70px;
+height:70px;
+background:#1DB954;
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* FLOATING CARDS */
+
+.album-card{
+position:absolute;
+width:180px;
+height:220px;
+border-radius:28px;
+overflow:hidden;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+transition:0.4s;
+animation:floatCard 5s ease-in-out infinite;
+}
+
+.album-card:hover{
+transform:translateY(-10px) scale(1.05);
+}
+
+.album-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.album1{
+top:40px;
+left:20px;
+}
+
+.album2{
+bottom:80px;
+left:50px;
+animation-delay:1s;
+}
+
+.album3{
+top:120px;
+right:0;
+animation-delay:2s;
+}
+
+@keyframes floatCard{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-20px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+/* MINI PLAYER */
+
+.mini-player{
+position:absolute;
+bottom:10px;
+right:20px;
+width:380px;
+padding:20px;
+border-radius:30px;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(30px);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+.player-top{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.player-top img{
+width:60px;
+height:60px;
+border-radius:16px;
+object-fit:cover;
+}
+
+.song-info h4{
+font-size:16px;
+}
+
+.song-info p{
+font-size:13px;
+color:#aaa;
+margin-top:5px;
+}
+
+.progress{
+height:5px;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:20px;
+}
+
+.progress span{
+display:block;
+height:100%;
+width:65%;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+}
+
+.player-controls{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.control-buttons{
+display:flex;
+gap:20px;
+font-size:20px;
+}
+
+/* SECTION */
+
+.section{
+padding:120px 7%;
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:50px;
+}
+
+.section-title h2{
+font-size:3rem;
+}
+
+.section-title p{
+color:#999;
+}
+
+/* MUSIC GRID */
+
+.music-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.music-card{
+position:relative;
+overflow:hidden;
+border-radius:30px;
+background:#111;
+height:360px;
+cursor:pointer;
+transition:0.4s;
+}
+
+.music-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px rgba(29,185,84,0.2);
+}
+
+.music-card video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.music-overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+padding:30px;
+background:linear-gradient(transparent,rgba(0,0,0,0.9));
+}
+
+.music-overlay h3{
+font-size:1.5rem;
+margin-bottom:10px;
+}
+
+.music-overlay p{
+color:#aaa;
+font-size:14px;
+}
+
+/* WRAPPED */
+
+.wrapped{
+padding:140px 7%;
+position:relative;
+overflow:hidden;
+}
+
+.wrapped-box{
+padding:80px;
+border-radius:50px;
+background:linear-gradient(
+135deg,
+rgba(29,185,84,0.2),
+rgba(139,92,246,0.2),
+rgba(0,217,255,0.2)
+);
+
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(40px);
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.wrapped-box::before{
+content:'';
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#1DB95455,transparent);
+top:-200px;
+right:-100px;
+}
+
+.wrapped h2{
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.wrapped p{
+color:#ddd;
+max-width:700px;
+margin:auto;
+line-height:1.8;
+margin-bottom:50px;
+}
+
+.wrapped-stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+}
+
+.wrap-card{
+padding:40px 20px;
+border-radius:30px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.wrap-card h1{
+font-size:3rem;
+margin-bottom:10px;
+background:linear-gradient(90deg,#1DB954,#00D9FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.wrap-card p{
+margin:0;
+font-size:15px;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 7%;
+text-align:center;
+color:#888;
+border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+.hero{
+flex-direction:column;
+padding-top:180px;
+text-align:center;
+}
+
+.hero-left,
+.hero-right{
+width:100%;
+}
+
+.hero-right{
+margin-top:80px;
+height:600px;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-stats{
+justify-content:center;
+}
+
+.hero h1{
+font-size:4rem;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.hero-stats{
+flex-direction:column;
+gap:20px;
+}
+
+.vinyl{
+width:250px;
+height:250px;
+}
+
+.album-card{
+width:140px;
+height:180px;
+}
+
+.mini-player{
+width:95%;
+left:50%;
+transform:translateX(-50%);
+}
+
+.section-title{
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
+}
+
+.section-title h2{
+font-size:2rem;
+}
+
+.wrapped h2{
+font-size:2.5rem;
+}
+
+.wrapped-box{
+padding:50px 25px;
+}
+
+}
+
+</style>
+
+
+
+
+<div class="bg-glow"></div>
+<div class="bg-glow2"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">Pulse</div>
+
+<div class="nav-links">
+<a href="Discovering.html">Discover</a>
+<a href="Trending.html">Trending</a>
+<a href="Library.html">Library</a>
+<a href="Wrapped.html">Wrapped</a>
+</div>
+
+<div class="nav-actions">
+<div class="search-btn">⌕</div>
+<button class="premium-btn">Premium</button>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<div class="hero-sub">
+AI-Powered Music Experience
+</div>
+
+<h1>
+Feel Every
+<span class="gradient-text">Beat.</span>
+</h1>
+
+<p>
+Upload tracks, generate playlists, discover recommendations,
+and auto-create your personalized Wrapped in under 2 minutes.
+</p>
+
+<div class="hero-buttons">
+
+           <div class="btn-primary"><button onclick="openMediaPage()">Start Listening</button></div>
+    
+
+
+<div class="btn-secondary"><button onclick="openExplorePage()">Explore Trending</button>
+</div>
+</div>
+
+<div class="hero-stats">
+
+<div class="stat">
+<h2>50M+</h2>
+<p>Tracks</p>
+</div>
+
+<div class="stat">
+<h2>120K+</h2>
+<p>Artists</p>
+</div>
+
+<div class="stat">
+<h2>1M+</h2>
+<p>Playlists</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="hero-right">
+
+<div class="vinyl"></div>
+
+<div class="album-card album1">
+<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<div class="album-card album2">
+<img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<div class="album-card album3">
+<img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+</div>
+
+<!-- PLAYER -->
+
+<div class="mini-player">
+
+<div class="player-top">
+
+<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
+
+<div class="song-info">
+<h4>Night Drive</h4>
+<p>Pulse Originals</p>
+</div>
+
+</div>
+
+<div class="progress">
+<span></span>
+</div>
+
+<div class="player-controls">
+
+<div class="control-buttons">
+<span>⏮</span>
+<span>▶</span>
+<span>⏭</span>
+</div>
+
+<div>🔊</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TRENDING -->
+
+<section class="section">
+
+<div class="section-title">
+<h2>Trending Now</h2>
+<p>Most streamed tracks this week</p>
+</div>
+
+<div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/3b/9c/8e/3b9c8e3cf0560168afb374cdce5ea0fd.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/17/0e/e5/170ee5fa2a27bf5329c1e7b4ed766679.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/84/2b/88/842b8820c4f0eb42ba396d7ba25e5523.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/e8/7c/4d/e87c4dd91c85716cd5d4e75b43eee6ed.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/9e/32/67/9e3267b907e1862d711a783d44617908.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/c0/03/ec/c003ec4cff2b0f02267515375fe5d415.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/77/9b/c8/779bc833a3e2a117eb6d43a33a131ffd.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/07/2e/46/072e46d15c58bdadc73c8df395eb533d.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/a5/ed/79/a5ed79c2702eb3e306388875d4f26a87.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/dd/8c/93/dd8c93965c1e01bf1cb7cf77eecb31bc.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/67/21/02/672102fc569b84b966f1b2b520832088.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/17/51/90/175190390411cc905feaafbb43382935.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/49/d5/f5/49d5f5bf188f1e01ca51a87fe90c2bc3.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/43/a2/eb/43a2eb9150ea7af714c164b6c1085eae.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/3a/15/f2/3a15f2cb8387639c5abec72284267654.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/80/c5/55/80c555e0cda85442975af2f37c6f574f.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/c1/9d/8d/c19d8d0e41b4d83ee3cae25e1c0df55a.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/3b/e0/cc/3be0ccfe30a8b77df19770791a1ccad9.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/d2/f7/68/d2f768b2676faa44924611fb6307e7f8.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/84/6b/7d/846b7d1bb8dc37ea2dfcaa1d14cc266c.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/7d/b8/84/7db88481b1a558333348ec1d9755e0b9.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/54/ee/a9/54eea9e8570ecb1b3c1159053f6ac479.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/16/09/13/160913555dca03a73c5faf6545e2a63e.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/4c/a4/d7/4ca4d7117f7d43a402291f32eb6b5f1b.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/2f/ed/c3/2fedc36de72272cc2b64814e4b2b224b.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/66/4d/c9/664dc960080000b85737d176f4d46e68.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/0b/b8/23/0bb823615ff65a27a016be33a9870e80.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/9c/28/c2/9c28c2a2a138e50b22f3a98164243ab9.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/98/ea/ba/98eaba6b5376c56a80daf8bb6ac83414.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/f1/14/29/f114292258cb4c50276de5a30b4149e5.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/90/75/f1/9075f1ffb50c0686e6180d444789b11f.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/57/9b/62/579b62a46ddfa3d3c53bc044190b6f6e.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/d4/15/21/d415216cefbce64a4853bdf888817e25.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/60/e7/70/60e77066fd6afd66698beb8e7ded27a9.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/71/92/a2/7192a203457b2b6f8cc32c8192bdf20a.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/27/13/4f/27134f0b6761ee4012d9eed64197922c.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/26/16/e7/2616e7ba4fa939f2f5be3d07438cb5df.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/8f/5d/a3/8f5da3524ef21ac24c70980d2ebcb5f1.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/1e/b9/84/1eb98421fea85f71125e22845c3d8a96.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/bb/f1/40/bbf1404be68c9c1c6385e0b2ab518472.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/ca/c0/54/cac0543a00274ff9b8835c6ccb7870fc.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/d4/4b/65/d44b65e821b24f78ba5cf7fdddbbeb22.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/23/1c/39/231c3922e50ab1773eef8bb98cdeda13.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/1d/5e/db/1d5edbda10384aada4a7badfff7cc391.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/d8/83/30/d88330202fbb183fb96ea4f3c0cc093f.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/16/8a/08/168a0866194aa76d1aa85207fcd3e2e9.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/db/31/f4/db31f43e117aaa551f8fa4dc5a6a222b.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/97/6e/38/976e38d635568e3afab6e291efdf557d.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/13/25/e4/1325e4b31035ce83d4df863e63dca9f6.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/75/2a/14/752a14511fbd7e0cbd1bb3bd0897dc70.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/c8/bf/48/c8bf48fe45cebab67c7aece7445c973d.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/b4/a5/ec/b4a5ec22a318a203556c7746ba687642.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/d7/58/0b/d7580b1df8d41a8998126a6a6c5673ed.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/d7/58/0b/d7580b1df8d41a8998126a6a6c5673ed.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/3a/0d/9f/3a0d9fd103c76c8ad3b60e70b5f373b5.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/09/1e/dc/091edc29c518f9e2efdf1d22ebaf5c89.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/8f/1a/c6/8f1ac6cc12a005279d28d340f2861c53.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/ca/38/76/ca387663ff87afbc2a4fc616c6fd1385.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/63/39/f2/6339f29fb5776d66eb24346ed4b0c551.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/a2/0c/3b/a20c3bc7d380b1583619ffa207cc8e08.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/2e/9f/7c/2e9f7c052a1fafd5506027ae84a35b38.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/19/ab/5f/19ab5fd0309d1c8c9ec699b189d9a02e.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/18/b7/5a/18b75a58abfb81aeca0b7eb54a292b2f.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/1f/52/6c/1f526cbb7292b75d7cd278954cd15623.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/e4/81/0d/e4810d0c11a5dc71747d8923b92b39a1.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/7d/3e/c7/7d3ec76b01c7407ff09246e6ad35dbc3.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/64/ad/84/64ad840bdfbd1934c0fb0eb1ceb1d0cf.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/88/63/e7/8863e7f404009d80e64f3ad75a4c21aa.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/32/81/ee/3281ee44ce167b288508b5c193614469.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/9e/3d/03/9e3d03c61adcfd95d38c8ac2f7963ec3.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/ef/57/c2/ef57c2da30f4f2e3d3e2ed50e8a73068.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/ff/27/7b/ff277b18d629a2698f8fd807c9a61e86.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/f2/05/d2/f205d233bdc4ed36c504c79e963b58e0.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Midnight Vibes</h3>
+<p>Electronic • 3.2M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/d7/e2/83/d7e2834d403f1fcfb3e6fb073dea5657.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Late Night Drive</h3>
+<p>Lo-fi • 2.8M streams</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/2c/99/ee/2c99eee38fad9cc77d6c9dff7b4a63cc.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Festival Lights</h3>
+<p>Afrobeats • 5.1M streams</p>
+</div>
+</div>
+
+</div><br><br>
+
+<div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/d5/90/14/d59014eec6b6428bceed221267e05e4c.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/46/d6/1c/46d61c6ae92593b5920a424170e28eca.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/4b/99/80/4b9980ade52e268480722280e1154556.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/d4/5d/ab/d45dab0ae104771a1112bd8ce6f681dd.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/b7/61/a4/b761a4784c8a4c286ed099be48d4c22f.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/f4/1f/33/f41f339b1aac74d707192e80825f6a2e.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/21/dd/03/21dd03cba64f3545c7b7b10f9db338d7.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/46/ef/61/46ef619ca90fc8bfe57700b855df02c5.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/65/07/81/6507810f07bb968c66e949dd391f6e19.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/98/65/8e/98658e253322e9f55ff31d29a09687dc.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/98/65/8e/98658e253322e9f55ff31d29a09687dc.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/98/65/8e/98658e253322e9f55ff31d29a09687dc.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/b9/c4/8b/b9c48b011d8ce32375447676a7217ac9.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/21/1e/0b/211e0ba59a0c701fb010238b32f79dd4.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/1f/30/a3/1f30a3422d35b4dbeed14efeab066d26.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/9d/89/72/9d8972a93b23fe1f2e32347cd05bd7eb.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/474x/d4/08/87/d408876b4ebaf3c90d02ea8afb9ef050.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/5c/12/19/5c12194b8ae6c277f8801922c4c58540.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/f7/c0/40/f7c040f2fe1724712fc32448e785b3e9.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/95/01/bd/9501bda4c8f3b5cb1011d03618da8d92.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/25/d4/bb/25d4bb2b4f134e7472d71c5e1b2a91bb.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/3f/76/7e/3f767e4c70f4a319e118f11c20762966.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/28/66/81/2866816f044ed4656f6f19cf1e847599.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/62/be/27/62be271cd6a9e0e6d7cb4360b436d9ce.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/49/83/7c/49837c40b035d164a0ed07ca501ce79f.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/4b/0b/09/4b0b09a758d6ed35a8092e6e6df58bfd.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/4b/0b/09/4b0b09a758d6ed35a8092e6e6df58bfd.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/89/27/72/892772ac45663ce7c082bcf8285b82ac.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/89/27/72/892772ac45663ce7c082bcf8285b82ac.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/07/8b/94/078b948d9f3a34273b8def612b6aa081.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/de/a4/98/dea498f79cfe6f261fac9c40416aa12a.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/51/29/b6/5129b67ba8a3987a79ccc804d916a6a0.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/1200x/51/29/b6/5129b67ba8a3987a79ccc804d916a6a0.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/4d/6a/be/4d6abec286b5482fb11d4f5e0f37fbe2.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/fb/c3/a1/fbc3a1259f36e63fd6a331e53b6123b0.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/fb/c3/a1/fbc3a1259f36e63fd6a331e53b6123b0.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/6b/0e/4f/6b0e4ffffc23d8b81c65097b5081f5f4.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/e7/e4/e3/e7e4e3690a08e2e8e75281a852b1da3f.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/09/e9/91/09e9916181451849e972f6bf43b77a38.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/5f/fb/12/5ffb12074089ae1aec773efa3aa1c7e0.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/2e/d9/d1/2ed9d17b55b7e492651c98e42ef5551f.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/85/ce/51/85ce514ce859ac704793e65bf221b4cd.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div><div class="music-grid">
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/5f/fb/12/5ffb12074089ae1aec773efa3aa1c7e0.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+        <h3>Top Songs Global</h3>
+<p>Weekly Music Charts</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/2f/8c/db/2f8cdbcc2933054af3072b19762c8c00.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Top Songs USA</h3>
+<p>Your weekly update of the most played tracks</p>
+</div>
+</div>
+
+<div class="music-card">
+<img src="https://i.pinimg.com/736x/85/ce/51/85ce514ce859ac704793e65bf221b4cd.jpg" alt="Beauty Image">
+
+<div class="music-overlay">
+<h3>Popular Radio</h3>
+<p>Featured Charts • 19.7M streams</p>
+</div>
+</div>
+
+</div></section>
+
+<!-- WRAPPED -->
+
+<section class="wrapped">
+
+<div class="wrapped-box">
+
+<h2>Your 2026 Wrapped</h2>
+
+<p>
+We automatically analyze your listening habits,
+favorite artists, genres and top tracks to generate
+a beautiful shareable Wrapped experience instantly.
+</p>
+
+<div class="wrapped-stats">
+
+<div class="wrap-card">
+<h1>14K</h1>
+<p>Minutes Played</p>
+</div>
+
+<div class="wrap-card">
+<h1>Afrobeat</h1>
+<p>Favorite Genre</p>
+</div>
+
+<div class="wrap-card">
+<h1>120</h1>
+<p>Artists Discovered</p>
+</div>
+
+<div class="wrap-card">
+<h1>#1</h1>
+<p>Top Mood: Night Energy</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<script>
+function openMediaPage() {
+       window.location.href = "Media.html";
+}
+  function openExplorePage() {
+       window.location.href="Explore.html";
+}
+
+
+
+
+
+
+
+
+
+
+    
+</script>
+
+
+
+
+<footer>
+
+<p>
+© 2026 Pulse Music — AI Powered Streaming Experience
+</p>
+
+</footer>
+
+
+
+```
+</body></html>
