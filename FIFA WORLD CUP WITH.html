@@ -1,0 +1,3166 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>World Cup Football Art Gallery | Limited Edition Prints</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#050505;
+--card:#101010;
+--accent:#00ff88;
+--gold:#FFD700;
+--text:#ffffff;
+--muted:#9ca3af;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:var(--bg);
+color:white;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+135deg,
+rgba(0,255,136,.2),
+rgba(255,215,0,.15)
+);
+}
+
+.hero video,
+.hero img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(.35);
+}
+
+.hero-content{
+z-index:2;
+max-width:900px;
+padding:20px;
+}
+
+.hero h1{
+font-size:clamp(3rem,8vw,7rem);
+font-weight:900;
+line-height:1;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.3rem;
+color:#ddd;
+margin-bottom:30px;
+}
+
+.cta{
+padding:16px 40px;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#00ff88,#FFD700);
+font-weight:800;
+font-size:1rem;
+cursor:pointer;
+transition:.4s;
+}
+
+.cta:hover{
+transform:translateY(-4px) scale(1.05);
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:80px 10%;
+}
+
+.stat{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:25px;
+text-align:center;
+}
+
+.stat h2{
+font-size:3rem;
+color:var(--accent);
+}
+
+/* FILTERS */
+
+.filters{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+padding:20px;
+}
+
+.filter{
+padding:12px 24px;
+border-radius:50px;
+border:1px solid rgba(255,255,255,.1);
+background:#111;
+cursor:pointer;
+}
+
+.filter.active{
+background:var(--accent);
+color:black;
+font-weight:700;
+}
+
+/* PINTEREST MASONRY */
+
+.gallery{
+column-count:4;
+column-gap:18px;
+padding:40px;
+}
+
+@media(max-width:1100px){
+.gallery{
+column-count:3;
+}
+}
+
+@media(max-width:768px){
+.gallery{
+column-count:2;
+}
+}
+
+@media(max-width:500px){
+.gallery{
+column-count:1;
+}
+}
+
+.card{
+break-inside:avoid;
+margin-bottom:18px;
+position:relative;
+overflow:hidden;
+border-radius:24px;
+cursor:pointer;
+background:#111;
+}
+
+.card img{
+width:100%;
+display:block;
+transition:.8s;
+}
+
+.card:hover img{
+transform:scale(1.08);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(
+to top,
+rgba(0,0,0,.95),
+transparent
+);
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:25px;
+opacity:0;
+transition:.5s;
+}
+
+.card:hover .overlay{
+opacity:1;
+}
+
+.price{
+font-size:1.5rem;
+font-weight:900;
+color:var(--gold);
+}
+
+.buy{
+margin-top:10px;
+padding:12px;
+border:none;
+border-radius:15px;
+background:var(--accent);
+font-weight:700;
+cursor:pointer;
+}
+
+/* FEATURED */
+
+.featured{
+padding:100px 10%;
+text-align:center;
+}
+
+.featured h2{
+font-size:4rem;
+margin-bottom:40px;
+}
+
+.feature-box{
+background:linear-gradient(
+135deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.03)
+);
+padding:50px;
+border-radius:30px;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px;
+text-align:center;
+color:#777;
+}
+
+.whatsapp{
+position:fixed;
+right:25px;
+bottom:25px;
+width:70px;
+height:70px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+cursor:pointer;
+box-shadow:0 10px 30px rgba(37,211,102,.5);
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+<img src="hero.jpg">
+
+<div class="hero-content">
+
+<h1>WORLD CUP<br>ARTWORKS</h1>
+
+<p>
+Own iconic football masterpieces inspired by the
+greatest tournament on Earth.
+Limited edition collector pieces.
+</p>
+
+<button class="cta">
+Explore Collection
+</button>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+<h2>250+</h2>
+<p>Football Artworks</p>
+</div>
+
+<div class="stat">
+<h2>48</h2>
+<p>Countries Represented</p>
+</div>
+
+<div class="stat">
+<h2>KES 2,500</h2>
+<p>Starting Price</p>
+</div>
+
+</section>
+
+<div class="filters">
+
+<button class="filter">
+Group A
+</button>
+
+<button class="filter">Group B
+</button>
+
+<button class="filter">Group C
+</button>
+
+<button class="filter">Group D
+</button>
+
+<button class="filter">Group E
+</button>
+
+<button class="filter">Group F
+</button><button class="filter">Group G
+</button><button class="filter">Group H
+</button><button class="filter">Group I
+</button><button class="filter">Group J
+</button><button class="filter">Group K
+</button><button class="filter">Group L
+</button></div>
+
+<section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/cd/d5/ad/cdd5add57d557131cd69e7b3f3f282e4.jpg">
+
+<div class="overlay">
+
+<h3>Guillermo Ochoa</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/25/62/f4/2562f448c1402b15aa808d089df6f173.jpg">
+
+<div class="overlay">
+
+<h3>Raúl Rangel</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/a1/a0/43/a1a04347dbaa747dce2c665096b6eb2d.jpg">
+
+<div class="overlay">
+
+<h3>Carlos Acevedo</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/b7/c5/4c/b7c54c10e4446f5f260a5158fdfd895e.jpg">
+
+<div class="overlay">
+
+<h3>Jorge Sánchez</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/be/b0/8f/beb08f7434f0d25e6c2bf3968b0bbfde.jpg">
+
+<div class="overlay">
+
+<h3>César Montes</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/56/8e/28/568e28075bd9dfdfc1f91f96419f94e5.jpg">
+
+<div class="overlay">
+
+<h3>Cristiano Ronaldo</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/92/b5/d7/92b5d7aa365489d2a3ecbe51112d4836.jpg">
+
+<div class="overlay">
+
+<h3>Johan Vásquez</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/53/03/47/5303471a9d468a7fe5b68a0a63b954cc.jpg">
+
+<div class="overlay">
+
+<h3>Israel Reyes</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/0e/0c/58/0e0c582dc8d8659e87944601ba2866d8.jpg">
+
+<div class="overlay">
+
+<h3>Jesús Gallardo</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/8f/55/3a/8f553a1aeeddab94533926cb56970e77.jpg">
+
+<div class="overlay">
+
+<h3>Mateo Chávez</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/8c/ca/40/8cca40f6e2dcd5c1e15ffcddb521a8a9.jpg">
+
+<div class="overlay">
+
+<h3>Edson Álvarez</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/50/31/2c/50312cb8a764959d075fbdb54569c7ee.jpg">
+
+<div class="overlay">
+
+<h3>Erik Lira</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/15/e2/e3/15e2e3c92b8633b817046090623654f4.jpg">
+
+<div class="overlay">
+
+<h3>Luis Romo</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/29/55/47/295547aa034e617db55140cb71c72766.jpg">
+
+<div class="overlay">
+
+<h3>Álvaro Fidalgo</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/e8/59/11/e85911250ceecf34c491137c357e47a6.jpg">
+
+<div class="overlay">
+
+<h3>Luis Chávez</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/6d/c6/12/6dc612069ebc2f6a561a5d2828d674f1.jpg">
+
+<div class="overlay">
+
+<h3>Orbelín Pineda</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/89/dd/ff/89ddff9e1ce061d5fc06477bc64a0008.jpg">
+
+<div class="overlay">
+
+<h3>Obed Vargas</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/f0/95/7a/f0957a94a67a94457ec4217e5957f1a5.jpg">
+
+<div class="overlay">
+
+<h3>Gilberto Mora</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/43/ee/c8/43eec811dc92d2efd99babf6e6a85258.jpg">
+
+<div class="overlay">
+
+<h3>Brian Gutiérrez</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/8d/1a/dc/8d1adceb03fef2b8d51946bb0d9c8f76.jpg">
+
+<div class="overlay">
+
+<h3>Raúl Jiménez</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/fd/2e/bd/fd2ebd12e67f47b72e4960b196ee1ac9.jpg">
+
+<div class="overlay">
+
+<h3>Santiago Giménez</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/8b/48/66/8b48666eec4086d5488cfa77e04c4c48.jpg">
+
+<div class="overlay">
+
+<h3>Alexis Vega</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/45/7f/d3/457fd30d6dd90ab14acf7e860e7fcffe.jpg">
+
+<div class="overlay">
+
+<h3>Julián Quiñones</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/cb/5c/fc/cb5cfc3289885d3564495de935efdc74.jpg">
+
+<div class="overlay">
+
+<h3>César Huerta</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/28/e7/8e/28e78e59a76149b747a2827bab16fd93.jpg">
+
+<div class="overlay">
+
+<h3>Roberto Alvarado</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/f1/91/1c/f1911c251fd8883518bda68f4acac5eb.jpg">
+
+<div class="overlay">
+
+<h3>Guillermo Martínez</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/a3/9e/63/a39e63600b13fcd98084d8af18c5974b.jpg">
+
+<div class="overlay">
+
+<h3>Armando González</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/06/75/89/0675899dd2b45773a6f2b8a4a123932b.jpg">
+
+<div class="overlay">
+
+<h3>Kim Seung-gyu</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/71/8d/e6/718de62552e0f5fecb2192554ed3d57c.jpg">
+
+<div class="overlay">
+
+<h3>Jo Hyeon-woo</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/0b/65/7f/0b657fab21ae403bb1d16146d78723fe.jpg">
+
+<div class="overlay">
+
+<h3>Song Bum-keun</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/f7/6f/f2/f76ff2fdb36b10cd29e7c7b529446e4c.jpg">
+
+<div class="overlay">
+
+<h3>Kim Min-jae</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/18/40/1b/18401b781eb26204c64fae528c6b626e.jpg">
+
+<div class="overlay">
+
+<h3>Cho Yu-min</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/13/9b/4a/139b4a00103158a4bb9baef1687f4e9c.jpg">
+
+<div class="overlay">
+
+<h3>Kim Moon-hwan</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/87/a9/f5/87a9f51ee69ca90e4b19873046d2d98e.jpg">
+
+<div class="overlay">
+
+<h3>Seol Young-woo</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/05/8d/fc/058dfc80c819b2a45df5d6c795d107fb.jpg">
+
+<div class="overlay">
+
+<h3>Lee Tae-seok</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/86/6a/db/866adb060b97a311ba1d3703cd5024ae.jpg">
+
+<div class="overlay">
+
+<h3>Lee Han-beom</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/55/86/c8/5586c8943d37e8e3cff722e0296af67d.jpg">
+
+<div class="overlay">
+
+<h3>Kim Tae-hyeon</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/05/be/74/05be74d38228d1e9160bb72caed31c61.jpg">
+
+<div class="overlay">
+
+<h3>Lee Ki-hyuk</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/5e/e8/5d/5ee85d8e1d2172438c289457be00d5ce.jpg">
+
+<div class="overlay">
+
+<h3>Park Jin-seob</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/4b/ef/52/4bef525afdc608199d4ec46a34b27486.jpg">
+
+<div class="overlay">
+
+<h3>Hwang In-beom</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/77/9c/e1/779ce1b0e3643b2df4775a7ba9d808f4.jpg">
+
+<div class="overlay">
+
+<h3>Lee Kang-in</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/bf/f8/98/bff898ad4641fbf56f39d747e08c033a.jpg">
+
+<div class="overlay">
+
+<h3>Lee Jae-sung</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/77/62/df/7762dff20fddeaa39d6366923715798f.jpg">
+
+<div class="overlay">
+
+<h3>Paik Seung-ho</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/5b/85/8c/5b858c5665f321ac79ebe4f895118baa.jpg">
+
+<div class="overlay">
+
+<h3>Hwang Hee-chan</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/ba/65/81/ba65816ff92fa112374d06b0aa549ea6.jpg">
+
+<div class="overlay">
+
+<h3>Yang Hyun-jun</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/75/c9/67/75c9674f9d849913a3d6008577c1f05f.jpg">
+
+<div class="overlay">
+
+<h3>Bae Jun-ho</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/81/d2/aa/81d2aadf2fe37151472a6ee07824b4f4.jpg">
+
+<div class="overlay">
+
+<h3>Hong Hyun-seok</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/34/15/df/3415df2ee7761c3d97c30eba6939c3bf.jpg">
+
+<div class="overlay">
+
+<h3>Jens Castrop</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/8f/a3/29/8fa3294ae265b75fb381af4a4a0986bf.jpg">
+
+<div class="overlay">
+
+<h3>Son Heung-min</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/fe/92/f9/fe92f9cb1106b9cc87f797b2a341f1bf.jpg">
+
+<div class="overlay">
+
+<h3>Cho Gue-sung</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/66/5e/1e/665e1e0c5b6d19dfa3fdb8d77efbd97a.jpg">
+
+<div class="overlay">
+
+<h3>Oh Hyeon-gyu</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSrnbZzR9MKQPGotprQq3h982TxESp-AT-ACyJFRvTpZXPvr9n1R3V1A49quAj_Ty6S7jsiShKCsYfNOtWxdZ6bnZ8utgnLdFygVW0eViqkkYCCXXeRRBRMoGppJujlyr2Gi_26Sile9jk&amp;s=19">
+
+<div class="overlay">
+
+<h3>Oh Se-hun</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/15/80/f6/1580f6e1ed78811bcaeb27fde16ac609.jpg">
+
+<div class="overlay">
+
+<h3>Yang Min-hyeok</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+
+
+
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/ac/97/0c/ac970c848d0b0c402b3b953335d95315.jpg">
+
+<div class="overlay">
+
+<h3>Ronwen Williams</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/d5/bc/73/d5bc7318a4d14fdf69801f5a21c36759.jpg">
+
+<div class="overlay">
+
+<h3>Ricardo Goss</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.pinimg.com/1200x/f1/0f/81/f10f8143c746628e22589a4afe134a44.jpg">
+
+<div class="overlay">
+
+<h3>Sipho Chaine</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://i.pinimg.com/736x/d0/04/74/d00474984e6ec03c70d7f2dec2b1beb2.jpg">
+
+<div class="overlay">
+
+<h3>Khuliso Mudau</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.mlssoccer.com/image/private/t_editorial_landscape_8_desktop_mobile/mls/s29py0rkvnzdsapaykkz.png">
+
+<div class="overlay">
+
+<h3>Olwethu Makhanya</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPxyFYbFW7mms1dAQ07wpd2N8WR17lxnYJqg&amp;s">
+
+<div class="overlay">
+
+<h3>Bradley Cross</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgfFjGGVW8uEqWDSX7XsFnI6Tuc71_Dy7kGQ&amp;s">
+
+<div class="overlay">
+
+<h3>Aubrey Modiba</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://fwclive.com/assets/players/south-africa/thabang_matuludi.webp">
+
+<div class="overlay">
+
+<h3>Thabang Matuludi</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://iol-prod.appspot.com/image/80d4421c812850369b737a9e492ab3f83c52bc98=w700">
+
+<div class="overlay">
+
+<h3>Nkosinathi Sibisi</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://cms.sabcsport.com/storage/images/Khulumani-Ndamane-Bafana-Bafana-2025-BP16.webp">
+
+<div class="overlay">
+
+<h3>Khulumani Ndamane</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyd7N5uLYHzoOOf9D8_KYbEKVY0UbJv2wrbw&amp;s">
+
+<div class="overlay">
+
+<h3>Ime Okon</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq60FXLI-sBT7JENlG6t47eiDSsfxTzZUbPA&amp;s">
+
+<div class="overlay">
+
+<h3>Samukele Kabini</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://assets.goal.com/images/v3/bltbb919e2c3a3b7043/Mbekezeli%20Mbokazi,%20Bafana%20Bafana.jpg?auto=webp&amp;format=pjpg&amp;width=3840&amp;quality=60">
+
+<div class="overlay">
+
+<h3>Mbekezeli Mbokazi</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRgZSFu8uC2XmOOcpv-kUWsSabvK_TyRG7Q&amp;s">
+
+<div class="overlay">
+
+<h3>Kamogelo Sebelebele</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://news24cobalt.24.co.za/resources/02a6-20d46c60ea56-c19d9e8a1208-1000/format/inline/2280236898.jpeg">
+
+<div class="overlay">
+
+<h3>Teboho Mokoena</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://cdn.foot-africa.com/20250418/253986354968a5b8c08028e6112adc01913eb2bc07f7929ecfc9eef24332b18f-980-500.jpg">
+
+<div class="overlay">
+
+<h3>Jayden Adams</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://farpost.co.za/wp-content/uploads/2025/02/Thalente-Mbatha-in-the-Soweto-derby-1.jpg">
+
+<div class="overlay">
+
+<h3>Thalente Mbatha</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU8gYxNNRaLxl8XwF0ML-ZAPB-mg8mAYQoMg&amp;s">
+
+<div class="overlay">
+
+<h3>Sphephelo Sithole</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2025%2F0729%2Fr1525085_1296x729_16%2D9.jpg">
+
+<div class="overlay">
+
+<h3>Oswin Appollis</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://news24cobalt.24.co.za/resources/02a2-1fd4f83f568e-01a7c3d580cd-1000/format/inline/media_77943699_77545271.jpeg">
+
+<div class="overlay">
+
+<h3>Tshepang Moremi</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0O6wpg0GMuz6GchL3KF2lIZRfexcR5PdzpA&amp;s">
+
+<div class="overlay">
+
+<h3>Evidence Makgopa</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://assets.goal.com/images/v3/blte2b03770e5822530/crop/MM5DKMBQGQ5DEOBRGU5G433XMU5DAORSGYYQ====/GettyImages-2280236816.jpg?auto=webp&amp;format=pjpg&amp;width=3840&amp;quality=60">
+
+<div class="overlay">
+
+<h3>Lyle Foster</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://www.stellenboschfc.com/wp-content/uploads/2024/03/Iqraam-Rayners-5-scaled.jpg">
+
+<div class="overlay">
+
+<h3>Iqraam Rayners</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://assets.goal.com/images/v3/blt97f4f302415e798e/Relebohile%20Mofokeng,%20Orlando%20Pirates.jpg?auto=webp&amp;format=pjpg&amp;width=3840&amp;quality=60">
+
+<div class="overlay">
+
+<h3>Relebohile Mofokeng</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://www.cafonline.com/media/1oeh2gel/b24aumt0152.jpg">
+
+<div class="overlay">
+
+<h3>Themba Zwane</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://sundayworld.co.za/wp-content/uploads/2023/03/Thapelo-Maseko.png">
+
+<div class="overlay">
+
+<h3>Thapelo Maseko</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSwtj61PiutAv_JYbYVvF-iRWLiWMzTzQqpFUCDKRdfXnh6-skCWsDG8RH9_4-stONDoEhdmHISgbsSSJVJh30mIIiFg4175T9WdFlXl-aM3n2LgBragXfN7svcp42OR03e1VQMwqa3ew&amp;s=19">
+
+<div class="overlay">
+
+<h3>Lukáš Horníček</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQ4foot52ifXjK66StZoqaGg-Xga7gwnq7vMS7F_VO6cSxWq4VumPf95hpxCwLg646gWhXfaTsF1RalOBM">
+
+<div class="overlay">
+
+<h3>Matěj Kovář</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://c8.alamy.com/comp/2T8RTNP/warsaw-poland-17th-nov-2023-jindrich-stanek-of-czech-republic-celebrates-a-goal-during-the-uefa-euro-2024-qualifying-match-between-poland-and-czech-republic-at-pge-narodowy-stadium-final-score-poland-11-czech-republic-photo-by-mikolaj-barbanellsopa-imagessipa-usa-credit-sipa-usaalamy-live-news-2T8RTNP.jpg">
+
+<div class="overlay">
+
+<h3>Jindřich Staněk</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQIG73bbv15BFi70lvqexZjFxg5vKYLALj7vsdJhF5oO84Lz10nMqM6N1Fm-evxZN_1dJzkViEK2B4VyJ0">
+
+<div class="overlay">
+
+<h3>Vladimír Coufal</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROnRNH8hk405EojMJASEMelgD5ayadMrErAavioQ7mbl1_6puKqgWYGhfkJv1mQy7lcpRRzXvC3tNrIi4oxwT8rcN9UsEPiG3RU5VYX_c&amp;s=10">
+
+<div class="overlay">
+
+<h3>David Douděra</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQRHR15Wa8WT4An5jwa74Y-I7FvWlst9ZkE78aPADeN9FNyXjNN1JQ9p29_DOSnbmnp61-qckKpkTx_EGk">
+
+<div class="overlay">
+
+<h3>Tomáš Holeš</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTMz5OtPEid10lfr_bw5nt__JSiXOLotzx1PdgMX9zzRqUHbOcH6ZtV9JPmhsHeai6yN0p558c6_kz5VtJs-qICepGlLhRbrvkusb8he4&amp;s=10">
+
+<div class="overlay">
+
+<h3>Robin Hranáč</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQxydYycMNfHh2e5t5wfLMk0fOknHqAmYAHLVErOnnxhXJpvJfXJrZWH6o13wPFIc7znvXFhanlhM6T-z8">
+
+<div class="overlay">
+
+<h3>Štěpán Chaloupek</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6kl76MjM3hQD7_bvIwPWpQ2QBJkp9gszRDuUPh3keUNh5Z5akxEnyh8IH0Lz6SGBTtuSfNec3ELRP11DaCxJ15Ee7Umi9iYCRQE1npc0&amp;s=10">
+
+<div class="overlay">
+
+<h3>David Jurásek</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Ladislav_Krej%C4%8D%C3%AD%2C_CZE-NIR_2019-10-14_%284%29.jpg">
+
+<div class="overlay">
+
+<h3>Ladislav Krejčí</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkpL2gr5nmltGJMl8CZeEZS0a5yCgWDabqcw&amp;s">
+
+<div class="overlay">
+
+<h3>Jaroslav Zelený</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQ1HycVmitnezEHXlDYKt5T861XgpeobPNVevqmRe1yFe-AaM0GiKLSBEiSwTwsn5t6WvHJ8KbDSgtGbeU">
+
+<div class="overlay">
+
+<h3>David Zima</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMuJD8N5bizlidhmA81Jq4xLSwhsNdXzGJUw&amp;s">
+
+<div class="overlay">
+
+<h3>Lukáš Červ</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWRT7EiUygSXUYEEd7Sg4yIBBGeXoCll74DWCHzFmc8P8vogzY0K-tuApYcd-PUaGy8GCwNj_4NxerAGpUts8IfL23pOJkBOklTVF3mTM&amp;s=10">
+
+<div class="overlay">
+
+<h3>Vladimír Darida</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTv_lLTVVtvHVc_nxBjyV8Bu1DDhQCiPDbzrnQVrPPoB0mry-7gym4yY8sZ18MBn8VX1Xvj_MEIO_IkbCw">
+
+<div class="overlay">
+
+<h3>Lukáš Provod</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://livesport-ott-images.ssl.cdn.cra.cz/r900xfq60/99addbe2-6a36-4d98-a41b-69bc925ef3a2.jpeg">
+
+<div class="overlay">
+
+<h3>Michal Sadílek</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.ytimg.com/vi/a7VqtvMuP-Q/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&amp;rs=AOn4CLDNm0aFHag0iQ89FyHQN1Z-iaPA7A">
+
+<div class="overlay">
+
+<h3>Hugo Sochůrek</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://fcviktoria.cz/foto/Sojky%C4%8D2029cl.png">
+
+<div class="overlay">
+
+<h3>Alexandr Sojka</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Tom%C3%A1%C5%A1_Sou%C4%8Dek%2C_Czech_Rp.-Montenegro_EURO_2020_QR_10-06-2019.jpg/960px-Tom%C3%A1%C5%A1_Sou%C4%8Dek%2C_Czech_Rp.-Montenegro_EURO_2020_QR_10-06-2019.jpg">
+
+<div class="overlay">
+
+<h3>Tomáš Souček</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://s.hs-data.com/gfx/person/l/520542.jpg?fallback=male">
+
+<div class="overlay">
+
+<h3>Pavel Šulc</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT7w101dzsR0NVI1p0nOpNXUJ2pOT0Pfh8fOYiymSlhHYwjvp9MtQVZA7nO4oiT3oRIOzpsfCJA37-Znvc">
+
+<div class="overlay">
+
+<h3>Denis Višinský</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://img.vavel.com/gettyimages-1402018633-2048x2048-1656608235728.jpg">
+
+<div class="overlay">
+
+<h3>Adam Hložek</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://g.denik.cz/46/89/podivejte-se-jak-viktorianovi-choremu-na-sparte-tleskal-cely-stadion_denik-630-16x9.jpg">
+
+<div class="overlay">
+
+<h3>Tomáš Chorý</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://1884403144.rsc.cdn77.org/foto/sport-fotbal-chytil-crop/MTIwMHgxMjAwL2ZpbHRlcnM6bm9fdXBzY2FsZSgxKS9pbWc/8097361.jpg?v=0&amp;st=MNPeraYnDqh4ECWdF3SRG8H-Si1oBPXm2rjvxNuZggE&amp;ts=1600812000&amp;e=0">
+
+<div class="overlay">
+
+<h3>Mojmír Chytil</h3>
+
+<div class="price">
+KES 15,000
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+</section><section class="gallery">
+
+<div class="card">
+
+<img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcS3btCxzZfYCG4FHszm0D5tBYbUsmYj6mn7GOP2c9yQjG2luXkskKISftMdaUXh_q4ubrLsCuTOchPnTbM">
+
+<div class="overlay">
+
+<h3>Jan Kuchta</h3>
+
+<div class="price">
+KES 12,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://media.asroma.com/prod/images/landscape_medium_fill/f4b2b28d83f4-20181226romasassuolo-21971upwll9.jpg">
+
+<div class="overlay">
+
+<h3>Patrik Schick</h3>
+
+<div class="price">
+KES 10,500
+</div>
+
+<button class="buy">
+Buy Artwork
+</button>
+
+</div>
+
+</div>
+
+
+
+</section><section class="featured">
+
+<h2>Collector Edition</h2>
+
+<div class="feature-box">
+
+<h3>
+Official World Cup Inspired Series
+</h3>
+
+<p>
+Premium digital and canvas artwork celebrating
+football legends, unforgettable goals,
+and iconic moments.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 World Cup Art Gallery
+
+</footer>
+
+<div class="whatsapp">
+⚽
+</div>
+
+<script>
+
+// Smooth scroll
+
+document.querySelector('.cta')
+.addEventListener('click',()=>{
+
+document.querySelector('.gallery')
+.scrollIntoView({
+behavior:'smooth'
+});
+
+});
+
+// Filter buttons
+
+document.querySelectorAll('.filter')
+.forEach(btn=>{
+
+btn.onclick=()=>{
+
+document.querySelectorAll('.filter')
+.forEach(b=>b.classList.remove('active'));
+
+btn.classList.add('active');
+
+};
+
+});
+
+// Buy button
+
+document.querySelectorAll('.buy')
+.forEach(btn=>{
+
+btn.onclick=()=>{
+
+window.open(
+'https://wa.me/254796071670?text=I want to purchase this football artwork',
+'_blank'
+);
+
+};
+
+});
+
+</script>
+
+
+
+<!-- FIFA Countdown -->
+<section id="countdown">
+    <div class="timer-card">
+        <span id="days">000</span>
+        <small>Days</small>
+    </div>
+    <div class="timer-card">
+        <span id="hours">00</span>
+        <small>Hours</small>
+    </div>
+    <div class="timer-card">
+        <span id="minutes">00</span>
+        <small>Minutes</small>
+    </div>
+    <div class="timer-card">
+        <span id="seconds">00</span>
+        <small>Seconds</small>
+    </div>
+</section>
+
+<!-- AI Search -->
+<section class="search-section">
+    <input type="search" id="playerSearch" placeholder="Search Messi, Ronaldo, Mbappe...">
+</section>
+
+<!-- Worldwide Shipping -->
+<section class="shipping-map">
+    <canvas id="worldMap"></canvas>
+</section>
+<script>
+const canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+
+const ctx = canvas.getContext('2d');
+
+canvas.style.position = 'fixed';
+canvas.style.inset = '0';
+canvas.style.pointerEvents = 'none';
+canvas.style.zIndex = '0';
+
+let balls = [];
+
+for(let i=0;i&lt;40;i++){
+
+    balls.push({
+        x:Math.random()*innerWidth,
+        y:Math.random()*innerHeight,
+        size:20+Math.random()*25,
+        speed:0.3+Math.random()
+    });
+
+}
+
+function animate(){
+
+    canvas.width=innerWidth;
+    canvas.height=innerHeight;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    balls.forEach(ball=&gt;{
+
+        ball.y-=ball.speed;
+
+        if(ball.y&lt;-50){
+            ball.y=innerHeight+50;
+        }
+
+        ctx.font=`${ball.size}px serif`;
+        ctx.fillText('⚽',ball.x,ball.y);
+
+    });
+
+    requestAnimationFrame(animate);
+
+}
+
+animate();
+```
+
+---
+
+# 🎨 3D Card Tilt
+
+VanillaTilt.init(
+document.querySelectorAll(".card"),
+{
+    max:15,
+    speed:400,
+    glare:true,
+    "max-glare":0.4
+});
+```
+
+Include:
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script>
+let wishlist =
+JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function addToWishlist(id){
+
+    if(!wishlist.includes(id)){
+        wishlist.push(id);
+    }
+
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
+
+}
+</script>
+<button class="wishlist">
+❤️ Save
+</button>
+<div class="scarcity">
+🔥 Only 3 Prints Left
+</div>
+<style>
+.scarcity{
+background:#ff2d55;
+padding:8px 12px;
+border-radius:20px;
+display:inline-block;
+font-size:.8rem;
+font-weight:700;
+animation:pulse 2s infinite;
+}
+    </style>
+<script>
+const search =
+document.getElementById('playerSearch');
+
+search.addEventListener('input',e=&gt;{
+
+    let term =
+    e.target.value.toLowerCase();
+
+    document
+    .querySelectorAll('.card')
+    .forEach(card=&gt;{
+
+        card.style.display=
+        card.dataset.player
+        .toLowerCase()
+        .includes(term)
+        ? 'block'
+        : 'none';
+
+    });
+
+});
+</script>
+<div class="card" data-player="Lionel Messi">
+<div id="lightbox">
+    <img id="lightboxImg">
+</div>
+<script>
+document
+.querySelectorAll('.card img')
+.forEach(img=&gt;{
+
+    img.onclick=()=&gt;{
+
+        lightbox.style.display='flex';
+        lightboxImg.src=img.src;
+
+    };
+
+});
+
+lightbox.onclick=()=&gt;{
+    lightbox.style.display='none';
+};
+</script>
+<script>
+fetch('/stkpush',{
+method:'POST',
+body:JSON.stringify({
+amount:12500,
+phone:'2547XXXXXXXX'
+})
+});
+</script>
+<script>
+const stripe =
+Stripe('pk_live_xxxxxxxxx');
+
+stripe.redirectToCheckout({
+sessionId:data.id
+});
+</script>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+html2canvas(
+document.querySelector('.card')
+).then(canvas=&gt;{
+
+    const link =
+    document.createElement('a');
+
+    link.download='football-art.png';
+
+    link.href=
+    canvas.toDataURL();
+
+    link.click();
+
+});
+
+const routes = [
+
+["Nairobi","London"],
+["Nairobi","Paris"],
+["Nairobi","New York"],
+["Nairobi","Tokyo"],
+["Nairobi","Doha"]
+
+];
+</script>
+<style>
+path{
+stroke-dasharray:1000;
+stroke-dashoffset:1000;
+animation:draw 4s linear infinite;
+}
+    </style><img loading="lazy" src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTvP4WqmBzJAQJV6PSTjZFlwMmNcW4TubDhYhdAyC5jS36qpPuWEkZ00TyXAghnb3P_8zr00IpjNLrqVYg" alt="Messi Artwork">
+<script>
+const observer =
+new IntersectionObserver(...);
+</script>
+<style>
+:root{
+
+--neon:#00ff88;
+--gold:#FFD700;
+--dark:#050505;
+
+}
+
+.hero h1{
+
+text-shadow:
+0 0 10px #00ff88,
+0 0 30px #00ff88,
+0 0 60px #00ff88;
+
+}
+
+.price{
+
+color:var(--gold);
+text-shadow:
+0 0 10px var(--gold);
+
+}
+    </style>
+
+
+<div class="filters">
+    <button class="filter">All</button>
+    <button class="filter">Legends</button>
+    <button class="filter">World Cup</button>
+    <button class="filter">African Stars</button>
+    <button class="filter">Modern Icons</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const filters = document.querySelectorAll(".filter");
+
+    filters.forEach(filter => {
+        filter.addEventListener("click", () => {
+            // Remove active class from all buttons
+            filters.forEach(btn => btn.classList.remove("active"));
+
+            // Add active class to clicked button
+            filter.classList.add("active");
+
+            console.log("Selected:", filter.textContent.trim());
+        });
+    });
+});
+</script>
+<div class="filters">
+    <button class="filter" data-filter="all">All</button>
+    <button class="filter" data-filter="legends">Legends</button>
+    <button class="filter" data-filter="worldcup">World Cup</button>
+    <button class="filter" data-filter="african">African Stars</button>
+    <button class="filter active" data-filter="modern">Modern Icons</button>
+</div>
+
+<div class="player-card" data-category="legends" style="display: none;">Pelé</div>
+<div class="player-card" data-category="worldcup" style="display: none;">Miroslav Klose</div>
+<div class="player-card" data-category="african" style="display: none;">Didier Drogba</div>
+<div class="player-card" data-category="modern" style="">Kylian Mbappé</div>
+
+<script>
+const filters = document.querySelectorAll(".filter");
+const cards = document.querySelectorAll(".player-card");
+
+filters.forEach(button => {
+    button.addEventListener("click", () => {
+        filters.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+
+        cards.forEach(card => {
+            if (filter === "all" || card.dataset.category === filter) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
+</script>
+<script>
+let wishlist = JSON.parse(
+  localStorage.getItem("wishlist")
+) || [];</script>
+
+<style>
+column-count: 4;</style>
+<img loading="lazy">
+<style>
+transform: rotateY(10deg);
+    </style>
+
+<button class="buy-btn" data-player="Lionel Messi" data-size="A2" data-price="KES 2500">
+    Buy on WhatsApp
+</button><script>
+document.querySelectorAll(".buy-btn").forEach(button => {
+    button.addEventListener("click", () => {
+
+        const player = button.dataset.player;
+        const size = button.dataset.size;
+        const price = button.dataset.price;
+
+        const message = `
+Hi, I'd like to order:
+
+⚽ Player: ${player}
+📏 Size: ${size}
+💰 Price: ${price}
+
+Please share payment details.
+`;
+
+        const whatsappURL =
+            `https://wa.me/254796071670?text=${encodeURIComponent(message)}`;
+
+        window.open(whatsappURL, "_blank");
+    });
+});
+</script>
+<div class="poster-card">
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3TihMsviTQ9_cN0BBB03GMQPKZ-3KnzolwA&amp;s" alt="Lionel Messi">
+
+    <h3>Lionel Messi</h3>
+
+    <p>KES 2,500</p>
+
+    <button class="buy-btn" data-player="Lionel Messi" data-size="A2" data-price="KES 2500">
+        Order via WhatsApp
+    </button>
+
+</div>
+<script>
+const productURL = window.location.href;
+
+const message = `
+Hi, I'd like to order:
+
+⚽ Player: ${player}
+📏 Size: ${size}
+💰 Price: ${price}
+
+🔗 Product:
+${productURL}
+</script>
+<select id="qty">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+</select>
+<script>
+const quantity =
+document.getElementById("qty").value;
+
+🛒 Quantity: ${quantity}
+
+## 5. Professional Order Template
+
+```text
+Hello,
+
+I would like to order:
+
+⚽ Player: Lionel Messi
+📏 Size: A2
+🛒 Quantity: 1
+💰 Price: KES 2,500
+
+Delivery Location:
+________________
+
+Name:
+________________
+
+Phone:
+________________
+
+Please send MPesa payment instructions.
+```
+
+---
+
+## 6. Recommended Styling
+
+```css
+.buy-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #25D366;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+}
+```
+
+---
+
+## Advanced Version (Best for Launch)
+
+Create a small cart and send **multiple products in one WhatsApp message**:
+
+```text
+Order Summary
+
+1. Lionel Messi Poster - KES 2,500
+2. Didier Drogba Poster - KES 2,500
+3. Ronaldinho Poster - KES 2,500
+
+Total: KES 7,500
+
+Delivery Location:
+______________
+```
+
+This feels much more like a real e-commerce checkout while still using WhatsApp as the final purchase channel.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+For security, don't post sensitive credentials such as PINs, API secrets, passwords, or account access details in chat. If the PIN you shared is a real credential, you should treat it as exposed and change it through the relevant provider.
+
+For the checkout itself, I can help you build it using the **Till Number (8151142)** as a payment destination, but I won't embed or use any secret PINs.
+
+### Simple M-Pesa Checkout Page
+
+```html
+</script><div class="mpesa-checkout">
+    <h2>Pay with M-Pesa</h2>
+
+    <div class="payment-card">
+        <p><strong>Till Number:</strong> 8151142</p>
+        <p><strong>Amount:</strong> <span id="amount">KES 2500</span></p>
+    </div>
+
+    <ol>
+        <li>Open M-Pesa</li>
+        <li>Select "Lipa na M-Pesa"</li>
+        <li>Select "Buy Goods and Services"</li>
+        <li>Enter Till Number: <strong>8151142</strong></li>
+        <li>Enter the amount</li>
+        <li>Complete payment</li>
+    </ol>
+
+    <input type="text" id="mpesaCode" placeholder="Enter M-Pesa Transaction Code">
+
+    <button id="confirmPayment">
+        Confirm Payment
+    </button>
+</div>
+<style>
+.mpesa-checkout {
+    max-width: 500px;
+    margin: auto;
+    padding: 24px;
+}
+
+.payment-card {
+    background: #f5f5f5;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+#mpesaCode {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+}
+
+#confirmPayment {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    background: #00a651;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+    </style>
+<script>
+document.getElementById("confirmPayment")
+.addEventListener("click", () => {
+
+    const transactionCode =
+        document.getElementById("mpesaCode").value.trim();
+
+    if (!transactionCode) {
+        alert("Enter transaction code");
+        return;
+    }
+
+    const message = `
+PAYMENT CONFIRMATION
+
+Transaction Code: ${transactionCode}
+
+Product: Lionel Messi Poster
+Amount: KES 2500
+
+Please verify payment.
+`;
+
+    const whatsapp =
+        `https://wa.me/254796071670?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsapp, "_blank");
+});
+</script>
+
+
+</div></body></html>
