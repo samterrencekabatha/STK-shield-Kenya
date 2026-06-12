@@ -1,0 +1,960 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanNest Kenya | Real Estate Marketplace</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f5f7fb;
+      color:#1e293b;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --primary:#0f766e;
+      --secondary:#14b8a6;
+      --light:#ffffff;
+      --dark:#0f172a;
+      --gray:#64748b;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --radius:20px;
+    }
+
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:999;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px);
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    nav{
+      max-width:1300px;
+      margin:auto;
+      padding:18px 5%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .logo{
+      font-size:1.7rem;
+      font-weight:700;
+      color:var(--primary);
+    }
+
+    .logo span{
+      color:var(--secondary);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:28px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--dark);
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+    .btn{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      color:white;
+      border:none;
+      padding:12px 22px;
+      border-radius:50px;
+      cursor:pointer;
+      font-weight:600;
+      transition:0.3s;
+      box-shadow:var(--shadow);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 5% 60px;
+      background:linear-gradient(to right,rgba(255,255,255,0.92),rgba(255,255,255,0.7)),url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:1300px;
+      width:100%;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:50px;
+      align-items:center;
+    }
+
+    .hero-text h1{
+      font-size:4rem;
+      line-height:1.1;
+      color:var(--dark);
+      margin-bottom:20px;
+    }
+
+    .hero-text h1 span{
+      color:var(--primary);
+    }
+
+    .hero-text p{
+      color:var(--gray);
+      font-size:1.1rem;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .search-box{
+      background:white;
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:15px;
+    }
+
+    .search-box input,
+    .search-box select{
+      padding:15px;
+      border-radius:12px;
+      border:1px solid #dbe4ee;
+      outline:none;
+      background:#f8fafc;
+    }
+
+    .hero-card{
+      background:white;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .hero-card img{
+      width:100%;
+      height:450px;
+      object-fit:cover;
+    }
+
+    .hero-card-content{
+      padding:25px;
+    }
+
+    .hero-card-content h3{
+      margin-bottom:10px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:20px;
+      padding:60px 5%;
+      max-width:1300px;
+      margin:auto;
+    }
+
+    .stat-box{
+      background:white;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .stat-box h2{
+      color:var(--primary);
+      font-size:2.4rem;
+      margin-bottom:10px;
+    }
+
+    section{
+      padding:90px 5%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:2.8rem;
+      color:var(--dark);
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:var(--gray);
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    .property-grid{
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .property-card{
+      background:white;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:0.4s;
+      position:relative;
+    }
+
+    .property-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .property-card img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+    }
+
+    .tag{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:var(--primary);
+      color:white;
+      padding:8px 15px;
+      border-radius:30px;
+      font-size:0.85rem;
+      font-weight:600;
+    }
+
+    .property-content{
+      padding:24px;
+    }
+
+    .property-content h3{
+      margin-bottom:10px;
+      color:var(--dark);
+    }
+
+    .location{
+      color:var(--gray);
+      margin-bottom:15px;
+      font-size:0.95rem;
+    }
+
+    .price{
+      font-size:1.6rem;
+      color:var(--primary);
+      font-weight:700;
+      margin-bottom:15px;
+    }
+
+    .features{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .features span{
+      background:#ecfeff;
+      color:var(--primary);
+      padding:8px 14px;
+      border-radius:50px;
+      font-size:0.85rem;
+      font-weight:500;
+    }
+
+    .property-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .outline-btn{
+      border:2px solid var(--primary);
+      color:var(--primary);
+      background:transparent;
+      padding:10px 18px;
+      border-radius:50px;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    .marketing-section{
+      background:white;
+    }
+
+    .marketing-grid{
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:25px;
+    }
+
+    .marketing-card{
+      background:#f8fafc;
+      padding:35px 28px;
+      border-radius:25px;
+      transition:0.3s;
+    }
+
+    .marketing-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow);
+    }
+
+    .marketing-card h3{
+      margin:18px 0;
+      color:var(--dark);
+    }
+
+    .marketing-card p{
+      color:var(--gray);
+      line-height:1.7;
+    }
+
+    .booking-section{
+      max-width:1200px;
+      margin:auto;
+      background:white;
+      border-radius:30px;
+      padding:50px;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .booking-form{
+      display:grid;
+      gap:18px;
+    }
+
+    .booking-form input,
+    .booking-form textarea,
+    .booking-form select{
+      width:100%;
+      padding:16px;
+      border-radius:14px;
+      border:1px solid #dbe4ee;
+      background:#f8fafc;
+      outline:none;
+    }
+
+    textarea{
+      resize:none;
+      height:120px;
+    }
+
+    .purchase-banner{
+      max-width:1300px;
+      margin:80px auto 0;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      color:white;
+      padding:60px;
+      border-radius:35px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+      align-items:center;
+    }
+
+    .purchase-banner h2{
+      font-size:2.7rem;
+      margin-bottom:15px;
+    }
+
+    .purchase-banner p{
+      line-height:1.8;
+      opacity:0.95;
+    }
+
+    .steps{
+      display:grid;
+      gap:20px;
+    }
+
+    .step{
+      background:rgba(255,255,255,0.15);
+      padding:20px;
+      border-radius:20px;
+      backdrop-filter:blur(10px);
+    }
+
+    .testimonial-grid{
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+    }
+
+    .testimonial-card{
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      box-shadow:var(--shadow);
+    }
+
+    .testimonial-card p{
+      color:var(--gray);
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    footer{
+      background:var(--dark);
+      color:white;
+      padding:70px 5% 40px;
+      margin-top:80px;
+    }
+
+    .footer-grid{
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:40px;
+    }
+
+    .footer-column h3{
+      margin-bottom:20px;
+    }
+
+    .footer-column p,
+    .footer-column a{
+      color:#cbd5e1;
+      text-decoration:none;
+      line-height:2;
+      display:block;
+    }
+
+    .copyright{
+      text-align:center;
+      margin-top:40px;
+      color:#94a3b8;
+    }
+
+    .mobile-toggle{
+      display:none;
+      font-size:2rem;
+      cursor:pointer;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-10px);}
+      100%{transform:translateY(0px);}
+    }
+
+    @media(max-width:900px){
+      .hero-text h1{
+        font-size:2.9rem;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        right:-100%;
+        background:white;
+        width:250px;
+        flex-direction:column;
+        padding:30px;
+        border-radius:20px;
+        box-shadow:var(--shadow);
+        transition:0.4s;
+      }
+
+      .nav-links.active{
+        right:20px;
+      }
+
+      .mobile-toggle{
+        display:block;
+      }
+
+      .booking-section,
+      .purchase-banner{
+        padding:35px;
+      }
+    }
+
+    @media(max-width:600px){
+      .hero-text h1{
+        font-size:2.3rem;
+      }
+
+      .section-title h2{
+        font-size:2rem;
+      }
+
+      .purchase-banner h2{
+        font-size:2rem;
+      }
+
+      .btn,
+      .outline-btn{
+        width:100%;
+      }
+
+      .property-actions{
+        flex-direction:column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Urban<span>Nest</span> Kenya</div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#marketing">Marketing</a>
+        <a href="#booking">Book Visit</a>
+        <a href="#contact">Contact</a>
+        <button class="btn">List Property</button>
+      </div>
+
+      <div class="mobile-toggle" id="menuBtn">☰</div>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <div class="hero-text">
+        <h1>Market Kenyan <span>Homes &amp; Land</span> Like Never Before</h1>
+
+        <p>
+          Transform the future of real estate in Kenya through powerful online marketing,
+          premium property showcasing, digital bookings, smart lead generation, and instant
+          property purchase experiences.
+        </p>
+
+        <div class="search-box">
+          <input type="text" placeholder="Search Nairobi, Mombasa, Kisumu...">
+
+          <select>
+            <option>Property Type</option>
+            <option>Apartment</option>
+            <option>Land</option>
+            <option>Maisonette</option>
+            <option>Commercial</option>
+          </select>
+
+          <select>
+            <option>Budget</option>
+            <option>Ksh 1M - 5M</option>
+            <option>Ksh 5M - 10M</option>
+            <option>Ksh 10M+</option>
+          </select>
+
+          <button class="btn">Search Property</button>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&amp;w=1974&amp;auto=format&amp;fit=crop" alt="Luxury Home">
+
+        <div class="hero-card-content">
+          <h3>Luxury Villas in Karen</h3>
+          <p>Premium gated villas with scenic landscapes and modern interiors.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="stats">
+
+    <div class="stat-box">
+      <h2>12K+</h2>
+      <p>Properties Marketed</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>6.5K+</h2>
+      <p>Site Visits Booked</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>2.8B+</h2>
+      <p>Kenyan Shillings in Sales</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>98%</h2>
+      <p>Client Satisfaction</p>
+    </div>
+
+  </div>
+
+  <section id="properties">
+
+    <div class="section-title">
+      <h2>Featured Properties</h2>
+      <p>
+        Beautifully designed property cards optimized for Pinterest-style image marketing,
+        social sharing, and high-conversion online campaigns.
+      </p>
+    </div>
+
+    <div class="property-grid">
+
+      <div class="property-card">
+        <span class="tag">For Sale</span>
+
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="House">
+
+        <div class="property-content">
+          <h3>Modern Mansion</h3>
+          <div class="location">📍 Runda, Nairobi</div>
+          <div class="price">Ksh 45,000,000</div>
+
+          <div class="features">
+            <span>5 Bedrooms</span>
+            <span>Swimming Pool</span>
+            <span>Parking</span>
+          </div>
+
+          <div class="property-actions">
+            <button class="btn book-btn">Book Visit</button>
+            <button class="outline-btn buy-btn">Purchase</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <span class="tag">Prime Land</span>
+
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&amp;w=1974&amp;auto=format&amp;fit=crop" alt="Land">
+
+        <div class="property-content">
+          <h3>Investment Plots</h3>
+          <div class="location">📍 Kitengela, Kajiado</div>
+          <div class="price">Ksh 1,850,000</div>
+
+          <div class="features">
+            <span>50x100</span>
+            <span>Ready Title</span>
+            <span>Road Access</span>
+          </div>
+
+          <div class="property-actions">
+            <button class="btn book-btn">Book Visit</button>
+            <button class="outline-btn buy-btn">Purchase</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <span class="tag">Hot Deal</span>
+
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&amp;w=1974&amp;auto=format&amp;fit=crop" alt="Apartment">
+
+        <div class="property-content">
+          <h3>Luxury Apartments</h3>
+          <div class="location">📍 Westlands, Nairobi</div>
+          <div class="price">Ksh 12,500,000</div>
+
+          <div class="features">
+            <span>2 Bedrooms</span>
+            <span>Gym &amp; Spa</span>
+            <span>Smart Security</span>
+          </div>
+
+          <div class="property-actions">
+            <button class="btn book-btn">Book Visit</button>
+            <button class="outline-btn buy-btn">Purchase</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="marketing-section" id="marketing">
+
+    <div class="section-title">
+      <h2>Digital Marketing Features</h2>
+      <p>
+        Designed to maximize real estate monetization through modern online marketing systems.
+      </p>
+    </div>
+
+    <div class="marketing-grid">
+
+      <div class="marketing-card">
+        <h3>📸 Pinterest Image Layout</h3>
+        <p>
+          Beautiful image-focused property cards optimized for Pinterest and Instagram property marketing.
+        </p>
+      </div>
+
+      <div class="marketing-card">
+        <h3>🎥 Virtual Property Tours</h3>
+        <p>
+          Integrate YouTube walkthroughs and drone footage to boost engagement and trust.
+        </p>
+      </div>
+
+      <div class="marketing-card">
+        <h3>📍 Smart Property Discovery</h3>
+        <p>
+          Enable buyers to search by county, estate, pricing, and property type.
+        </p>
+      </div>
+
+      <div class="marketing-card">
+        <h3>💬 WhatsApp Lead Generation</h3>
+        <p>
+          Connect potential buyers instantly with agents through WhatsApp and live inquiry systems.
+        </p>
+      </div>
+
+      <div class="marketing-card">
+        <h3>📅 Online Site Visit Booking</h3>
+        <p>
+          Clients schedule physical visits online and receive confirmations automatically.
+        </p>
+      </div>
+
+      <div class="marketing-card">
+        <h3>💳 Secure Online Purchases</h3>
+        <p>
+          Enable deposits and property reservations using mobile money and secure payment gateways.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="booking">
+
+    <div class="section-title">
+      <h2>Book a Site Visit</h2>
+      <p>
+        Allow clients to reserve property tours directly from the platform.
+      </p>
+    </div>
+
+    <div class="booking-section">
+
+      <div>
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Booking" style="width:100%;border-radius:25px;">
+      </div>
+
+      <form class="booking-form" id="bookingForm">
+        <input type="text" placeholder="Full Name" required="">
+
+        <input type="email" placeholder="Email Address" required="">
+
+        <input type="tel" placeholder="Phone Number" required="">
+
+        <select required="">
+          <option>Select Property Type</option>
+          <option>Luxury Villa</option>
+          <option>Apartment</option>
+          <option>Land Plot</option>
+          <option>Commercial Building</option>
+        </select>
+
+        <input type="date" required="">
+
+        <textarea placeholder="Additional Notes"></textarea>
+
+        <button type="submit" class="btn">Confirm Booking</button>
+      </form>
+
+    </div>
+
+    <div class="purchase-banner">
+
+      <div>
+        <h2>Buy Property Online</h2>
+
+        <p>
+          Monetize Kenyan real estate with modern online purchase experiences,
+          reservation systems, and lead conversion tools.
+        </p>
+      </div>
+
+      <div class="steps">
+
+        <div class="step">
+          <h3>1. Discover Property</h3>
+          <p>Explore curated houses, apartments, and land listings online.</p>
+        </div>
+
+        <div class="step">
+          <h3>2. Book Site Visit</h3>
+          <p>Schedule property tours instantly using digital booking forms.</p>
+        </div>
+
+        <div class="step">
+          <h3>3. Secure Your Purchase</h3>
+          <p>Reserve and pay deposits online using secure payment integrations.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+
+    <div class="section-title">
+      <h2>What Clients Say</h2>
+      <p>
+        Real feedback from homeowners, investors, and land buyers.
+      </p>
+    </div>
+
+    <div class="testimonial-grid">
+
+      <div class="testimonial-card">
+        <p>
+          “The online property marketing strategy helped us sell luxury apartments faster than expected.”
+        </p>
+
+        <h4>— Brian Mwangi</h4>
+      </div>
+
+      <div class="testimonial-card">
+        <p>
+          “Booking site visits online simplified everything for our clients and increased conversions.”
+        </p>
+
+        <h4>— Sharon Atieno</h4>
+      </div>
+
+      <div class="testimonial-card">
+        <p>
+          “The Pinterest-style property visuals made our land listings look premium and trustworthy.”
+        </p>
+
+        <h4>— Kevin Kiptoo</h4>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="contact">
+
+    <div class="footer-grid">
+
+      <div class="footer-column">
+        <h3>UrbanNest Kenya</h3>
+        <p>
+          Building the future of real estate monetization through digital marketing and smart property experiences.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="#home">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#marketing">Marketing</a>
+        <a href="#booking">Bookings</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <p>📍 Nairobi, Kenya</p>
+        <p>📞 +254 700 000 000</p>
+        <p>✉ info@urbannest.co.ke</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <p>Instagram</p>
+        <p>TikTok</p>
+        <p>Facebook</p>
+        <p>Pinterest</p>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 UrbanNest Kenya. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <script>
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    const bookingForm = document.getElementById('bookingForm');
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('✅ Site visit booked successfully! Our team will contact you shortly.');
+      bookingForm.reset();
+    });
+
+    const bookButtons = document.querySelectorAll('.book-btn');
+
+    bookButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+      });
+    });
+
+    const buyButtons = document.querySelectorAll('.buy-btn');
+
+    buyButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        alert('🏡 Purchase process initiated. An agent will contact you for payment and ownership verification.');
+      });
+    });
+
+  </script>
+
+
+</body></html>
