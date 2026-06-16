@@ -1,0 +1,729 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VOID Gallery — Infinite Artist Aesthetics</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Space Grotesk',sans-serif;
+background:#06070d;
+color:white;
+overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#ff4d9d,#7c4dff);
+border-radius:10px;
+}
+
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+overflow:hidden;
+z-index:-1;
+background:
+radial-gradient(circle at top left,#ff4d9d22,transparent 30%),
+radial-gradient(circle at bottom right,#7c4dff22,transparent 30%),
+#06070d;
+}
+
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+background:radial-gradient(circle,#7c4dff33,transparent 70%);
+filter:blur(80px);
+animation:float 12s infinite alternate;
+}
+
+.glow2{
+top:50%;
+right:-150px;
+background:radial-gradient(circle,#ff4d9d33,transparent 70%);
+animation-delay:2s;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+100%{
+transform:translateY(60px);
+}
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:22px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(25px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+font-size:2rem;
+font-weight:700;
+background:linear-gradient(90deg,#ff4d9d,#7c4dff,#00d4ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+color:#d1d1d1;
+text-decoration:none;
+font-size:14px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#ff4d9d;
+}
+
+.nav-actions{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.search-box{
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(255,255,255,0.06);
+cursor:pointer;
+transition:0.3s;
+}
+
+.search-box:hover{
+background:#ff4d9d;
+transform:scale(1.08);
+}
+
+.follow-btn{
+padding:13px 24px;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#ff4d9d,#7c4dff);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.follow-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 30px rgba(255,77,157,0.5);
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+padding:180px 6% 100px;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+flex-direction:column;
+}
+
+.hero-tag{
+padding:10px 20px;
+border-radius:50px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+margin-bottom:30px;
+color:#ccc;
+font-size:14px;
+backdrop-filter:blur(20px);
+}
+
+.hero h1{
+font-size:6rem;
+line-height:1;
+max-width:1100px;
+margin-bottom:30px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#ff4d9d,#7c4dff,#00d4ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+max-width:800px;
+line-height:1.8;
+color:#aaa;
+font-size:18px;
+margin-bottom:40px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn-primary{
+padding:18px 35px;
+border:none;
+border-radius:60px;
+background:linear-gradient(90deg,#ff4d9d,#7c4dff);
+color:white;
+font-weight:700;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-primary:hover{
+transform:translateY(-5px);
+box-shadow:0 0 35px rgba(124,77,255,0.5);
+}
+
+.btn-secondary{
+padding:18px 35px;
+border-radius:60px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+color:white;
+cursor:pointer;
+backdrop-filter:blur(20px);
+transition:0.3s;
+}
+
+.btn-secondary:hover{
+background:rgba(255,255,255,0.09);
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+gap:60px;
+margin-top:60px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.stat h2{
+font-size:2.5rem;
+background:linear-gradient(90deg,#ff4d9d,#00d4ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stat p{
+margin-top:10px;
+color:#888;
+}
+
+/* MASONRY */
+
+.gallery-section{
+padding:40px 6% 120px;
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:50px;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.section-title h2{
+font-size:3rem;
+}
+
+.section-title p{
+color:#999;
+}
+
+/* FILTERS */
+
+.filters{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-bottom:50px;
+}
+
+.filter-btn{
+padding:12px 22px;
+border-radius:40px;
+border:none;
+background:rgba(255,255,255,0.05);
+color:white;
+cursor:pointer;
+border:1px solid rgba(255,255,255,0.06);
+transition:0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+background:linear-gradient(90deg,#ff4d9d,#7c4dff);
+}
+
+/* PINTEREST GRID */
+
+.masonry{
+column-count:5;
+column-gap:18px;
+}
+
+.card{
+position:relative;
+margin-bottom:18px;
+break-inside:avoid;
+overflow:hidden;
+border-radius:28px;
+background:#111;
+cursor:pointer;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card img{
+width:100%;
+display:block;
+transition:0.6s;
+}
+
+.card:hover img{
+transform:scale(1.06);
+}
+
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+padding:28px;
+background:linear-gradient(transparent,rgba(0,0,0,0.95));
+opacity:0;
+transition:0.4s;
+}
+
+.card:hover .overlay{
+opacity:1;
+}
+
+.overlay h3{
+font-size:1.2rem;
+margin-bottom:8px;
+}
+
+.overlay p{
+font-size:14px;
+color:#ccc;
+line-height:1.6;
+}
+
+/* LOADER */
+
+.loader{
+width:100%;
+display:flex;
+justify-content:center;
+padding:80px 0;
+}
+
+.loader-circle{
+width:60px;
+height:60px;
+border-radius:50%;
+border:5px solid rgba(255,255,255,0.1);
+border-top:5px solid #ff4d9d;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 6%;
+border-top:1px solid rgba(255,255,255,0.05);
+text-align:center;
+color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1400px){
+
+.masonry{
+column-count:4;
+}
+
+}
+
+@media(max-width:1000px){
+
+.hero h1{
+font-size:4rem;
+}
+
+.masonry{
+column-count:3;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+}
+
+.hero{
+padding-top:150px;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.stats{
+gap:25px;
+}
+
+.masonry{
+column-count:2;
+}
+
+.section-title h2{
+font-size:2rem;
+}
+
+}
+
+@media(max-width:500px){
+
+.masonry{
+column-count:1;
+}
+
+.hero h1{
+font-size:2.4rem;
+}
+
+.hero-buttons{
+flex-direction:column;
+width:100%;
+}
+
+.btn-primary,
+.btn-secondary{
+width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+<div class="glow"></div>
+<div class="glow glow2"></div>
+</div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">VOID</div>
+
+<div class="nav-links">
+<a href="#">Artists</a>
+<a href="#">Aesthetics</a>
+<a href="#">Collections</a>
+<a href="#">Digital Art</a>
+</div>
+
+<div class="nav-actions">
+<div class="search-box">⌕</div>
+<button class="follow-btn">Follow Feed</button>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-tag">
+Infinite Artist Discovery Experience
+</div>
+
+<h1>
+Scroll Into The
+<span class="gradient">Visual Void.</span>
+</h1>
+
+<p>
+A Pinterest-inspired infinite masonry gallery for discovering artists,
+digital aesthetics, cinematic visuals, photography, futuristic concepts,
+street art, fashion editorials and creative inspiration from all over the world.
+</p>
+
+<div class="hero-buttons">
+
+<button class="btn-primary" onclick="scrollToGallery()">
+Start Exploring
+</button>
+
+<button class="btn-secondary">
+Trending Creators
+</button>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h2>12M+</h2>
+<p>Artworks</p>
+</div>
+
+<div class="stat">
+<h2>890K+</h2>
+<p>Artists</p>
+</div>
+
+<div class="stat">
+<h2>∞</h2>
+<p>Infinite Scroll</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="gallery-section" id="gallery">
+
+<div class="section-title">
+
+<div>
+<h2>Trending Aesthetics</h2>
+<p>Discover the internet’s most addictive visual feed</p>
+</div>
+
+</div>
+
+<div class="filters">
+<button class="filter-btn active">All</button>
+<button class="filter-btn">Cyberpunk</button>
+<button class="filter-btn">Photography</button>
+<button class="filter-btn">Fashion</button>
+<button class="filter-btn">Digital Art</button>
+<button class="filter-btn">Street</button>
+<button class="filter-btn">Anime</button>
+</div>
+
+<div class="masonry" id="masonry-grid">
+
+<!-- CARDS AUTO GENERATED -->
+
+</div>
+
+<div class="loader">
+<div class="loader-circle"></div>
+</div>
+
+</section>
+
+<footer>
+<p>
+© 2026 VOID Gallery — Endless Visual Discovery Experience
+</p>
+</footer>
+
+<script>
+
+/* SCROLL */
+
+function scrollToGallery(){
+document.getElementById('gallery').scrollIntoView({
+behavior:'smooth'
+});
+}
+
+/* IMAGES */
+
+const images = [
+
+"https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1499364615650-ec38552f4f34?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop",
+"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop"
+
+];
+
+const titles = [
+"Neon Dreams",
+"Visual Echoes",
+"Digital Mirage",
+"Cyber Streets",
+"Urban Motion",
+"Future Human",
+"Lost Tokyo",
+"Chrome Lights",
+"Cinema Mood",
+"Parallel Reality",
+"Silent City",
+"After Midnight"
+];
+
+const descriptions = [
+"Futuristic aesthetic exploration",
+"Visual storytelling and motion",
+"Creative direction and photography",
+"Experimental digital artwork",
+"Street culture inspired visuals",
+"Late-night cinematic atmosphere"
+];
+
+const masonry = document.getElementById("masonry-grid");
+
+/* CREATE CARDS */
+
+function createCards(count = 18){
+
+for(let i = 0; i < count; i++){
+
+const card = document.createElement("div");
+card.className = "card";
+
+const randomImage = images[Math.floor(Math.random()*images.length)];
+const randomTitle = titles[Math.floor(Math.random()*titles.length)];
+const randomDesc = descriptions[Math.floor(Math.random()*descriptions.length)];
+
+card.innerHTML = `
+
+<img src="${randomImage}" loading="lazy">
+
+<div class="overlay">
+<h3>${randomTitle}</h3>
+<p>${randomDesc}</p>
+</div>
+
+`;
+
+masonry.appendChild(card);
+
+}
+
+}
+
+/* INITIAL LOAD */
+
+createCards(30);
+
+/* INFINITE SCROLL */
+
+window.addEventListener("scroll", () => {
+
+const {
+scrollTop,
+scrollHeight,
+clientHeight
+} = document.documentElement;
+
+if(scrollTop + clientHeight >= scrollHeight - 300){
+
+createCards(12);
+
+}
+
+});
+
+/* FILTER BUTTONS */
+
+const filterBtns = document.querySelectorAll(".filter-btn");
+
+filterBtns.forEach(btn => {
+
+btn.addEventListener("click", () => {
+
+filterBtns.forEach(b => b.classList.remove("active"));
+
+btn.classList.add("active");
+
+});
+
+});
+
+</script>
+
+
+</body></html>
