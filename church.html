@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en"><head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>St George Youth Chat</title>
@@ -320,409 +319,248 @@ Send
 </div>
 
 <script>
+/* =========================
+   FRONTEND STATE (BROWSER)
+========================= */
 
-let currentUser =
-localStorage.getItem("chatUser");
+let currentUser = localStorage.getItem("chatUser");
+let members = JSON.parse(localStorage.getItem("members")) || [];
+let messages = JSON.parse(localStorage.getItem("messages")) || [];
 
-let members =
-JSON.parse(localStorage.getItem("members"))
-|| [];
+/* =========================
+   INIT UI
+========================= */
 
-let messages =
-JSON.parse(localStorage.getItem("messages"))
-|| [];
+if (currentUser) {
+  const modal = document.getElementById("registerModal");
+  if (modal) modal.classList.add("hidden");
 
-if(currentUser){
-document.getElementById("registerModal")
-.classList.add("hidden");
-
-document.getElementById("userDisplay")
-.innerHTML = "👤 " + currentUser;
+  const display = document.getElementById("userDisplay");
+  if (display) display.innerHTML = "👤 " + currentUser;
 }
 
-function registerUser(){
-
-const username =
-document.getElementById("username").value.trim();
-
-if(!username) return;
-
-currentUser = username;
-
-localStorage.setItem(
-"chatUser",
-username
-);
-
-if(!members.includes(username)){
-members.push(username);
-
-localStorage.setItem(
-"members",
-JSON.stringify(members)
-);
-}
-
-document.getElementById("registerModal")
-.classList.add("hidden");
-
-document.getElementById("userDisplay")
-.innerHTML = "👤 " + username;
-
-renderMembers();
-}
-
-function renderMembers(){
-
-const container =
-document.getElementById("members");
-
-container.innerHTML="";
-
-members.forEach(member=>{
-
-container.innerHTML += `
-<div class="member">
-<div class="avatar">
-${member.charAt(0).toUpperCase()}
-</div>
-
-<div>
-<div>${member}</div>
-<div class="status"></div>
-</div>
-</div>
-`;
-
-});
-}
-
-function sendMessage(){
-
-const input =
-document.getElementById("messageInput");
-
-const text =
-input.value.trim();
-
-if(!text) return;
-
-const msg = {
-
-user:currentUser,
-
-text:text,
-
-time:new Date().toLocaleTimeString([],{
-hour:'2-digit',
-minute:'2-digit'
-})
-
-};
-
-messages.push(msg);
-
-localStorage.setItem(
-"messages",
-JSON.stringify(messages)
-);
-
-input.value="";
-
-renderMessages();
-}
-
-function renderMessages(){
-
-const container =
-document.getElementById("messages");
-
-container.innerHTML="";
-
-messages.forEach(msg=>{
-
-const type =
-msg.user===currentUser
-? "sent"
-: "received";
-
-container.innerHTML += `
-<div class="message ${type}">
-<div class="message-name">
-${msg.user}
-</div>
-
-<div>
-${msg.text}
-</div>
-
-<div class="time">
-${msg.time}
-</div>
-</div>
-`;
-
-});
-
-container.scrollTop =
-container.scrollHeight;
-}
-
-function addEmoji(){
-
-const input =
-document.getElementById("messageInput");
-
-input.value += " 😊";
-input.focus();
-}
-
-document
-.getElementById("messageInput")
-.addEventListener("keypress",e=>{
-
-if(e.key==="Enter"){
-sendMessage();
-}
-
-});
-
-renderMembers();
-renderMessages();
-
-    function sendMessage(name,message){
-
- const sheet =
- SpreadsheetApp
- .getActive()
- .getSheetByName("Messages");
-
- sheet.appendRow([
-   Utilities.getUuid(),
-   name,
-   message,
-   new Date()
- ]);
-
- return {
-   success:true
- };
-
-}
-
-
-    function getMessages(){
-
- const sheet =
- SpreadsheetApp
- .getActive()
- .getSheetByName("Messages");
-
- const data =
- sheet.getDataRange()
- .getValues();
-
- return ContentService
- .createTextOutput(
- JSON.stringify(data)
- )
- .setMimeType(
- ContentService.MimeType.JSON
- );
-
-}
-
-    function registerMember(
- name,
- photo
-){
-
- const sheet =
- SpreadsheetApp
- .getActive()
- .getSheetByName("Members");
-
- sheet.appendRow([
-   Utilities.getUuid(),
-   name,
-   photo,
-   new Date(),
-   new Date(),
-   "member"
- ]);
-
- return {
-   success:true
- };
-
-}
-
-
-    setInterval(
-loadMessages,
-3000
-);
-    updateLastSeen();
-
-    deleteMessage(id)
-    removeMember(id)
-    pinAnnouncement(text)
-    banUser(name)
-    token
-name
-timestamp
-
-     POST
-
-{
- name:"Samuel",
- email:"sam@gmail.com",
- phone:"0796000000",
- profilePic:"base64"
-}
-
-    {
- success:true,
- memberId:"mem123"
-}
-    POST
-
-{
- name:"Samuel"
-}
-    {
- success:true,
- role:"admin"
-}
-    GET
-?action=getMembers
-        [
- {
-   memberId:"1",
-   name:"Samuel",
-   profilePic:"..."
- }
-]
-        POST
-
-{
- roomId:"general",
- memberId:"1",
- message:"Hello everyone"
-}
-    {
- success:true
-}
-    [
- {
-   name:"Samuel",
-   message:"Hello",
-   timestamp:"..."
- }
-]
-    POST
-
-{
- memberId:"1"
-}
-    POST
-
-{
- memberId:"1",
- image:"base64"
-}
-    POST
-
-{
- adminId:"1",
- messageId:"msg12"
-}
-    POST
-
-{
- adminId:"1",
- memberId:"15"
-}
-    POST
-
-{
- title:"Youth Camp",
- content:"Registration now open"
-}
-    {
- token:"generated-session-token",
- memberId:"123"
-}
-    const SHEETS = {
-  MEMBERS: "Members",
-  MESSAGES: "Messages",
-  ONLINE: "OnlineUsers",
-  ADMINS: "Admins",
-  ROOMS: "Rooms",
-  ANNOUNCEMENTS: "Announcements",
-  AUDIT: "AuditLogs"
-};
-
-const APP_CONFIG = {
-  ONLINE_TIMEOUT_MINUTES: 2,
-  MAX_MESSAGE_LENGTH: 1000
-};
-
-
-    const API_URL = "https://script.google.com/macros/s/AKfycbwsgFTz2vKU-Dm0M1MvptbyekL0e4lIcjgqALQHZdOx8PwZ2ySSkhM2XDmcR5excjaZ5A/exec";
-    fetch(API_URL)
-    const CONFIG = {
-  SPREADSHEET_ID: "1Hk5GI_3qF17aod3GJyxR5pVCKpDAvNC3IdBor7xjh3Y",
-  DRIVE_FOLDER_ID: "1-hNf8H42QrLqV0mpwn2FDWWzg3KxExpP",
-  SUPER_ADMIN: {
-    name: "Samuel Kabatha",
-    email: "samterrencekabatha@gmail.com"
+/* =========================
+   REGISTER USER
+========================= */
+
+function registerUser() {
+  const username = document.getElementById("username").value.trim();
+  if (!username) return;
+
+  currentUser = username;
+  localStorage.setItem("chatUser", username);
+
+  if (!members.includes(username)) {
+    members.push(username);
+    localStorage.setItem("members", JSON.stringify(members));
   }
-};
 
-const SHEETS = {
-  MEMBERS: "Members",
-  MESSAGES: "Messages",
-  ONLINE: "OnlineUsers",
-  ADMINS: "Admins",
-  ROOMS: "Rooms",
-  ANNOUNCEMENTS: "Announcements",
-  AUDIT: "AuditLogs"
-};
-  async function sendMessage(){
+  document.getElementById("registerModal").classList.add("hidden");
+  document.getElementById("userDisplay").innerHTML = "👤 " + username;
 
-  await fetch(API_URL,{
-    method:"POST",
-    body:JSON.stringify({
-      action:"sendMessage",
-      memberId:user.id,
-      name:user.name,
-      roomId:"general",
-      message:messageInput.value
+  renderMembers();
+
+  /* 🔥 SEND TO GOOGLE APPS SCRIPT (BACKEND SYNC) */
+  apiRegisterMember(username);
+}
+
+/* =========================
+   RENDER MEMBERS
+========================= */
+
+function renderMembers() {
+  const container = document.getElementById("members");
+  container.innerHTML = "";
+
+  members.forEach(member => {
+    container.innerHTML += `
+      <div class="member">
+        <div class="avatar">${member.charAt(0).toUpperCase()}</div>
+        <div>
+          <div>${member}</div>
+          <div class="status"></div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+/* =========================
+   SEND MESSAGE (LOCAL + API)
+========================= */
+
+function sendMessage() {
+  const input = document.getElementById("messageInput");
+  const text = input.value.trim();
+
+  if (!text || !currentUser) return;
+
+  const msg = {
+    user: currentUser,
+    text,
+    time: new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit"
     })
+  };
+
+  messages.push(msg);
+  localStorage.setItem("messages", JSON.stringify(messages));
+
+  input.value = "";
+  renderMessages();
+
+  /* 🔥 SEND TO APPS SCRIPT BACKEND */
+  apiSendMessage(currentUser, text);
+}
+
+/* =========================
+   RENDER MESSAGES
+========================= */
+
+function renderMessages() {
+  const container = document.getElementById("messages");
+  container.innerHTML = "";
+
+  messages.forEach(msg => {
+    const type = msg.user === currentUser ? "sent" : "received";
+
+    container.innerHTML += `
+      <div class="message ${type}">
+        <div class="message-name">${msg.user}</div>
+        <div>${msg.text}</div>
+        <div class="time">${msg.time}</div>
+      </div>
+    `;
   });
 
-}
-    async function loadMessages(){
-
-  const res =
-    await fetch(
-      API_URL +
-      "?action=getMessages&roomId=general"
-    );
-
-  const data =
-    await res.json();
-
-  console.log(data);
+  container.scrollTop = container.scrollHeight;
 }
 
-setInterval(
-  loadMessages,
-  3000
-);
+/* =========================
+   EMOJI
+========================= */
 
-    
+function addEmoji() {
+  document.getElementById("messageInput").value += " 😊";
+}
+
+/* =========================
+   ENTER KEY
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("messageInput")
+    .addEventListener("keypress", e => {
+      if (e.key === "Enter") sendMessage();
+    });
+
+  renderMembers();
+  renderMessages();
+
+  /* 🔥 LOAD BACKEND MESSAGES */
+  loadMessagesFromAPI();
+});
+
+/* =========================
+   FIREBASE-LIKE API LAYER
+   (GOOGLE APPS SCRIPT)
+========================= */
+
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbwsgFTz2vKU-Dm0M1MvptbyekL0e4lIcjgqALQHZdOx8PwZ2ySSkhM2XDmcR5excjaZ5A/exec";
+
+/* SEND MESSAGE TO SHEETS */
+async function apiSendMessage(name, message) {
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        action: "sendMessage",
+        name,
+        message,
+        roomId: "general"
+      })
+    });
+  } catch (err) {
+    console.log("API send failed:", err);
+  }
+}
+
+/* REGISTER MEMBER */
+async function apiRegisterMember(name) {
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        action: "registerMember",
+        name
+      })
+    });
+  } catch (err) {
+    console.log("API register failed:", err);
+  }
+}
+
+/* LOAD MESSAGES */
+async function loadMessagesFromAPI() {
+  try {
+    const res = await fetch(API_URL + "?action=getMessages&roomId=general");
+    const data = await res.json();
+
+    console.log("SERVER MESSAGES:", data);
+
+    // OPTIONAL: sync server messages into UI
+    // (you can merge later with localStorage)
+  } catch (err) {
+    console.log("Load failed:", err);
+  }
+}
+
+/* =========================
+   GOOGLE APPS SCRIPT (SERVER SIDE ONLY)
+   ⚠️ DO NOT RUN IN BROWSER
+=========================
+
+function sendMessage(name,message){
+  const sheet = SpreadsheetApp.getActive().getSheetByName("Messages");
+
+  sheet.appendRow([
+    Utilities.getUuid(),
+    name,
+    message,
+    new Date()
+  ]);
+
+  return { success:true };
+}
+
+function getMessages(){
+  const sheet = SpreadsheetApp.getActive().getSheetByName("Messages");
+
+  const data = sheet.getDataRange().getValues();
+
+  return ContentService
+    .createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function registerMember(name,photo){
+  const sheet = SpreadsheetApp.getActive().getSheetByName("Members");
+
+  sheet.appendRow([
+    Utilities.getUuid(),
+    name,
+    photo,
+    new Date(),
+    new Date(),
+    "member"
+  ]);
+
+  return { success:true };
+}
+
+========================= */
 </script>
 
 
