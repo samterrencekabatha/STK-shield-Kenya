@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St George Youth Chat</title>
+
+<style>
+:root{
+--primary:#236f69;
+--primary-dark:#1a5c56;
+--white:#ffffff;
+--bg:#f4f7f7;
+--text:#183535;
+--shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:var(--bg);
+height:100vh;
+overflow:hidden;
+}
+
+.chat-app{
+display:flex;
+height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:320px;
+background:var(--primary);
+color:white;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+padding:20px;
+font-size:1.4rem;
+font-weight:bold;
+border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.search-box{
+padding:15px;
+}
+
+.search-box input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+}
+
+.members{
+flex:1;
+overflow-y:auto;
+}
+
+.member{
+display:flex;
+align-items:center;
+gap:12px;
+padding:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.member:hover{
+background:rgba(255,255,255,.1);
+}
+
+.avatar{
+width:45px;
+height:45px;
+border-radius:50%;
+background:white;
+color:var(--primary);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+.status{
+width:10px;
+height:10px;
+background:#00ff55;
+border-radius:50%;
+}
+
+/* Main Chat */
+
+.chat-container{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+.chat-header{
+background:white;
+padding:20px;
+box-shadow:var(--shadow);
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.chat-header h2{
+color:var(--primary);
+}
+
+.messages{
+flex:1;
+overflow-y:auto;
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.message{
+max-width:70%;
+padding:12px;
+border-radius:18px;
+position:relative;
+box-shadow:var(--shadow);
+}
+
+.received{
+background:white;
+align-self:flex-start;
+}
+
+.sent{
+background:var(--primary);
+color:white;
+align-self:flex-end;
+}
+
+.message-name{
+font-size:.8rem;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.time{
+font-size:.7rem;
+opacity:.7;
+margin-top:5px;
+}
+
+.chat-input{
+background:white;
+padding:15px;
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.chat-input input{
+flex:1;
+padding:15px;
+border:none;
+background:#f1f1f1;
+border-radius:30px;
+}
+
+.chat-input button{
+border:none;
+background:var(--primary);
+color:white;
+padding:14px 20px;
+border-radius:30px;
+cursor:pointer;
+}
+
+.chat-input button:hover{
+background:var(--primary-dark);
+}
+
+.emoji-btn{
+font-size:22px;
+cursor:pointer;
+}
+
+.register-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.6);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.register-card{
+background:white;
+padding:30px;
+width:90%;
+max-width:400px;
+border-radius:20px;
+}
+
+.register-card h2{
+margin-bottom:20px;
+color:var(--primary);
+}
+
+.register-card input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:12px;
+}
+
+.register-card button{
+width:100%;
+padding:15px;
+background:var(--primary);
+color:white;
+border:none;
+border-radius:12px;
+cursor:pointer;
+}
+
+.hidden{
+display:none;
+}
+
+@media(max-width:768px){
+
+.sidebar{
+width:90px;
+}
+
+.member span{
+display:none;
+}
+
+.search-box{
+display:none;
+}
+
+.logo{
+font-size:.9rem;
+text-align:center;
+}
+
+.message{
+max-width:90%;
+}
+}
+</style>
+</head>
+<body>
+
+<div id="registerModal" class="register-modal">
+<div class="register-card">
+<h2>Join Youth Chat</h2>
+<input id="username" placeholder="Enter your name">
+<button onclick="registerUser()">Join Chat</button>
+</div>
+</div>
+
+<div class="chat-app">
+
+<div class="sidebar">
+
+<div class="logo">
+YOUTH CHAT
+</div>
+
+<div class="search-box">
+<input placeholder="Search members">
+</div>
+
+<div class="members" id="members">
+
+</div>
+<img src="profile-url">
+    <img>
+Name
+Status
+</div>
+
+<div class="chat-container">
+
+<div class="chat-header">
+<h2>St George Youth Community</h2>
+<div id="userDisplay"></div>
+</div>
+
+<div class="messages" id="messages">
+
+</div>
+
+<div class="chat-input">
+
+<div class="emoji-btn" onclick="addEmoji()">😀</div>
+
+<input type="text" id="messageInput" placeholder="Type a message...">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let currentUser =
+localStorage.getItem("chatUser");
+
+let members =
+JSON.parse(localStorage.getItem("members"))
+|| [];
+
+let messages =
+JSON.parse(localStorage.getItem("messages"))
+|| [];
+
+if(currentUser){
+document.getElementById("registerModal")
+.classList.add("hidden");
+
+document.getElementById("userDisplay")
+.innerHTML = "👤 " + currentUser;
+}
+
+function registerUser(){
+
+const username =
+document.getElementById("username").value.trim();
+
+if(!username) return;
+
+currentUser = username;
+
+localStorage.setItem(
+"chatUser",
+username
+);
+
+if(!members.includes(username)){
+members.push(username);
+
+localStorage.setItem(
+"members",
+JSON.stringify(members)
+);
+}
+
+document.getElementById("registerModal")
+.classList.add("hidden");
+
+document.getElementById("userDisplay")
+.innerHTML = "👤 " + username;
+
+renderMembers();
+}
+
+function renderMembers(){
+
+const container =
+document.getElementById("members");
+
+container.innerHTML="";
+
+members.forEach(member=>{
+
+container.innerHTML += `
+<div class="member">
+<div class="avatar">
+${member.charAt(0).toUpperCase()}
+</div>
+
+<div>
+<div>${member}</div>
+<div class="status"></div>
+</div>
+</div>
+`;
+
+});
+}
+
+function sendMessage(){
+
+const input =
+document.getElementById("messageInput");
+
+const text =
+input.value.trim();
+
+if(!text) return;
+
+const msg = {
+
+user:currentUser,
+
+text:text,
+
+time:new Date().toLocaleTimeString([],{
+hour:'2-digit',
+minute:'2-digit'
+})
+
+};
+
+messages.push(msg);
+
+localStorage.setItem(
+"messages",
+JSON.stringify(messages)
+);
+
+input.value="";
+
+renderMessages();
+}
+
+function renderMessages(){
+
+const container =
+document.getElementById("messages");
+
+container.innerHTML="";
+
+messages.forEach(msg=>{
+
+const type =
+msg.user===currentUser
+? "sent"
+: "received";
+
+container.innerHTML += `
+<div class="message ${type}">
+<div class="message-name">
+${msg.user}
+</div>
+
+<div>
+${msg.text}
+</div>
+
+<div class="time">
+${msg.time}
+</div>
+</div>
+`;
+
+});
+
+container.scrollTop =
+container.scrollHeight;
+}
+
+function addEmoji(){
+
+const input =
+document.getElementById("messageInput");
+
+input.value += " 😊";
+input.focus();
+}
+
+document
+.getElementById("messageInput")
+.addEventListener("keypress",e=>{
+
+if(e.key==="Enter"){
+sendMessage();
+}
+
+});
+
+renderMembers();
+renderMessages();
+
+    function sendMessage(name,message){
+
+ const sheet =
+ SpreadsheetApp
+ .getActive()
+ .getSheetByName("Messages");
+
+ sheet.appendRow([
+   Utilities.getUuid(),
+   name,
+   message,
+   new Date()
+ ]);
+
+ return {
+   success:true
+ };
+
+}
+
+
+    function getMessages(){
+
+ const sheet =
+ SpreadsheetApp
+ .getActive()
+ .getSheetByName("Messages");
+
+ const data =
+ sheet.getDataRange()
+ .getValues();
+
+ return ContentService
+ .createTextOutput(
+ JSON.stringify(data)
+ )
+ .setMimeType(
+ ContentService.MimeType.JSON
+ );
+
+}
+
+    function registerMember(
+ name,
+ photo
+){
+
+ const sheet =
+ SpreadsheetApp
+ .getActive()
+ .getSheetByName("Members");
+
+ sheet.appendRow([
+   Utilities.getUuid(),
+   name,
+   photo,
+   new Date(),
+   new Date(),
+   "member"
+ ]);
+
+ return {
+   success:true
+ };
+
+}
+
+
+    setInterval(
+loadMessages,
+3000
+);
+    updateLastSeen();
+
+    deleteMessage(id)
+    removeMember(id)
+    pinAnnouncement(text)
+    banUser(name)
+    token
+name
+timestamp
+
+     POST
+
+{
+ name:"Samuel",
+ email:"sam@gmail.com",
+ phone:"0796000000",
+ profilePic:"base64"
+}
+
+    {
+ success:true,
+ memberId:"mem123"
+}
+    POST
+
+{
+ name:"Samuel"
+}
+    {
+ success:true,
+ role:"admin"
+}
+    GET
+?action=getMembers
+        [
+ {
+   memberId:"1",
+   name:"Samuel",
+   profilePic:"..."
+ }
+]
+        POST
+
+{
+ roomId:"general",
+ memberId:"1",
+ message:"Hello everyone"
+}
+    {
+ success:true
+}
+    [
+ {
+   name:"Samuel",
+   message:"Hello",
+   timestamp:"..."
+ }
+]
+    POST
+
+{
+ memberId:"1"
+}
+    POST
+
+{
+ memberId:"1",
+ image:"base64"
+}
+    POST
+
+{
+ adminId:"1",
+ messageId:"msg12"
+}
+    POST
+
+{
+ adminId:"1",
+ memberId:"15"
+}
+    POST
+
+{
+ title:"Youth Camp",
+ content:"Registration now open"
+}
+    {
+ token:"generated-session-token",
+ memberId:"123"
+}
+    const SHEETS = {
+  MEMBERS: "Members",
+  MESSAGES: "Messages",
+  ONLINE: "OnlineUsers",
+  ADMINS: "Admins",
+  ROOMS: "Rooms",
+  ANNOUNCEMENTS: "Announcements",
+  AUDIT: "AuditLogs"
+};
+
+const APP_CONFIG = {
+  ONLINE_TIMEOUT_MINUTES: 2,
+  MAX_MESSAGE_LENGTH: 1000
+};
+
+
+    const API_URL = "https://script.google.com/macros/s/AKfycbwsgFTz2vKU-Dm0M1MvptbyekL0e4lIcjgqALQHZdOx8PwZ2ySSkhM2XDmcR5excjaZ5A/exec";
+    fetch(API_URL)
+    const CONFIG = {
+  SPREADSHEET_ID: "1Hk5GI_3qF17aod3GJyxR5pVCKpDAvNC3IdBor7xjh3Y",
+  DRIVE_FOLDER_ID: "1-hNf8H42QrLqV0mpwn2FDWWzg3KxExpP",
+  SUPER_ADMIN: {
+    name: "Samuel Kabatha",
+    email: "samterrencekabatha@gmail.com"
+  }
+};
+
+const SHEETS = {
+  MEMBERS: "Members",
+  MESSAGES: "Messages",
+  ONLINE: "OnlineUsers",
+  ADMINS: "Admins",
+  ROOMS: "Rooms",
+  ANNOUNCEMENTS: "Announcements",
+  AUDIT: "AuditLogs"
+};
+  async function sendMessage(){
+
+  await fetch(API_URL,{
+    method:"POST",
+    body:JSON.stringify({
+      action:"sendMessage",
+      memberId:user.id,
+      name:user.name,
+      roomId:"general",
+      message:messageInput.value
+    })
+  });
+
+}
+    async function loadMessages(){
+
+  const res =
+    await fetch(
+      API_URL +
+      "?action=getMessages&roomId=general"
+    );
+
+  const data =
+    await res.json();
+
+  console.log(data);
+}
+
+setInterval(
+  loadMessages,
+  3000
+);
+
+    
+</script>
+
+
+</body></html>
