@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>St George Youth Community</title>
+
+<style>
+body{
+margin:0;
+font-family:Segoe UI,sans-serif;
+background:#f4f7f7;
+display:flex;
+height:100vh;
+overflow:hidden;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:280px;
+background:#236f69;
+color:white;
+display:flex;
+flex-direction:column;
+padding:15px;
+}
+
+.logo{
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.members{
+flex:1;
+overflow:auto;
+margin-top:10px;
+}
+
+.member{
+padding:10px;
+background:rgba(255,255,255,0.1);
+margin-bottom:8px;
+border-radius:10px;
+}
+
+/* MAIN */
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+.header{
+background:white;
+padding:15px;
+font-weight:bold;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.messages{
+flex:1;
+overflow:auto;
+padding:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.msg{
+padding:10px;
+border-radius:10px;
+max-width:60%;
+}
+
+.sent{background:#236f69;color:white;align-self:flex-end;}
+.received{background:white;align-self:flex-start;}
+
+.input-box{
+display:flex;
+padding:10px;
+background:white;
+}
+
+input,select{
+flex:1;
+padding:10px;
+margin-right:5px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+padding:10px 15px;
+background:#236f69;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* TRIVIA */
+.trivia{
+background:white;
+padding:10px;
+margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<div class="logo">Youth Community</div>
+
+<h4>Members</h4>
+<div class="members" id="members"></div>
+
+<h4>Trivia</h4>
+<div class="trivia">
+<p id="question">Loading...</p>
+<input id="answer" placeholder="Answer" />
+<button onclick="submitTrivia()">Submit</button>
+<p id="score"></p>
+</div>
+
+<h4>Clock</h4>
+<select id="tz" onchange="updateClock()">
+<option value="Africa/Nairobi">Nairobi</option>
+<option value="Europe/London">London</option>
+<option value="America/New_York">New York</option>
+<option value="Asia/Tokyo">Tokyo</option>
+</select>
+<p id="clock"></p>
+
+</div>
+
+<div class="main">
+
+<div class="header">St George Youth Chat</div>
+
+<div class="messages" id="messages"></div>
+
+<div class="input-box">
+<input id="msg" placeholder="Type message..." />
+<button onclick="sendMessage()">Send</button>
+</div>
+
+</div>
+
+<script>
+/* =======================
+CONFIG
+======================= */
+const API_URL = "https://script.google.com/macros/s/AKfycbx1kv6LrtGDMa-fZ0XL5d2jNajsLAZDwzEAt43ewFttFwcYOs-mV95fzUBmU00WEBIs/exec";
+
+/* =======================
+STATE
+======================= */
+let user = localStorage.getItem("user") || prompt("Enter your name:");
+localStorage.setItem("user", user);
+
+let messages = JSON.parse(localStorage.getItem("messages") || "[]");
+let members = JSON.parse(localStorage.getItem("members") || "[]");
+
+if(!members.includes(user)){
+members.push(user);
+localStorage.setItem("members", JSON.stringify(members));
+}
+
+/* =======================
+CHAT
+======================= */
+function renderMessages(){
+const box = document.getElementById("messages");
+box.innerHTML = "";
+
+messages.forEach(m=>{
+const div = document.createElement("div");
+div.className = "msg " + (m.user===user?"sent":"received");
+div.innerText = m.user + ": " + m.text;
+box.appendChild(div);
+});
+
+box.scrollTop = box.scrollHeight;
+}
+
+function sendMessage(){
+const input = document.getElementById("msg");
+const text = input.value.trim();
+if(!text) return;
+
+const msg = {user,text,time:Date.now()};
+messages.push(msg);
+localStorage.setItem("messages", JSON.stringify(messages));
+
+renderMessages();
+input.value="";
+
+/* API */
+fetch(API_URL,{
+method:"POST",
+body:JSON.stringify({
+action:"sendMessage",
+name:user,
+message:text,
+roomId:"general"
+})
+}).catch(()=>{});
+}
+
+/* =======================
+MEMBERS
+======================= */
+function renderMembers(){
+const box = document.getElementById("members");
+box.innerHTML = "";
+
+members.forEach(m=>{
+const div = document.createElement("div");
+div.className="member";
+div.innerText = m;
+box.appendChild(div);
+});
+}
+
+/* =======================
+TRIVIA
+======================= */
+const questions = [
+{q:"Who built the ark?",a:"Noah"},
+{q:"Who killed Goliath?",a:"David"},
+{q:"Who was swallowed by a fish?",a:"Jonah"}
+];
+
+let current = questions[Math.floor(Math.random()*questions.length)];
+
+function loadQuestion(){
+document.getElementById("question").innerText = current.q;
+}
+
+function submitTrivia(){
+const ans = document.getElementById("answer").value.trim();
+if(!ans) return;
+
+if(ans.toLowerCase() === current.a.toLowerCase()){
+document.getElementById("score").innerText = "Correct +10";
+}else{
+document.getElementById("score").innerText = "Wrong";
+}
+
+current = questions[Math.floor(Math.random()*questions.length)];
+loadQuestion();
+document.getElementById("answer").value="";
+}
+
+/* =======================
+CLOCK
+======================= */
+function updateClock(){
+const tz = document.getElementById("tz").value;
+const now = new Date();
+
+document.getElementById("clock").innerText =
+now.toLocaleTimeString("en-GB",{timeZone:tz});
+}
+
+/* =======================
+INIT
+======================= */
+function init(){
+renderMessages();
+renderMembers();
+loadQuestion();
+updateClock();
+setInterval(updateClock,1000);
+}
+
+init();
+</script>
+
+</body>
+</html>
