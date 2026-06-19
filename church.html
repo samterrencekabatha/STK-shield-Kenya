@@ -116,7 +116,7 @@ margin-bottom:10px;
 
 <h4>Trivia</h4>
 <div class="trivia">
-<p id="question">Who built the ark?</p>
+<p id="question">Who was swallowed by a fish?</p>
 <input id="answer" placeholder="Answer">
 <button onclick="submitTrivia()">Submit</button>
 <p id="score"></p>
@@ -129,7 +129,7 @@ margin-bottom:10px;
 <option value="America/New_York">New York</option>
 <option value="Asia/Tokyo">Tokyo</option>
 </select>
-<p id="clock">16:02:08</p>
+<p id="clock">16:07:58</p>
 
 </div>
 
@@ -137,7 +137,7 @@ margin-bottom:10px;
 
 <div class="header">St George Youth Chat</div>
 
-<div class="messages" id="messages"></div>
+<div class="messages" id="messages"><div class="msg received">samuelkabatha63@gmail.com: shalom</div><div class="msg received">samuelkabatha63@gmail.com: hey there</div><div class="msg received">samuelkabatha63@gmail.com: 😊saseni</div><div class="msg received">samuelkabatha63@gmail.com: hey</div><div class="msg sent">samuelmumbe: hey there</div><div class="msg received">samuelkabatha63@gmail.com: hey</div><div class="msg received">samuelkabatha63@gmail.com: shalom</div><div class="msg received">bro code: 😊 😊 😊 😊</div><div class="msg sent">samuelmumbe: heyyyyy</div><div class="msg sent">samuelmumbe: heyyyyyy</div></div>
 
 <div class="input-box">
 <input id="msg" placeholder="Type message...">
@@ -150,11 +150,6 @@ margin-bottom:10px;
 /* =======================
 CONFIG
 ======================= */
-    const url = new URL(API_URL);
-url.searchParams.append("action", "getMessages");
-url.searchParams.append("roomId", "general");
-
-fetch(url.toString());
 const API_URL = "https://script.google.com/macros/s/AKfycbyqLPQl93NzY9VV9Ok7jDBmZ60PrcGQD2Uzkh1C42yUvsND6JUjGn9dvXuxYPKrbJFh/exec";
 
 /* =======================
@@ -162,120 +157,71 @@ STATE
 ======================= */
 let user = localStorage.getItem("user") || prompt("Enter your name:");
 localStorage.setItem("user", user);
-let messages = [];
 
-async function loadMessages() {
-    try {
-        const res = await fetch(API_URL + "?action=getMessages&roomId=general");
-        messages = await res.json();
-        renderMessages();
-    } catch (err) {
-        console.error(err);
-    }
+let messages = JSON.parse(localStorage.getItem("messages") || "[]");
+let members = JSON.parse(localStorage.getItem("members") || "[]");
+
+if(!members.includes(user)){
+members.push(user);
+localStorage.setItem("members", JSON.stringify(members));
 }
 
-async function loadMembers() {
-    try {
-        const res = await fetch(API_URL + "?action=getMembers");
-        const members = await res.json();
-        renderMembers(members);
-    } catch (err) {
-        console.error(err);
-    }
-}
 /* =======================
 CHAT
 ======================= */
-function renderMessages() {
+function renderMessages(){
+const box = document.getElementById("messages");
+box.innerHTML = "";
 
-    const box = document.getElementById("messages");
+messages.forEach(m=>{
+const div = document.createElement("div");
+div.className = "msg " + (m.user===user?"sent":"received");
+div.innerText = m.user + ": " + m.text;
+box.appendChild(div);
+});
 
-    box.innerHTML = "";
-
-    messages.forEach(m => {
-
-        const div = document.createElement("div");
-
-        div.className =
-            "msg " +
-            (m.name === user ? "sent" : "received");
-
-        div.innerHTML = `
-            <strong>${m.name}</strong>
-            <br>
-            ${m.message}
-            <br>
-            <small>${new Date(m.timestamp).toLocaleString()}</small>
-        `;
-
-        box.appendChild(div);
-
-    });
-
-    box.scrollTop = box.scrollHeight;
+box.scrollTop = box.scrollHeight;
 }
 
-async function sendMessage() {
-    const input = document.getElementById("msg");
-    const text = input.value.trim();
+function sendMessage(){
+const input = document.getElementById("msg");
+const text = input.value.trim();
+if(!text) return;
 
-    if (!text) return;
+const msg = {user,text,time:Date.now()};
+messages.push(msg);
+localStorage.setItem("messages", JSON.stringify(messages));
 
-    input.value = "";
+renderMessages();
+input.value="";
 
-    try {
-        await fetch(API_URL, {
-            method: "POST",
-            body: JSON.stringify({
-                action: "sendMessage",
-                name: user,
-                message: text,
-                roomId: "general"
-            })
-        });
-
-        loadMessages();
-    } catch(err) {
-        console.error(err);
-    }
+/* API */
+fetch(API_URL,{
+method:"POST",
+body:JSON.stringify({
+action:"sendMessage",
+name:user,
+message:text,
+roomId:"general"
+})
+}).catch(()=>{});
 }
+
 /* =======================
 MEMBERS
 ======================= */
-function startPolling() {
+function renderMembers(){
+const box = document.getElementById("members");
+box.innerHTML = "";
 
-    loadMessages();
-    loadMembers();
-
-    setInterval(() => {
-
-        loadMessages();
-        loadMembers();
-
-    }, 3000);
-
+members.forEach(m=>{
+const div = document.createElement("div");
+div.className="member";
+div.innerText = m;
+box.appendChild(div);
+});
 }
-    function renderMembers(members) {
 
-    const box = document.getElementById("members");
-
-    if (!box) return;
-
-    box.innerHTML = "";
-
-    members.forEach(member => {
-
-        const div = document.createElement("div");
-
-        div.className = "member";
-
-        div.textContent = member;
-
-        box.appendChild(div);
-
-    });
-
-}
 /* =======================
 TRIVIA
 ======================= */
@@ -320,16 +266,12 @@ now.toLocaleTimeString("en-GB",{timeZone:tz});
 /* =======================
 INIT
 ======================= */
-function init() {
-
-    loadQuestion();
-
-    updateClock();
-
-    setInterval(updateClock, 1000);
-
-    startPolling();
-
+function init(){
+renderMessages();
+renderMembers();
+loadQuestion();
+updateClock();
+setInterval(updateClock,1000);
 }
 
 init();
