@@ -129,7 +129,7 @@ margin-bottom:10px;
 <option value="America/New_York">New York</option>
 <option value="Asia/Tokyo">Tokyo</option>
 </select>
-<p id="clock">15:03:07</p>
+<p id="clock">15:52:56</p>
 
 </div>
 
@@ -156,7 +156,7 @@ margin-bottom:10px;
 /* =======================
 CONFIG
 ======================= */
-const API_URL = "https://script.google.com/macros/s/AKfycbzbxrUTVIJi_85tpt9NzlCXUtNgQARDswt-wS00tdgTZ0YOLrEkarfvRKEtuB8sIF5H/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyqLPQl93NzY9VV9Ok7jDBmZ60PrcGQD2Uzkh1C42yUvsND6JUjGn9dvXuxYPKrbJFh/exec";
 
 /* =======================
 STATE
@@ -166,39 +166,22 @@ localStorage.setItem("user", user);
 let messages = [];
 
 async function loadMessages() {
-
     try {
-
-        const res = await fetch(
-            API_URL + "?action=getMessages&roomId=general"
-        );
-
+        const res = await fetch(API_URL + "?action=getMessages&roomId=general");
         messages = await res.json();
-
         renderMessages();
-
-    } catch(err) {
-
+    } catch (err) {
         console.error(err);
-
     }
 }
+
 async function loadMembers() {
-
     try {
-
-        const res = await fetch(
-            API_URL + "?action=getMembers"
-        );
-
+        const res = await fetch(API_URL + "?action=getMembers");
         const members = await res.json();
-
         renderMembers(members);
-
-    } catch(err) {
-
+    } catch (err) {
         console.error(err);
-
     }
 }
 /* =======================
@@ -354,4 +337,4 @@ init();
 </script>
 
 
-<div id="smartyContainer" style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;"></div></body><div id="smartyContainer" style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;"></div></html>
+<div id="smartyContainer" style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;"></div><div id="smartyContainer" style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;"></div></body></html>
