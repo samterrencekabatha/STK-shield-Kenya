@@ -1,281 +1,683 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>St George Youth Community</title>
-
-<style>
-body{
-margin:0;
-font-family:Segoe UI,sans-serif;
-background:#f4f7f7;
-display:flex;
-height:100vh;
-overflow:hidden;
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>St George Youth Chat</title> <style>.floating-leaf{
+    position:fixed;
+    font-size:2rem;
+    animation:float 8s linear infinite;
+    opacity:0.15;
+    pointer-events:none;
 }
 
-/* SIDEBAR */
-.sidebar{
-width:280px;
-background:#236f69;
-color:white;
-display:flex;
-flex-direction:column;
-padding:15px;
+@keyframes float{
+    0%{
+        transform:translateY(110vh) rotate(0deg);
+    }
+    100%{
+        transform:translateY(-120px) rotate(360deg);
+    }
+}
+ :root{ --primary:#236f69; --primary-dark:#1a5c56; --white:#ffffff; --bg:#f4f7f7; --text:#183535; --shadow:0 10px 30px rgba(0,0,0,.1); } *{ margin:0; padding:0; box-sizing:border-box; font-family:Segoe UI,sans-serif; } body{ background:var(--bg); height:100vh; overflow:hidden; } .chat-app{ display:flex; height:100vh; } /* Sidebar */ .sidebar{ width:320px; background:var(--primary); color:white; display:flex; flex-direction:column; } .logo{ padding:20px; font-size:1.4rem; font-weight:bold; border-bottom:1px solid rgba(255,255,255,.2); } .search-box{ padding:15px; } .search-box input{ width:100%; padding:12px; border:none; border-radius:12px; } .members{ flex:1; overflow-y:auto; } .member{ display:flex; align-items:center; gap:12px; padding:15px; cursor:pointer; transition:.3s; } .member:hover{ background:rgba(255,255,255,.1); } .avatar{ width:45px; height:45px; border-radius:50%; background:white; color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight:bold; } .status{ width:10px; height:10px; background:#00ff55; border-radius:50%; } /* Main Chat */ .chat-container{ flex:1; display:flex; flex-direction:column; } .chat-header{ background:white; padding:20px; box-shadow:var(--shadow); display:flex; justify-content:space-between; align-items:center; } .chat-header h2{ color:var(--primary); } .messages{ flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:15px; } .message{ max-width:70%; padding:12px; border-radius:18px; position:relative; box-shadow:var(--shadow); } .received{ background:white; align-self:flex-start; } .sent{ background:var(--primary); color:white; align-self:flex-end; } .message-name{ font-size:.8rem; font-weight:bold; margin-bottom:5px; } .time{ font-size:.7rem; opacity:.7; margin-top:5px; } .chat-input{ background:white; padding:15px; display:flex; gap:10px; align-items:center; } .chat-input input{ flex:1; padding:15px; border:none; background:#f1f1f1; border-radius:30px; } .chat-input button{ border:none; background:var(--primary); color:white; padding:14px 20px; border-radius:30px; cursor:pointer; } .chat-input button:hover{ background:var(--primary-dark); } .emoji-btn{ font-size:22px; cursor:pointer; } .register-modal{ position:fixed; inset:0; background:rgba(0,0,0,.6); display:flex; justify-content:center; align-items:center; } .register-card{ background:white; padding:30px; width:90%; max-width:400px; border-radius:20px; } .register-card h2{ margin-bottom:20px; color:var(--primary); } .register-card input{ width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:12px; } .register-card button{ width:100%; padding:15px; background:var(--primary); color:white; border:none; border-radius:12px; cursor:pointer; } .hidden{ display:none; } @media(max-width:768px){ .sidebar{ width:90px; } .member span{ display:none; } .search-box{ display:none; } .logo{ font-size:.9rem; text-align:center; } .message{ max-width:90%; } } </style> </head> <body> <div class="floating-leaf" style="left:5%; animation-delay:0s;">🍃</div>
+<div class="floating-leaf" style="left:25%; animation-delay:2s;">🌿</div>
+<div class="floating-leaf" style="left:50%; animation-delay:4s;">🍃</div>
+<div class="floating-leaf" style="left:75%; animation-delay:1s;">🌱</div>
+<div class="floating-leaf" style="left:90%; animation-delay:5s;">🍃</div>
+    <div id="registerModal" class="register-modal hidden"> <div class="register-card"> <h2>Join Youth Chat</h2> <input id="username" placeholder="Enter your name"> <button onclick="registerUser()">Join Chat</button> </div> </div> <div class="chat-app"> <div class="sidebar"> <div class="logo"> YOUTH CHAT </div> <div class="search-box"> <input placeholder="Search members"> </div> <div class="members" id="members"></div> <img src="file:///C:/Users/PC/Desktop/breaking%20bad%20s2/profile-url"> <img> Name Status </div> <div class="chat-container"> <div class="chat-header"> <h2>St George Youth Community</h2> <div id="userDisplay">👤 sam_kabz_</div> </div> <div class="messages" id="messages">
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    hello admin
+                </div>
+
+                <div class="time">
+                    06:45 PM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊hey
+                </div>
+
+                <div class="time">
+                    06:52 PM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    hey
+                </div>
+
+                <div class="time">
+                    09:19 PM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    hey
+                </div>
+
+                <div class="time">
+                    04:29 PM
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    hey
+                </div>
+
+                <div class="time">
+                    1781793145256
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    ddddd
+                </div>
+
+                <div class="time">
+                    06:09 PM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    ggg
+                </div>
+
+                <div class="time">
+                    06:29 PM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    shalom
+                </div>
+
+                <div class="time">
+                    09:35 PM
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    @@@@@mic testing
+                </div>
+
+                <div class="time">
+                    1781807761650
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊
+                </div>
+
+                <div class="time">
+                    09:36 PM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊
+                </div>
+
+                <div class="time">
+                    09:42 PM
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    .
+                </div>
+
+                <div class="time">
+                    1781808309449
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊
+                </div>
+
+                <div class="time">
+                    09:45 PM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊
+                </div>
+
+                <div class="time">
+                    10:16 PM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊
+                </div>
+
+                <div class="time">
+                    10:19 PM
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    hhhhh
+                </div>
+
+                <div class="time">
+                    1781810518061
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    @@@@!!!!!
+                </div>
+
+                <div class="time">
+                    1781810542756
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    gfgfhfghfhg
+                </div>
+
+                <div class="time">
+                    1781864642001
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    gjhjghghjghjgjgjh
+                </div>
+
+                <div class="time">
+                    1781867345305
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    hhjbb
+                </div>
+
+                <div class="time">
+                    1781868272426
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    hhe
+                </div>
+
+                <div class="time">
+                    1781874523386
+                </div>
+            </div>
+        
+            <div class="message received">
+                <div class="message-name">
+                    samuel kimanthi kabatha
+                </div>
+
+                <div>
+                    yyyyoooooohhhhhhhhhhhhhh
+                </div>
+
+                <div class="time">
+                    1781875160987
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊 😊 😊
+                </div>
+
+                <div class="time">
+                    12:44 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊
+                </div>
+
+                <div class="time">
+                    12:44 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊
+                </div>
+
+                <div class="time">
+                    12:44 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊
+                </div>
+
+                <div class="time">
+                    12:46 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊 😊
+                </div>
+
+                <div class="time">
+                    12:49 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊
+                </div>
+
+                <div class="time">
+                    12:50 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊
+                </div>
+
+                <div class="time">
+                    01:15 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊 😊 😊 😊
+                </div>
+
+                <div class="time">
+                    01:21 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊 😊 😊
+                </div>
+
+                <div class="time">
+                    01:38 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊 😊
+                </div>
+
+                <div class="time">
+                    01:39 AM
+                </div>
+            </div>
+        
+            <div class="message sent">
+                <div class="message-name">
+                    sam_kabz_
+                </div>
+
+                <div>
+                    😊 😊 😊
+                </div>
+
+                <div class="time">
+                    01:42 AM
+                </div>
+            </div>
+        </div> <div class="chat-input"> <div class="emoji-btn" onclick="addEmoji()">😀</div> <input type="text" id="messageInput" placeholder="Type a message..."> <button onclick="sendMessage()"> Send </button> </div> </div> </div> <script>
+    const API_URL =
+"https://script.google.com/macros/s/AKfycbwsgFTz2vKU-Dm0M1MvptbyekL0e4lIcjgqALQHZdOx8PwZ2ySSkhM2XDmcR5excjaZ5A/exec";
+    async function loadMessages() {
+
+    try {
+
+        const res = await fetch(
+            API_URL + "?action=getMessages&roomId=general"
+        );
+
+        const data = await res.json();
+
+        messages = data;
+
+        renderMessages();
+
+    } catch (err) {
+        console.error("Load error:", err);
+    }
+}
+let currentUser = localStorage.getItem("chatUser") || "";
+let members = JSON.parse(localStorage.getItem("members")) || [];
+let messages = JSON.parse(localStorage.getItem("messages")) || [];
+    
+
+/* ==========================
+   USER REGISTRATION
+========================== */
+
+if (currentUser) {
+    document.getElementById("registerModal").classList.add("hidden");
+    document.getElementById("userDisplay").textContent = "👤 " + currentUser;
 }
 
-.logo{
-font-size:20px;
-font-weight:bold;
-margin-bottom:10px;
+function registerUser() {
+    const username = document.getElementById("username").value.trim();
+
+    if (!username) return;
+
+    currentUser = username;
+    localStorage.setItem("chatUser", username);
+
+    if (!members.includes(username)) {
+        members.push(username);
+        localStorage.setItem("members", JSON.stringify(members));
+    }
+
+    document.getElementById("registerModal").classList.add("hidden");
+    document.getElementById("userDisplay").textContent = "👤 " + username;
+
+    renderMembers();
 }
 
-.members{
-flex:1;
-overflow:auto;
-margin-top:10px;
+/* ==========================
+   MEMBERS
+========================== */
+
+function renderMembers() {
+    const container = document.getElementById("members");
+
+    container.innerHTML = "";
+
+    members.forEach(member => {
+        container.innerHTML += `
+            <div class="member">
+                <div class="avatar">
+                    ${member.charAt(0).toUpperCase()}
+                </div>
+
+                <div>
+                    ${member}
+                </div>
+
+                <div class="status"></div>
+            </div>
+        `;
+    });
 }
 
-.member{
-padding:10px;
-background:rgba(255,255,255,0.1);
-margin-bottom:8px;
-border-radius:10px;
+/* ==========================
+   SEND MESSAGE
+========================== */
+
+async function sendMessage() {
+
+    const input = document.getElementById("messageInput");
+    const text = input.value.trim();
+
+    if (!text || !currentUser) return;
+
+    try {
+
+        await fetch(API_URL, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "sendMessage",
+                name: currentUser,
+                message: text,
+                roomId: "general"
+            })
+        });
+
+        input.value = "";
+
+        loadMessages();
+
+    } catch (err) {
+        console.error("Send error:", err);
+    }
+}
+/* ==========================
+   RENDER MESSAGES
+========================== */
+
+function renderMessages() {
+
+    const container =
+        document.getElementById("messages");
+
+    container.innerHTML = "";
+
+    messages.forEach(msg => {
+
+        const type =
+            msg.name === currentUser
+            ? "sent"
+            : "received";
+
+        container.innerHTML += `
+            <div class="message ${type}">
+                <div class="message-name">
+                    ${msg.name}
+                </div>
+
+                <div>
+                    ${msg.message}
+                </div>
+
+                <div class="time">
+                    ${new Date(msg.timestamp)
+                        .toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit"
+                        })}
+                </div>
+            </div>
+        `;
+    });
+
+    container.scrollTop =
+        container.scrollHeight;
 }
 
-/* MAIN */
-.main{
-flex:1;
-display:flex;
-flex-direction:column;
+/* ==========================
+   EMOJI BUTTON
+========================== */
+
+function addEmoji() {
+    const input =
+        document.getElementById("messageInput");
+
+    input.value += " 😊";
+    input.focus();
 }
 
-.header{
-background:white;
-padding:15px;
-font-weight:bold;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
+/* ==========================
+   ENTER KEY
+========================== */
 
-.messages{
-flex:1;
-overflow:auto;
-padding:15px;
-display:flex;
-flex-direction:column;
-gap:10px;
-}
+document
+    .getElementById("messageInput")
+    .addEventListener("keypress", e => {
+        if (e.key === "Enter") {
+            sendMessage();
+        }
+    });
 
-.msg{
-padding:10px;
-border-radius:10px;
-max-width:60%;
-}
+/* ==========================
+   INITIAL LOAD
+========================== */
 
-.sent{background:#236f69;color:white;align-self:flex-end;}
-.received{background:white;align-self:flex-start;}
-
-.input-box{
-display:flex;
-padding:10px;
-background:white;
-}
-
-input,select{
-flex:1;
-padding:10px;
-margin-right:5px;
-border-radius:8px;
-border:1px solid #ccc;
-}
-
-button{
-padding:10px 15px;
-background:#236f69;
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-/* TRIVIA */
-.trivia{
-background:white;
-padding:10px;
-margin-bottom:10px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="sidebar">
-<div class="logo">Youth Community</div>
-
-<h4>Members</h4>
-<div class="members" id="members"><div class="member">samuelkabatha63@gmail.com</div><div class="member">samuelmumbe</div><div class="member">sam_kabz_</div><div class="member">bro code</div></div>
-
-<h4>Trivia</h4>
-<div class="trivia">
-<p id="question">Who was swallowed by a fish?</p>
-<input id="answer" placeholder="Answer">
-<button onclick="submitTrivia()">Submit</button>
-<p id="score"></p>
-</div>
-
-<h4>Clock</h4>
-<select id="tz" onchange="updateClock()">
-<option value="Africa/Nairobi">Nairobi</option>
-<option value="Europe/London">London</option>
-<option value="America/New_York">New York</option>
-<option value="Asia/Tokyo">Tokyo</option>
-</select>
-<p id="clock">16:07:58</p>
-
-</div>
-
-<div class="main">
-
-<div class="header">St George Youth Chat</div>
-
-<div class="messages" id="messages"><div class="msg received">samuelkabatha63@gmail.com: shalom</div><div class="msg received">samuelkabatha63@gmail.com: hey there</div><div class="msg received">samuelkabatha63@gmail.com: 😊saseni</div><div class="msg received">samuelkabatha63@gmail.com: hey</div><div class="msg sent">samuelmumbe: hey there</div><div class="msg received">samuelkabatha63@gmail.com: hey</div><div class="msg received">samuelkabatha63@gmail.com: shalom</div><div class="msg received">bro code: 😊 😊 😊 😊</div><div class="msg sent">samuelmumbe: heyyyyy</div><div class="msg sent">samuelmumbe: heyyyyyy</div></div>
-
-<div class="input-box">
-<input id="msg" placeholder="Type message...">
-<button onclick="sendMessage()">Send</button>
-</div>
-
-</div>
-
-<script>
-/* =======================
-CONFIG
-======================= */
-const API_URL = "https://script.google.com/macros/s/AKfycbyqLPQl93NzY9VV9Ok7jDBmZ60PrcGQD2Uzkh1C42yUvsND6JUjGn9dvXuxYPKrbJFh/exec";
-
-/* =======================
-STATE
-======================= */
-let user = localStorage.getItem("user") || prompt("Enter your name:");
-localStorage.setItem("user", user);
-
-let messages = JSON.parse(localStorage.getItem("messages") || "[]");
-let members = JSON.parse(localStorage.getItem("members") || "[]");
-
-if(!members.includes(user)){
-members.push(user);
-localStorage.setItem("members", JSON.stringify(members));
-}
-
-/* =======================
-CHAT
-======================= */
-function renderMessages(){
-const box = document.getElementById("messages");
-box.innerHTML = "";
-
-messages.forEach(m=>{
-const div = document.createElement("div");
-div.className = "msg " + (m.user===user?"sent":"received");
-div.innerText = m.user + ": " + m.text;
-box.appendChild(div);
-});
-
-box.scrollTop = box.scrollHeight;
-}
-
-function sendMessage(){
-const input = document.getElementById("msg");
-const text = input.value.trim();
-if(!text) return;
-
-const msg = {user,text,time:Date.now()};
-messages.push(msg);
-localStorage.setItem("messages", JSON.stringify(messages));
-
-renderMessages();
-input.value="";
-
-/* API */
-fetch(API_URL,{
-method:"POST",
-body:JSON.stringify({
-action:"sendMessage",
-name:user,
-message:text,
-roomId:"general"
-})
-}).catch(()=>{});
-}
-
-/* =======================
-MEMBERS
-======================= */
-function renderMembers(){
-const box = document.getElementById("members");
-box.innerHTML = "";
-
-members.forEach(m=>{
-const div = document.createElement("div");
-div.className="member";
-div.innerText = m;
-box.appendChild(div);
-});
-}
-
-/* =======================
-TRIVIA
-======================= */
-const questions = [
-{q:"Who built the ark?",a:"Noah"},
-{q:"Who killed Goliath?",a:"David"},
-{q:"Who was swallowed by a fish?",a:"Jonah"}
-];
-
-let current = questions[Math.floor(Math.random()*questions.length)];
-
-function loadQuestion(){
-document.getElementById("question").innerText = current.q;
-}
-
-function submitTrivia(){
-const ans = document.getElementById("answer").value.trim();
-if(!ans) return;
-
-if(ans.toLowerCase() === current.a.toLowerCase()){
-document.getElementById("score").innerText = "Correct +10";
-}else{
-document.getElementById("score").innerText = "Wrong";
-}
-
-current = questions[Math.floor(Math.random()*questions.length)];
-loadQuestion();
-document.getElementById("answer").value="";
-}
-
-/* =======================
-CLOCK
-======================= */
-function updateClock(){
-const tz = document.getElementById("tz").value;
-const now = new Date();
-
-document.getElementById("clock").innerText =
-now.toLocaleTimeString("en-GB",{timeZone:tz});
-}
-
-/* =======================
-INIT
-======================= */
-function init(){
-renderMessages();
 renderMembers();
-loadQuestion();
-updateClock();
-setInterval(updateClock,1000);
+renderMessages();
+async function loadMessages() {
+    const res = await fetch(
+        API_URL + "?action=getMessages"
+    );
+
+    const data = await res.json();
+
+    messages = data.messages || [];
+
+    renderMessages();
 }
+    setInterval(loadMessages, 3000);
+    loadMessages();
 
-init();
-</script>
 
-
-</body><div id="smartyContainer" style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;"></div></html>
+</script> </body></html>
