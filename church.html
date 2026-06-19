@@ -1,1194 +1,351 @@
 <!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>ST.GEORGE YOUTH COMMUNITY</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St George Youth Community</title>
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  
-
-  <!-- =======================================================
-  * Template Name: FlexBiz
-  * Template URL: https://bootstrapmade.com/flexbiz-bootstrap-business-template/
-  * Updated: Aug 04 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 <style>
-:root{
---primary:#236f69;
---primary-dark:#1a5c56;
---white:#ffffff;
---bg:#f4f7f7;
---text:#183535;
---shadow:0 10px 30px rgba(0,0,0,.1);
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
-}
-
 body{
-background:var(--bg);
+margin:0;
+font-family:Segoe UI,sans-serif;
+background:#f4f7f7;
+display:flex;
 height:100vh;
 overflow:hidden;
 }
 
-.chat-app{
-display:flex;
-height:100vh;
-}
-
-/* Sidebar */
-
+/* SIDEBAR */
 .sidebar{
-width:320px;
-background:var(--primary);
+width:280px;
+background:#236f69;
 color:white;
 display:flex;
 flex-direction:column;
-}
-
-.logo{
-padding:20px;
-font-size:1.4rem;
-font-weight:bold;
-border-bottom:1px solid rgba(255,255,255,.2);
-}
-
-.search-box{
 padding:15px;
 }
 
-.search-box input{
-width:100%;
-padding:12px;
-border:none;
-border-radius:12px;
+.logo{
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
 }
 
 .members{
 flex:1;
-overflow-y:auto;
+overflow:auto;
+margin-top:10px;
 }
 
 .member{
-display:flex;
-align-items:center;
-gap:12px;
-padding:15px;
-cursor:pointer;
-transition:.3s;
+padding:10px;
+background:rgba(255,255,255,0.1);
+margin-bottom:8px;
+border-radius:10px;
 }
 
-.member:hover{
-background:rgba(255,255,255,.1);
-}
-
-.avatar{
-width:45px;
-height:45px;
-border-radius:50%;
-background:white;
-color:var(--primary);
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-}
-
-.status{
-width:10px;
-height:10px;
-background:#00ff55;
-border-radius:50%;
-}
-
-/* Main Chat */
-
-.chat-container{
+/* MAIN */
+.main{
 flex:1;
 display:flex;
 flex-direction:column;
 }
 
-.chat-header{
+.header{
 background:white;
-padding:20px;
-box-shadow:var(--shadow);
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.chat-header h2{
-color:var(--primary);
+padding:15px;
+font-weight:bold;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 .messages{
 flex:1;
-overflow-y:auto;
-padding:20px;
+overflow:auto;
+padding:15px;
 display:flex;
 flex-direction:column;
-gap:15px;
-}
-
-.message{
-max-width:70%;
-padding:12px;
-border-radius:18px;
-position:relative;
-box-shadow:var(--shadow);
-}
-
-.received{
-background:white;
-align-self:flex-start;
-}
-
-.sent{
-background:var(--primary);
-color:white;
-align-self:flex-end;
-}
-
-.message-name{
-font-size:.8rem;
-font-weight:bold;
-margin-bottom:5px;
-}
-
-.time{
-font-size:.7rem;
-opacity:.7;
-margin-top:5px;
-}
-
-.chat-input{
-background:white;
-padding:15px;
-display:flex;
 gap:10px;
-align-items:center;
 }
 
-.chat-input input{
-flex:1;
-padding:15px;
-border:none;
-background:#f1f1f1;
-border-radius:30px;
+.msg{
+padding:10px;
+border-radius:10px;
+max-width:60%;
 }
 
-.chat-input button{
-border:none;
-background:var(--primary);
-color:white;
-padding:14px 20px;
-border-radius:30px;
-cursor:pointer;
-}
+.sent{background:#236f69;color:white;align-self:flex-end;}
+.received{background:white;align-self:flex-start;}
 
-.chat-input button:hover{
-background:var(--primary-dark);
-}
-
-.emoji-btn{
-font-size:22px;
-cursor:pointer;
-}
-
-.register-modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.6);
+.input-box{
 display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.register-card{
+padding:10px;
 background:white;
-padding:30px;
-width:90%;
-max-width:400px;
-border-radius:20px;
 }
 
-.register-card h2{
-margin-bottom:20px;
-color:var(--primary);
+input,select{
+flex:1;
+padding:10px;
+margin-right:5px;
+border-radius:8px;
+border:1px solid #ccc;
 }
 
-.register-card input{
-width:100%;
-padding:15px;
-margin-bottom:15px;
-border:1px solid #ddd;
-border-radius:12px;
-}
-
-.register-card button{
-width:100%;
-padding:15px;
-background:var(--primary);
+button{
+padding:10px 15px;
+background:#236f69;
 color:white;
 border:none;
-border-radius:12px;
+border-radius:8px;
 cursor:pointer;
-}
-
-.hidden{
-display:none;
-}
-
-@media(max-width:768px){
-
-.sidebar{
-width:90px;
-}
-
-.member span{
-display:none;
-}
-
-.search-box{
-display:none;
-}
-
-.logo{
-font-size:.9rem;
-text-align:center;
-}
-
-.message{
-max-width:90%;
-}
-}
-    .floating-leaf{
-    position:fixed;
-    font-size:2rem;
-    animation:float 8s linear infinite;
-    opacity:0.15;
-    pointer-events:none;
-}
-
-@keyframes float{
-    0%{
-        transform:translateY(110vh) rotate(0deg);
-    }
-    100%{
-        transform:translateY(-120px) rotate(360deg);
-    }
-}
-.card{
-    background:white;
-    border-radius:24px;
-    padding:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,.05);
-}
-    input, select{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border-radius:12px;
-    border:1px solid #ddd;
-}
-
-textarea{
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid #ddd;
-    margin-top:10px;
-}
-
-button.submit{
-    background:#0d3b2e;
-    color:white;
-    border:none;
-    padding:12px 18px;
-    border-radius:12px;
-    margin-top:14px;
-    cursor:pointer;
-}
-    .card-title{
-    font-size:22px;
-    font-weight:700;
-    margin-bottom:10px;
-}
-
-.flex{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-    table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-table th, table td{
-    padding:12px;
-    border-bottom:1px solid #eee;
-    text-align:left;
-}
-
-.gold{
-    background:gold;
-}
-
-.silver{
-    background:silver;
-}
-
-.bronze{
-    background:#cd7f32;
-    color:white;
-}
-.main{
-    flex:1;
-    padding:25px;
-}
-
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:25px;
-}
-
-.search{
-    background:white;
-    padding:14px;
-    border-radius:18px;
-    width:350px;
-    border:none;
-    outline:none;
-}
-
-.top-icons{
-    display:flex;
-    gap:15px;
-    align-items:center;
-}
-
-.top-icons i{
-    background:white;
-    padding:12px;
-    border-radius:50%;
-    cursor:pointer;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:20px;
-}
-
-.card{
-    background:white;
-    border-radius:24px;
-    padding:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,.05);
-}
-
-.hero{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin-bottom:20px;
-}
-
-.weather{
-    background:linear-gradient(135deg,#d8ff5e,#89e44c);
-    color:#103527;
-}
-
-.analytics{
-    background:#fff;
-}
-
-.analytics img{
-    width:100%;
-    border-radius:20px;
-    margin-top:10px;
-}
-
-.card-title{
-    font-size:22px;
-    font-weight:700;
-    margin-bottom:10px;
-}
-
-.flex{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-input, select{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border-radius:12px;
-    border:1px solid #ddd;
-}
-
-textarea{
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid #ddd;
-    margin-top:10px;
-}
-
-button.submit{
-    background:#0d3b2e;
-    color:white;
-    border:none;
-    padding:12px 18px;
-    border-radius:12px;
-    margin-top:14px;
-    cursor:pointer;
-}
-
-.member-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:15px;
-    margin-top:20px;
-}
-
-.member-card{
-    background:white;
-    border-radius:20px;
-    padding:15px;
-    text-align:center;
-    position:relative;
-}
-
-.member-card img{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    object-fit:cover;
-}
-
-.inactive{
-    filter:grayscale(100%);
-    opacity:.6;
-}
-
-.badge{
-    position:absolute;
-    top:10px;
-    right:10px;
-    background:#0d3b2e;
-    color:white;
-    font-size:12px;
-    padding:5px 10px;
-    border-radius:20px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-table th, table td{
-    padding:12px;
-    border-bottom:1px solid #eee;
-    text-align:left;
-}
-
-.gold{
-    background:gold;
-}
-
-.silver{
-    background:silver;
-}
-
-.bronze{
-    background:#cd7f32;
-    color:white;
-}
-
-.footer-note{
-    margin-top:20px;
-    color:#666;
-    font-size:13px;
-}
-
-.event-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    margin-top:15px;
-}
-
-.event{
-    background:#f1f5f2;
-    padding:12px;
-    border-radius:12px;
-}
-
-.status-green{
-    color:green;
-    font-weight:bold;
-}
-
-.status-red{
-    color:red;
-    font-weight:bold;
-}
-
-@media(max-width:1000px){
-
-    body{
-        flex-direction:column;
-    }
-
-    .sidebar{
-        width:100%;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-    }
-
-}
-.toast{
-
-position:fixed;
-top:20px;
-right:20px;
-background:#00c853;
-color:white;
-padding:15px;
-border-radius:12px;
-z-index:9999;
-
-animation:slideIn .5s;
-}
-
-@keyframes slideIn{
-
-from{
-transform:translateX(200px);
-}
-
-to{
-transform:translateX(0);
-}
-
-}
-    .dark{
-
-background:#121212;
-color:white;
-
-}
-
-.dark .card{
-
-background:#1e1e1e;
-
-}
-    #fab{
-
-position:fixed;
-right:20px;
-bottom:90px;
-
-width:60px;
-height:60px;
-
-border:none;
-border-radius:50%;
-
-font-size:30px;
-
-background:#00c853;
-color:white;
-
-box-shadow:0 10px 30px rgba(0,0,0,.3);
-
-}
-   .live-clock{
-    background:linear-gradient(135deg,#0d3b2e,#1d5a46);
-    color:white;
-    border-radius:24px;
-    padding:25px;
-    text-align:center;
-    box-shadow:0 12px 25px rgba(0,0,0,.15);
-    position:relative;
-    overflow:hidden;
-    min-height:180px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-}
-
-/* Decorative glow */
-
-.live-clock::before{
-    content:"";
-    position:absolute;
-    width:250px;
-    height:250px;
-    background:rgba(216,255,94,.15);
-    border-radius:50%;
-    top:-100px;
-    right:-80px;
-}
-
-.clock-header{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:14px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color:#d8ff5e;
-    margin-bottom:10px;
-    font-weight:700;
-}
-
-#clock{
-    font-size:48px;
-    font-weight:900;
-    letter-spacing:3px;
-    margin:10px 0;
-    font-family:"Courier New", monospace;
-    text-shadow:
-        0 0 10px rgba(216,255,94,.5),
-        0 0 20px rgba(216,255,94,.3);
-}
-
-.live-clock p{
-    color:#d4e5dd;
-    font-size:14px;
-    margin-top:8px;
-}
-
-/* Mobile */
-
-@media(max-width:768px){
-
-    #clock{
-        font-size:34px;
-    }
-
-    .live-clock{
-        min-height:150px;
-    }
-
-    h3 {
-    display: block;
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    unicode-bidi: isolate;
-}
-element.style {
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
-}
-user agent stylesheet
-table {
-    display: table;
-    box-sizing: border-box;
-    border-collapse: separate;
-    text-indent: initial;
-    unicode-bidi: isolate;
-    border-spacing: 2px;
-}
-</style></head>
-
-
-
-<body>
-
-<div class="floating-leaf" style="left:5%; animation-delay:0s;">🍃</div>
-<div class="floating-leaf" style="left:25%; animation-delay:2s;">🌿</div>
-<div class="floating-leaf" style="left:50%; animation-delay:4s;">🍃</div>
-<div class="floating-leaf" style="left:75%; animation-delay:1s;">🌱</div>
-<div class="floating-leaf" style="left:90%; animation-delay:5s;">🍃</div>
-<div id="registerModal" class="register-modal hidden">
-<div class="register-card">
-<h2>Join Youth Chat</h2>
-<input id="username" placeholder="Enter your name">
-<button onclick="registerUser()">Join Chat</button>
-</div>
-</div>
-
-<div class="chat-app">
-
-<div class="sidebar">
-
-<div class="logo">
-YOUTH CHAT
-</div>
-
-<div class="search-box">
-<input placeholder="Search members">
-</div>
-<div class="live-clock"><div class="chat-container" id="trivia">
-
-<h2>
-Bible Trivia Weekly
-</h2>
-
-<h2 id="question-text">Who killed Goliath?</h2>
-
-<input type="text" id="answerInput" placeholder="Your Answer">
-
-<button class="submit" onclick="submitTrivia()">
-Submit Answer
-</button>
-
-<table>
-<thead>
-<tr>
-<th>Position</th>
-<th>Name</th>
-<th>Score</th>
-<th>Award</th>
-</tr>
-</thead>
-
-<tbody id="leaderboard">
-   <tr>
-    <td>1</td>
-    <td>sam_kabz_</td>
-    <td>10</td>
-    <td>🥇 Gold</td>
-   </tr>
-   <tr>
-    <td>2</td>
-    <td>sam_kabz_</td>
-    <td>10</td>
-    <td>🥇 Gold</td>
-   </tr>
-   <tr>
-    <td>3</td>
-    <td>sam_kabz_</td>
-    <td>0</td>
-    <td>🥇 Gold</td>
-   </tr>
-   <tr>
-    <td>4</td>
-    <td>sam_kabz_</td>
-    <td>0</td>
-    <td>🥇 Gold</td>
-   </tr></tbody>
-
-</table>
-
-</div>
-</div>
-    <br><br><br><div class="live-clock">
-    <h2 id="clock">Select Timezone</h2>
-    <select id="timezone">
-        <option value="Africa/Nairobi">🇰🇪 Nairobi</option>
-        <option value="Europe/London">🇬🇧 London</option>
-        <option value="America/New_York">🇺🇸 New York</option>
-        <option value="America/Los_Angeles">🇺🇸 Los Angeles</option>
-        <option value="Europe/Paris">🇫🇷 Paris</option>
-        <option value="Europe/Berlin">🇩🇪 Berlin</option>
-        <option value="Asia/Dubai">🇦🇪 Dubai</option>
-        <option value="Asia/Tokyo">🇯🇵 Tokyo</option>
-        <option value="Asia/Shanghai">🇨🇳 Shanghai</option>
-        <option value="Asia/Kolkata">🇮🇳 Mumbai</option>
-        <option value="Australia/Sydney">🇦🇺 Sydney</option>
-        <option value="America/Toronto">🇨🇦 Toronto</option>
-        <option value="America/Sao_Paulo">🇧🇷 São Paulo</option>
-        <option value="Africa/Cairo">🇪🇬 Cairo</option>
-        <option value="Africa/Johannesburg">🇿🇦 Johannesburg</option>
-    </select>
-
-    <p id="dateDisplay"></p>
-
-    
-</div><br><br>
-<div class="live-clock">
-    <div id="clock"><div class="clock-header">
-        <i class="fa-solid fa-clock"></i>
-        Live Time
-    </div></div>
-
-    <h2 id="clock">00:00:00</h2>
-<div id="dateDisplay"></div>
-    <p>ACK Smart System</p>
-</div>
-<div class="members" id="members"></div>
-<img src="https://images.unsplash.com/photo-1501706362039-c6e08b2a0d1d?q=80&amp;w=1200&amp;auto=format&amp;fit=crop">
-    <img>
-Name
-Status
-</div>
-
-<div class="chat-container">
-
-<div class="chat-header">
-<h2>St George Youth Community</h2>
-<div id="userDisplay">👤 sam_kabz_</div>
-</div>
-
-<div class="messages" id="messages">
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>hello admin</div>
-    <div class="time">06:45 PM</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>😊hey</div>
-    <div class="time">06:52 PM</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>hey</div>
-    <div class="time">09:19 PM</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>hey</div>
-    <div class="time">04:29 PM</div>
-   </div>
-   <div class="message received">
-    <div class="message-name">samuel kimanthi kabatha</div>
-    <div>hey</div>
-    <div class="time">1781793145256</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>ddddd</div>
-    <div class="time">06:09 PM</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>ggg</div>
-    <div class="time">06:29 PM</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>shalom</div>
-    <div class="time">09:35 PM</div>
-   </div>
-   <div class="message received">
-    <div class="message-name">samuel kimanthi kabatha</div>
-    <div>@@@@@mic testing</div>
-    <div class="time">1781807761650</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>😊</div>
-    <div class="time">09:36 PM</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>😊</div>
-    <div class="time">09:42 PM</div>
-   </div>
-   <div class="message received">
-    <div class="message-name">samuel kimanthi kabatha</div>
-    <div>.</div>
-    <div class="time">1781808309449</div>
-   </div>
-   <div class="message sent">
-    <div class="message-name">sam_kabz_</div>
-    <div>😊</div>
-    <div class="time">09:45 PM</div>
-   </div></div>
-
-<div class="chat-input">
-
-<div class="emoji-btn" onclick="addEmoji()">😀</div>
-
-<input type="text" id="messageInput" placeholder="Type a message...">
-
-<button onclick="sendMessage()">
-Send
-</button>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<script>
-let currentUser = localStorage.getItem("chatUser");
-let members = JSON.parse(localStorage.getItem("members")) || [];
-let messages = JSON.parse(localStorage.getItem("messages")) || [];
-let triviaScores = JSON.parse(localStorage.getItem("triviaScores")) || [];
-
-const API_URL="https://script.google.com/macros/s/AKfycbzbxrUTVIJi_85tpt9NzlCXUtNgQARDswt-wS00tdgTZ0YOLrEkarfvRKEtuB8sIF5H/exec";
-
-function registerUser(){
- const username=document.getElementById("username").value.trim();
- if(!username) return;
-
- currentUser=username;
- localStorage.setItem("chatUser",username);
-
- if(!members.includes(username)){
-   members.push(username);
-   localStorage.setItem("members",JSON.stringify(members));
- }
-
- document.getElementById("registerModal")?.classList.add("hidden");
- document.getElementById("userDisplay").innerHTML="👤 "+username;
-
- renderMembers();
- apiRegisterMember(username);
-}
-
-function renderMembers(){
- const container=document.getElementById("members");
- if(!container) return;
-
- container.innerHTML="";
- members.forEach(member=>{
-  container.innerHTML+=`
-   <div class="member">
-    <div class="avatar">${member.charAt(0).toUpperCase()}</div>
-    <div><div>${member}</div><div class="status"></div></div>
-   </div>`;
- });
-}
-
-function sendMessage(){
- const input=document.getElementById("messageInput");
- if(!input) return;
-
- const text=input.value.trim();
- if(!text || !currentUser) return;
-
- const msg={
-   user:currentUser,
-   text:text,
-   time:new Date().toLocaleTimeString([],{
-      hour:"2-digit",
-      minute:"2-digit"
-   })
- };
-
- messages.push(msg);
- localStorage.setItem("messages",JSON.stringify(messages));
- input.value="";
-
- renderMessages();
- apiSendMessage(currentUser,text);
-}
-
-function renderMessages(){
- const container=document.getElementById("messages");
- if(!container) return;
-
- container.innerHTML="";
-
- messages.forEach(msg=>{
-  const type=msg.user===currentUser?"sent":"received";
-  container.innerHTML+=`
-   <div class="message ${type}">
-    <div class="message-name">${msg.user}</div>
-    <div>${msg.text}</div>
-    <div class="time">${msg.time}</div>
-   </div>`;
- });
-
- container.scrollTop=container.scrollHeight;
-}
-
-function addEmoji(){
- const input=document.getElementById("messageInput");
- if(input) input.value+=" 😊";
-}
-
-async function apiSendMessage(name,message){
- try{
-  await fetch(API_URL,{
-   method:"POST",
-   body:JSON.stringify({
-    action:"sendMessage",
-    name,message,roomId:"general"
-   })
-  });
- }catch(e){console.log(e);}
-}
-
-async function apiRegisterMember(name){
- try{
-  await fetch(API_URL,{
-   method:"POST",
-   body:JSON.stringify({
-    action:"registerMember",name
-   })
-  });
- }catch(e){console.log(e);}
-}
-
-async function loadMessagesFromAPI(){
- try{
-   const res=await fetch(API_URL+"?action=getMessages&roomId=general");
-   const data=await res.json();
-   console.log("SERVER",data);
- }catch(e){console.log(e);}
-}
-
-/* CLOCK */
-function updateClock(){
- const tz=document.getElementById("timezone")?.value || "Africa/Nairobi";
- const now=new Date();
-
- const clocks=document.querySelectorAll("#clock");
- clocks.forEach(el=>{
-   el.textContent=now.toLocaleTimeString("en-GB",{
-      timeZone:tz,hour:"2-digit",minute:"2-digit",second:"2-digit"
-   });
- });
-
- const dates=document.querySelectorAll("#dateDisplay");
- dates.forEach(el=>{
-   el.textContent=now.toLocaleDateString("en-GB",{
-      timeZone:tz,weekday:"long",year:"numeric",month:"long",day:"numeric"
-   });
- });
 }
 
 /* TRIVIA */
-const triviaQuestions=[
- {q:"Who built the ark?",a:"Noah"},
- {q:"Who killed Goliath?",a:"David"},
- {q:"Who was swallowed by a fish?",a:"Jonah"}
+.trivia{
+background:white;
+padding:10px;
+margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<div class="logo">Youth Community</div>
+
+<h4>Members</h4>
+<div class="members" id="members"><div class="member">[object Object]</div><div class="member">samuelkabatha63@gmail.com</div><div class="member">sam_kabz_</div><div class="member">samuel kimanthi kabatha</div></div>
+
+<h4>Trivia</h4>
+<div class="trivia">
+<p id="question">Who killed Goliath?</p>
+<input id="answer" placeholder="Answer">
+<button onclick="submitTrivia()">Submit</button>
+<p id="score"></p>
+</div>
+
+<h4>Clock</h4>
+<select id="tz" onchange="updateClock()">
+<option value="Africa/Nairobi">Nairobi</option>
+<option value="Europe/London">London</option>
+<option value="America/New_York">New York</option>
+<option value="Asia/Tokyo">Tokyo</option>
+</select>
+<p id="clock">14:42:53</p>
+
+</div>
+
+<div class="main">
+
+<div class="header">St George Youth Chat</div>
+
+<div class="messages" id="messages"><div class="msg received">sam_kabz_: hello admin</div><div class="msg received">sam_kabz_: 😊hey</div><div class="msg received">sam_kabz_: hey</div><div class="msg received">sam_kabz_: hey</div><div class="msg sent">samuel kimanthi kabatha: hey</div><div class="msg received">sam_kabz_: ddddd</div><div class="msg received">sam_kabz_: ggg</div><div class="msg received">sam_kabz_: shalom</div><div class="msg sent">samuel kimanthi kabatha: @@@@@mic testing</div><div class="msg received">sam_kabz_: 😊</div><div class="msg received">sam_kabz_: 😊</div><div class="msg sent">samuel kimanthi kabatha: .</div><div class="msg received">sam_kabz_: 😊</div><div class="msg received">sam_kabz_: 😊 😊 😊</div><div class="msg received">sam_kabz_: 😊 😊 😊</div><div class="msg sent">samuel kimanthi kabatha: hhhhh</div><div class="msg sent">samuel kimanthi kabatha: @@@@!!!!!</div><div class="msg sent">samuel kimanthi kabatha: gfgfhfghfhg</div><div class="msg sent">samuel kimanthi kabatha: gjhjghghjghjgjgjh</div><div class="msg sent">samuel kimanthi kabatha: hhjbb</div></div>
+
+<div class="input-box">
+<input id="msg" placeholder="Type message...">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+</div>
+
+<script>
+/* =======================
+CONFIG
+======================= */
+const API_URL = "https://script.google.com/macros/s/AKfycbzbxrUTVIJi_85tpt9NzlCXUtNgQARDswt-wS00tdgTZ0YOLrEkarfvRKEtuB8sIF5H/exec";
+
+/* =======================
+STATE
+======================= */
+let user = localStorage.getItem("user") || prompt("Enter your name:");
+localStorage.setItem("user", user);
+let messages = [];
+
+async function loadMessages() {
+
+    try {
+
+        const res = await fetch(
+            API_URL + "?action=getMessages&roomId=general"
+        );
+
+        messages = await res.json();
+
+        renderMessages();
+
+    } catch(err) {
+
+        console.error(err);
+
+    }
+}
+async function loadMembers() {
+
+    try {
+
+        const res = await fetch(
+            API_URL + "?action=getMembers"
+        );
+
+        const members = await res.json();
+
+        renderMembers(members);
+
+    } catch(err) {
+
+        console.error(err);
+
+    }
+}
+/* =======================
+CHAT
+======================= */
+function renderMessages() {
+
+    const box = document.getElementById("messages");
+
+    box.innerHTML = "";
+
+    messages.forEach(m => {
+
+        const div = document.createElement("div");
+
+        div.className =
+            "msg " +
+            (m.name === user ? "sent" : "received");
+
+        div.innerHTML = `
+            <strong>${m.name}</strong>
+            <br>
+            ${m.message}
+            <br>
+            <small>${new Date(m.timestamp).toLocaleString()}</small>
+        `;
+
+        box.appendChild(div);
+
+    });
+
+    box.scrollTop = box.scrollHeight;
+}
+
+async function sendMessage() {
+    const input = document.getElementById("msg");
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    input.value = "";
+
+    try {
+        await fetch(API_URL, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "sendMessage",
+                name: user,
+                message: text,
+                roomId: "general"
+            })
+        });
+
+        loadMessages();
+    } catch(err) {
+        console.error(err);
+    }
+}
+/* =======================
+MEMBERS
+======================= */
+function startPolling() {
+
+    loadMessages();
+    loadMembers();
+
+    setInterval(() => {
+
+        loadMessages();
+        loadMembers();
+
+    }, 3000);
+
+}
+    function renderMembers(members) {
+
+    const box = document.getElementById("members");
+
+    if (!box) return;
+
+    box.innerHTML = "";
+
+    members.forEach(member => {
+
+        const div = document.createElement("div");
+
+        div.className = "member";
+
+        div.textContent = member;
+
+        box.appendChild(div);
+
+    });
+
+}
+/* =======================
+TRIVIA
+======================= */
+const questions = [
+{q:"Who built the ark?",a:"Noah"},
+{q:"Who killed Goliath?",a:"David"},
+{q:"Who was swallowed by a fish?",a:"Jonah"}
 ];
 
-let currentQuestion=triviaQuestions[Math.floor(Math.random()*triviaQuestions.length)];
+let current = questions[Math.floor(Math.random()*questions.length)];
 
-function showQuestion(){
- const q=document.getElementById("question-text");
- if(q) q.textContent=currentQuestion.q;
+function loadQuestion(){
+document.getElementById("question").innerText = current.q;
 }
 
 function submitTrivia(){
- const answer=document.getElementById("answerInput")?.value.trim();
- if(!answer) return;
+const ans = document.getElementById("answer").value.trim();
+if(!ans) return;
 
- const score=answer.toLowerCase()===currentQuestion.a.toLowerCase()?10:0;
-
- triviaScores.push({
-  player:currentUser || "Guest",
-  score
- });
-
- localStorage.setItem("triviaScores",JSON.stringify(triviaScores));
-
- renderLeaderboard();
-
- alert(score ? "Correct! +10 points" : "Wrong answer");
-
- currentQuestion=triviaQuestions[Math.floor(Math.random()*triviaQuestions.length)];
- showQuestion();
-
- document.getElementById("answerInput").value="";
+if(ans.toLowerCase() === current.a.toLowerCase()){
+document.getElementById("score").innerText = "Correct +10";
+}else{
+document.getElementById("score").innerText = "Wrong";
 }
 
-function renderLeaderboard(){
- const board=document.getElementById("leaderboard");
- if(!board) return;
-
- board.innerHTML="";
-
- triviaScores.sort((a,b)=>b.score-a.score);
-
- triviaScores.forEach((p,index)=>{
-  let award="";
-  if(index<5) award="🥇 Gold";
-  else if(index<8) award="🥈 Silver";
-  else if(index<14) award="🥉 Bronze";
-
-  board.innerHTML+=`
-   <tr>
-    <td>${index+1}</td>
-    <td>${p.player}</td>
-    <td>${p.score}</td>
-    <td>${award}</td>
-   </tr>`;
- });
+current = questions[Math.floor(Math.random()*questions.length)];
+loadQuestion();
+document.getElementById("answer").value="";
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
- if(currentUser){
-   document.getElementById("registerModal")?.classList.add("hidden");
-   document.getElementById("userDisplay").innerHTML="👤 "+currentUser;
- }
+/* =======================
+CLOCK
+======================= */
+function updateClock(){
+const tz = document.getElementById("tz").value;
+const now = new Date();
 
- const input=document.getElementById("messageInput");
- if(input){
-   input.addEventListener("keypress",e=>{
-      if(e.key==="Enter") sendMessage();
-   });
- }
+document.getElementById("clock").innerText =
+now.toLocaleTimeString("en-GB",{timeZone:tz});
+}
 
- renderMembers();
- renderMessages();
- renderLeaderboard();
- showQuestion();
- updateClock();
+/* =======================
+INIT
+======================= */
+function init() {
 
- setInterval(updateClock,1000);
- setInterval(loadMessagesFromAPI,3000);
-});
+    loadQuestion();
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+
+    startPolling();
+
+}
+
+init();
 </script>
 
 
-
-<div id="smartyContainer" style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;"></div><br></body></html>
+<div id="smartyContainer" style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;"></div></body></html>
